@@ -1,0 +1,21 @@
+[ {
+    
+    "Subject": "ENGLISH",
+    "Academicyear": "2020-2021",
+        "Completiondays": 15,
+        "PracticeActivity": "Practice",
+        "AssessmentActivity": "Assessment",
+        "PracticeActivityNo": "1.1",
+        "AssessmentActivityNo": "1.2",
+        "HomepageComment": "This is my HomepageComment",
+        "EditpageComment": "This is my EditpageComment",
+        "MilestonepageComment":"This is my MilestoneComment",
+        "HomepageCommentApprover": "This is my HomepageComment by Approver",
+        "EditpageCommentApprover": "This is my EditpageComment by Approver",
+        "MilestonepageCommentApprover":"This is my MilestoneComment by Approver",
+        "Coursesubjectlink": "ENGLISH",
+  
+            "Comment": "This is my first course comment ",
+            "Retakes": "05"
+  }
+  ]

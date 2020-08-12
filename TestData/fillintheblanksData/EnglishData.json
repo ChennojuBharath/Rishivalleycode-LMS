@@ -1,0 +1,20 @@
+
+[
+  {
+    "TaskSubject": "ENGLISH",
+    "AcivityType": "Assessment",
+    "Tag": 10,
+    "ActivityId": 18,
+    "Time": "01:15",
+    "Title": "Fill in the blanks Questions",
+    "Instructions": "Student need to match the options dislayed",
+    "English1": "#img# *Panduraju* is the *king* of *Hastinapur* ",
+    "English2": "#img# *Bheema* has a weapen of *Gadha* in his hand",
+    "English3": "#img# *Bheema* is the brother of *Arjuna* and his son name is *Ghatodgaja* of *Gadha* in his hand",
+    "English4": "#img# *Five* pandavas collectively are called as *PanchaPandavas*",
+    "English5": "#img# T r *a* *i* n",
+    "English6": "#img# F *i* *s* h",
+    "English7": "#img# Bee *h* *i* v e",
+    "English8": "#img# T u *n* *n* e l"
+  }
+]

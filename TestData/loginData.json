@@ -1,0 +1,31 @@
+{
+    "validLoginData": {
+      "username": "admin",
+      "password": "admin"
+    },
+    "invalidLoginData": {
+      "username": "admin11",
+      "password": "admin11"
+    },
+
+    "Taskauthorlogindata":{
+      "keycloakusername": "bharath",
+      "keycloakpassword": "password"
+    },
+     "Taskreviewerlogindata":{
+      "keycloakusername": "veena",
+      "keycloakpassword": "password"
+    },
+     "Taskapproverlogindata":{
+      "keycloakusername": "venu",
+      "keycloakpassword": "password"
+    },
+     "Courseauthorlogindata":{
+      "keycloakusername": "lms_course_author",
+      "keycloakpassword": "password"
+    },
+     "Courseapproverlogindata":{
+      "keycloakusername": "lms_course_approver",
+      "keycloakpassword": "password"
+    }
+  }
