@@ -508,6 +508,7 @@ export class coursePage {
             })
         }
     }
+    
     Coursedataforenglishwithmultiplemilestones() {
         browser.ignoreSynchronization = true
         var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CourseData/EnglishData.json', null)
@@ -549,6 +550,7 @@ export class coursePage {
             dataRecs.forEach(record => {
                 this.AddnewActivity().click();
                 browser.sleep(500);
+                //1st activity
                 this.engBatBallnontabactivity().click();
                 browser.sleep(500);
                 BrowserUtils.enterText(by.xpath("//input[@dicimalnumber][@placeholder='enter no. here']"), record["BatBallnontabActivityNo"]);
@@ -561,6 +563,7 @@ export class coursePage {
                 var stepsPath = path.resolve(__dirname, steps);
                 this.typefile2().sendKeys(stepsPath);
                 browser.sleep(1000);
+                //2nd activity
                 this.AddnewActivity().click();
                 browser.sleep(500);
                 this.engKitenontabactivity().click();
