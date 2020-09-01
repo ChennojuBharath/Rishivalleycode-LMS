@@ -40,7 +40,7 @@ describe('Create courese end to end', () => {
         }, 20000);
     });
     it('check course can be created with multiple tasks', () => {
-        approval.approvecourseforenglish();
+        approval.draftcourseforenglish();
     });
     it('logout from application', () => {
         loginPg.logoutoperation()
