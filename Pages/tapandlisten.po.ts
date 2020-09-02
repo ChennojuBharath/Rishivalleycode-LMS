@@ -10,6 +10,12 @@ export class tapandlistenPage {
     TapandListenLink() {
         return element(by.xpath("//mat-card-title[@class='title-link mat-card-title'][text()='Tap and Listen']"));
     }
+    commentbutton() {
+        return element(by.xpath("(//span[contains(text(),'Add Comment')])[1]"))
+    }
+    Commentsavebtn() {
+     return element(by.xpath("//span[contains(text(),'SAVE')]"));
+  }
     Activityid() {
         return element(by.xpath("//input[@id='activityid']"));
     }
@@ -80,7 +86,7 @@ export class tapandlistenPage {
         return element(by.xpath("//span[text()='×']"))
     }
     Class1() {
-        return element(by.xpath("//mat-list-item[@ng-reflect-router-link='/task/task-list']/div[contains(text(),'Class 1')]"));
+        return element(by.xpath("//mat-list-item[@ng-reflect-router-link='/task/task-list']/div[contains(text(),'Class 2')]"));
     }
     TaskCancelicon() {
         return element(by.xpath("//button[@class='close mat-icon-button']"));
@@ -168,10 +174,42 @@ export class tapandlistenPage {
         browser.sleep(500);
         this.okbutton().click();
         browser.sleep(500);
-        this.clickOntappingMCQNextBtn().click();
-        browser.sleep(500);
         this.Publishnavigation();
     }
+    Createpagecomments() {
+        browser.ignoreSynchronization = true
+        var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CommonData/SubjectData.json', null)
+        if (dataRecs && dataRecs.length > 0) {
+           dataRecs.forEach(record => {
+              BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Add Comment')]"));
+              this.commentbutton().click();
+              BrowserUtils.enterText(by.xpath("//textarea[@ng-reflect-name='commentData']"), record["CreatepageComment"]);
+              browser.sleep(500);
+              this.Commentsavebtn().click();
+              browser.sleep(1500);
+        this.Class1().isDisplayed().then(function (dis) {
+           expect(dis).toBe(true, 'Task popup is closed successfully')
+        })
+     })
+  }
+     }
+     Previewpagecomments() {
+        browser.ignoreSynchronization = true
+        var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CommonData/SubjectData.json', null)
+        if (dataRecs && dataRecs.length > 0) {
+           dataRecs.forEach(record => {
+              BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Add Comment')]"));
+              this.commentbutton().click();
+              BrowserUtils.enterText(by.xpath("//textarea[@ng-reflect-name='commentData']"), record["PreviewpageComment"]);
+              browser.sleep(500);
+              this.Commentsavebtn().click();
+              browser.sleep(1500);
+        this.Class1().isDisplayed().then(function (dis) {
+           expect(dis).toBe(true, 'Task popup is closed successfully')
+        })
+     })
+  }
+     }
     createTapandlistenTaskwithTextenglish() {
         this.Tapandlistencreatepageenglish();
         browser.sleep(500);
@@ -213,10 +251,6 @@ export class tapandlistenPage {
         this.saveMCQ().click();
         browser.sleep(500);
         this.okbutton().click();
-        browser.sleep(500);
-        this.clickOntappingMCQNextBtn().click();
-        browser.sleep(500);
-        this.acceptSaveTaskPopUp().click();
         browser.sleep(500);
         this.Publishnavigation();
     }
@@ -286,8 +320,6 @@ export class tapandlistenPage {
         this.saveMCQ().click();
         browser.sleep(500);
         this.okbutton().click();
-        browser.sleep(500);
-        this.clickOntappingMCQNextBtn().click();
         browser.sleep(500);
         this.Publishnavigation();
     }
@@ -367,7 +399,7 @@ export class tapandlistenPage {
         })
      }
      Contenttypesearch() {
-        var contentsearch = element(by.xpath("//input[@type='search']"));
+        var contentsearch = element(by.xpath("//input[@placeholder='All content types']"));
         this.createNewTaskBtn().click();
         browser.sleep(1000);
         contentsearch.sendKeys("Tap and Listen");
@@ -884,6 +916,8 @@ export class tapandlistenPage {
     }
     Publishnavigation() {
         browser.sleep(2000);
+        this.clickOntappingMCQNextBtn().click();
+        browser.sleep(500);
         this.clickOntappingMCQNextBtn().click();
         browser.sleep(5000);
        this.publishBtn().click();

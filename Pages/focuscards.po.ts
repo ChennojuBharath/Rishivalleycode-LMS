@@ -157,8 +157,14 @@ export class focuscardsPage {
       return element(by.xpath("//span[text()='×']"))
    }
    Class1() {
-      return element(by.xpath("//mat-list-item[@ng-reflect-router-link='/task/task-list']/div[contains(text(),'Class 1')]"));
+      return element(by.xpath("//mat-list-item[@ng-reflect-router-link='/task/task-list']/div[contains(text(),'Class 2')]"));
    }
+   commentbutton() {
+      return element(by.xpath("(//span[contains(text(),'Add Comment')])[1]"))
+  }
+  Commentsavebtn() {
+   return element(by.xpath("//span[contains(text(),'SAVE')]"));
+}
    Norecored() {
       return element(by.xpath("//td[text()=' No record found. ']"));
    }
@@ -167,6 +173,40 @@ export class focuscardsPage {
    }
    ActivityId() {
       this.Activityid().sendKeys(coursePg.ClickonRandomArray());
+   }
+   Createpagecomments() {
+      browser.ignoreSynchronization = true
+      var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CommonData/SubjectData.json', null)
+      if (dataRecs && dataRecs.length > 0) {
+         dataRecs.forEach(record => {
+            BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Add Comment')]"));
+            this.commentbutton().click();
+            BrowserUtils.enterText(by.xpath("//textarea[@ng-reflect-name='commentData']"), record["CreatepageComment"]);
+            browser.sleep(500);
+            this.Commentsavebtn().click();
+            browser.sleep(1500);
+      this.Class1().isDisplayed().then(function (dis) {
+         expect(dis).toBe(true, 'Task popup is closed successfully')
+      })
+   })
+}
+   }
+   Previewpagecomments() {
+      browser.ignoreSynchronization = true
+      var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CommonData/SubjectData.json', null)
+      if (dataRecs && dataRecs.length > 0) {
+         dataRecs.forEach(record => {
+            BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Add Comment')]"));
+            this.commentbutton().click();
+            BrowserUtils.enterText(by.xpath("//textarea[@ng-reflect-name='commentData']"), record["PreviewpageComment"]);
+            browser.sleep(500);
+            this.Commentsavebtn().click();
+            browser.sleep(1500);
+      this.Class1().isDisplayed().then(function (dis) {
+         expect(dis).toBe(true, 'Task popup is closed successfully')
+      })
+   })
+}
    }
    createfocuscardsTasktelugu() {
       this.CreateFocuscardstelugu();
@@ -192,8 +232,6 @@ export class focuscardsPage {
       browser.sleep(5000);
       this.acceptSaveTaskPopUp().click();
       browser.sleep(1500);
-      this.clickOntappingMCQNextBtn().click();
-      browser.sleep(500);
       this.Publishnavigation();
       this.createNewTaskBtn().isDisplayed().then(function (dis) {
          expect(dis).toBe(true, 'Focal cards Task is created successfully')
@@ -438,7 +476,7 @@ export class focuscardsPage {
 
    }
    Contenttypesearch() {
-      var contentsearch = element(by.xpath("//input[@type='search']"));
+      var contentsearch = element(by.xpath("//input[@placeholder='All content types']"));
       this.createNewTaskBtn().click();
       browser.sleep(1000);
       contentsearch.sendKeys("Fill in the blanks");
@@ -533,6 +571,8 @@ export class focuscardsPage {
    }
    Publishnavigation() {
       browser.sleep(2000);
+      this.clickOntappingMCQNextBtn().click();
+      browser.sleep(500);
       this.clickOntappingMCQNextBtn().click();
       browser.sleep(2000);
       this.publishBtn().click();

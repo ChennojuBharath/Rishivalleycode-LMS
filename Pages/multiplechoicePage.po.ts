@@ -293,8 +293,14 @@ export class tasksPage {
       return element(by.xpath("//a[@class='nav-link ng-star-inserted'][text()=' Preview']"))
    }
    Class1() {
-      return element(by.xpath("//mat-list-item[@ng-reflect-router-link='/task/task-list']/div[contains(text(),'Class 1')]"));
+      return element(by.xpath("//mat-list-item[@ng-reflect-router-link='/task/task-list']/div[contains(text(),'Class 2')]"));
    }
+   commentbutton() {
+      return element(by.xpath("(//span[contains(text(),'Add Comment')])[1]"))
+  }
+  Commentsavebtn() {
+   return element(by.xpath("//span[contains(text(),'SAVE')]"));
+}
    Taskediticon() {
       return element(by.xpath("//i[@class='fa fa-edit action-icon-btn']"))
    }
@@ -1016,11 +1022,45 @@ export class tasksPage {
             //BrowserUtils.countAndClick(this.clickOnClassLinks());
             var editiconselection = by.xpath("//mat-list-item[@ng-reflect-router-link='/task/task-list']/div[text()='" + record["Class"] + "']");
             BrowserUtils.clickOnElement(editiconselection);
-            // this.createNewTaskBtn().isDisplayed().then(function (dis) {
-            //    expect(dis).toBe(true, 'Task class links are clickable')
-            // })
+            this.createNewTaskBtn().isDisplayed().then(function (dis) {
+               expect(dis).toBe(true, 'Task class links are clickable')
+            })
          })
       }
+   }
+   Createpagecomments() {
+      browser.ignoreSynchronization = true
+      var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CommonData/SubjectData.json', null)
+      if (dataRecs && dataRecs.length > 0) {
+         dataRecs.forEach(record => {
+            BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Add Comment')]"));
+            this.commentbutton().click();
+            BrowserUtils.enterText(by.xpath("//textarea[@ng-reflect-name='commentData']"), record["CreatepageComment"]);
+            browser.sleep(500);
+            this.Commentsavebtn().click();
+            browser.sleep(1500);
+      this.Class1().isDisplayed().then(function (dis) {
+         expect(dis).toBe(true, 'Task popup is closed successfully')
+      })
+   })
+}
+   }
+   Previewpagecomments() {
+      browser.ignoreSynchronization = true
+      var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CommonData/SubjectData.json', null)
+      if (dataRecs && dataRecs.length > 0) {
+         dataRecs.forEach(record => {
+            BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Add Comment')]"));
+            this.commentbutton().click();
+            BrowserUtils.enterText(by.xpath("//textarea[@ng-reflect-name='commentData']"), record["PreviewpageComment"]);
+            browser.sleep(500);
+            this.Commentsavebtn().click();
+            browser.sleep(1500);
+      this.Class1().isDisplayed().then(function (dis) {
+         expect(dis).toBe(true, 'Task popup is closed successfully')
+      })
+   })
+}
    }
    ClickAllsubjects() {
       browser.sleep(3000);
@@ -1069,6 +1109,7 @@ export class tasksPage {
                   this.OKbtn().click();
                   browser.sleep(5000);
                   this.overallfeedbackenglish();
+                  this.Createpagecomments();
                })
             }
          }
@@ -1106,6 +1147,7 @@ export class tasksPage {
                   this.OKbtn().click();
                   browser.sleep(5000);
                   this.overallfeedbacktelugu();
+                  this.Createpagecomments();
                })
             }
          }
@@ -1121,7 +1163,6 @@ export class tasksPage {
       })
    }
    Previewpage() {
-      BrowserUtils.scrollIntoView(by.xpath("//div[text()=' PREVIEW ']"));
       browser.sleep(2000);
       this.Previewradio1().click();
       browser.sleep(500);
@@ -1152,7 +1193,7 @@ export class tasksPage {
       browser.sleep(500);
       this.showsolutionbtn().click();
       browser.sleep(500);
-
+     this.Previewpagecomments();
    }
    ClickonRandomSubject() {
       var myArray = ['MATHS', 'EVS', 'ENGLISH', 'TELUGU'];
@@ -1306,7 +1347,7 @@ export class tasksPage {
    }
    Contenttypesearch() {
       browser.ignoreSynchronization = true
-      var contentsearch = element(by.xpath("//input[@type='search']"));
+      var contentsearch = element(by.xpath("//input[@placeholder='All content types']"));
       this.createNewTaskBtn().click();
       browser.sleep(1000);
       contentsearch.sendKeys("Tapping");

@@ -1,6 +1,5 @@
 import { fillintheblanksPage } from '../../Pages/fillintheblanks.po';
 import { tasksPage } from '../../Pages/multiplechoicePage.po';
-import { dataProvider } from '../../TestData/dataprovider';
 let fillintheblanks: fillintheblanksPage
 fillintheblanks = new fillintheblanksPage();
 let taskPg: tasksPage

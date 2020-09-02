@@ -20,6 +20,12 @@ export class trueorfalsePage {
     addSlide() {
         return element(by.xpath("//div[@class='add-slide ng-star-inserted']"));
     }
+    commentbutton() {
+        return element(by.xpath("(//span[contains(text(),'Add Comment')])[1]"))
+    }
+    Commentsavebtn() {
+     return element(by.xpath("//span[contains(text(),'SAVE')]"));
+  }
     clickOntappingMCQNextBtn() {
         return element(by.xpath("//span[text()='Next ']"))
     }
@@ -213,6 +219,40 @@ export class trueorfalsePage {
             })
         }
     }
+    Createpagecomments() {
+        browser.ignoreSynchronization = true
+        var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CommonData/SubjectData.json', null)
+        if (dataRecs && dataRecs.length > 0) {
+           dataRecs.forEach(record => {
+              BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Add Comment')]"));
+              this.commentbutton().click();
+              BrowserUtils.enterText(by.xpath("//textarea[@ng-reflect-name='commentData']"), record["CreatepageComment"]);
+              browser.sleep(500);
+              this.Commentsavebtn().click();
+              browser.sleep(1500);
+        this.Class1().isDisplayed().then(function (dis) {
+           expect(dis).toBe(true, 'Task popup is closed successfully')
+        })
+     })
+  }
+     }
+     Previewpagecomments() {
+        browser.ignoreSynchronization = true
+        var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CommonData/SubjectData.json', null)
+        if (dataRecs && dataRecs.length > 0) {
+           dataRecs.forEach(record => {
+              BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Add Comment')]"));
+              this.commentbutton().click();
+              BrowserUtils.enterText(by.xpath("//textarea[@ng-reflect-name='commentData']"), record["PreviewpageComment"]);
+              browser.sleep(500);
+              this.Commentsavebtn().click();
+              browser.sleep(1500);
+        this.Class1().isDisplayed().then(function (dis) {
+           expect(dis).toBe(true, 'Task popup is closed successfully')
+        })
+     })
+  }
+     }
     createpageTrueorfalsetaskenglish() {
         var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CommonData/SubjectData.json', null)
         if (dataRecs && dataRecs.length > 0) {
@@ -297,7 +337,6 @@ export class trueorfalsePage {
             dataRecs.forEach(record => {
                 browser.sleep(2000);
                 BrowserUtils.waitUntilReady(this.publishBtn());
-                //BrowserUtils.selectDropdownValue(by.xpath("//select[@_ngcontent-tfk-c41]"), record["ActivityRole"]);
                 this.publishBtn().click();
                 browser.sleep(1000);
                 this.succesfulCreationOfTasks().click();
@@ -511,7 +550,8 @@ export class trueorfalsePage {
         }
     }
     Previewfortrueorfalse() {
-        BrowserUtils.scrollIntoView(by.xpath("//div[text()=' PREVIEW ']"));
+        browser.sleep(1000);
+        this.clickOntappingMCQNextBtn().click();
         browser.sleep(1000);
         this.Previewradio().click();
         browser.sleep(1000);
@@ -519,6 +559,8 @@ export class trueorfalsePage {
         browser.sleep(2000);
         this.ShowSolutionbtn().click();
         browser.sleep(2000);
+        this.Previewpagecomments();
+        browser.sleep(1000);
         this.clickOntappingMCQNextBtn().click();
     }
     createTrueorfalsetaskwithtexttelugu() {
@@ -531,8 +573,6 @@ export class trueorfalsePage {
         browser.sleep(1500);
         this.okbutton().click();
         browser.sleep(2500);
-        this.clickOntappingMCQNextBtn().click();
-        browser.sleep(1500);
         this.Previewfortrueorfalse();
         this.Publishnavigation();
         this.createNewTaskBtn().isDisplayed().then(function (dis) {
@@ -585,8 +625,6 @@ export class trueorfalsePage {
         browser.sleep(1500);
         this.okbutton().click();
         browser.sleep(2500);
-        this.clickOntappingMCQNextBtn().click();
-        browser.sleep(1500);
         this.Previewfortrueorfalse();
         this.Publishnavigation();
         this.createNewTaskBtn().isDisplayed().then(function (dis) {

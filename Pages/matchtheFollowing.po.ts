@@ -28,6 +28,12 @@ export class matchtheFollowingPage {
    Previewbreadcrumb() {
       return element(by.xpath("//a[@class='nav-link ng-star-inserted'][text()=' Preview']"))
    }
+   commentbutton() {
+      return element(by.xpath("(//span[contains(text(),'Add Comment')])[1]"))
+  }
+  Commentsavebtn() {
+   return element(by.xpath("//span[contains(text(),'SAVE')]"));
+}
    plusbutton() {
       return element(by.xpath("//button[text()='+']"));
    }
@@ -206,7 +212,7 @@ export class matchtheFollowingPage {
       return element(by.xpath("//span[text()='×']"))
    }
    Class1() {
-      return element(by.xpath("//mat-list-item[@ng-reflect-router-link='/task/task-list']/div[contains(text(),'Class 1')]"));
+      return element(by.xpath("//mat-list-item[@ng-reflect-router-link='/task/task-list']/div[contains(text(),'Class 2')]"));
    }
    Taskcancelbtn() {
       return element(by.xpath("//span[text()='Cancel']"));
@@ -214,21 +220,39 @@ export class matchtheFollowingPage {
    ActivityId() {
       this.Activityid().sendKeys(coursePg.ClickonRandomArray());
    }
-   PreviewpagerearrangingImage() {
-      BrowserUtils.waitUntilReady(this.Previewheader());
-      browser.sleep(2000);
-      BrowserUtils.dragAndDrop(this.Imagesource1(), this.Imagesource5());
-      //browser.actions().dragAndDrop(this.Imagesource1(), this.Imagesource5()).mouseUp().perform();
-      //BrowserUtils.MatchAndDrop(this.Imagesource1(),this.Imagesource5());
-      browser.sleep(2000);
-      //BrowserUtils.MatchAndDrop(this.Imagesource2(),this.Imagesource3());
-      BrowserUtils.dragAndDrop(this.Imagesource2(), this.Imagesource3());
-      // browser.actions().dragAndDrop(this.Imagesource2(), this.Imagesource3()).mouseUp().perform();
-      browser.sleep(2000);
-      this.Checkbtn().click();
-      browser.sleep(2000);
-      this.ShowSolutionbtn().click();
-      browser.sleep(2000);
+   Createpagecomments() {
+      browser.ignoreSynchronization = true
+      var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CommonData/SubjectData.json', null)
+      if (dataRecs && dataRecs.length > 0) {
+         dataRecs.forEach(record => {
+            BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Add Comment')]"));
+            this.commentbutton().click();
+            BrowserUtils.enterText(by.xpath("//textarea[@ng-reflect-name='commentData']"), record["CreatepageComment"]);
+            browser.sleep(500);
+            this.Commentsavebtn().click();
+            browser.sleep(1500);
+      this.Class1().isDisplayed().then(function (dis) {
+         expect(dis).toBe(true, 'Task popup is closed successfully')
+      })
+   })
+}
+   }
+   Previewpagecomments() {
+      browser.ignoreSynchronization = true
+      var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CommonData/SubjectData.json', null)
+      if (dataRecs && dataRecs.length > 0) {
+         dataRecs.forEach(record => {
+            BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Add Comment')]"));
+            this.commentbutton().click();
+            BrowserUtils.enterText(by.xpath("//textarea[@ng-reflect-name='commentData']"), record["PreviewpageComment"]);
+            browser.sleep(500);
+            this.Commentsavebtn().click();
+            browser.sleep(1500);
+      this.Class1().isDisplayed().then(function (dis) {
+         expect(dis).toBe(true, 'Task popup is closed successfully')
+      })
+   })
+}
    }
    createMatchthefollowingImagetoImageTasktelugu() {
       this.matchingcreatepagetelugu();
@@ -239,8 +263,6 @@ export class matchtheFollowingPage {
       browser.sleep(1000);
       this.okbutton().click();
       browser.sleep(1000);
-      this.clickOntappingMCQNextBtn().click();
-      browser.sleep(1500);
       this.Publishnavigation();
       this.createNewTaskBtn().isDisplayed().then(function (dis) {
          expect(dis).toBe(true, 'MatchthefollowingImagetoImageTask is created successfully')
@@ -255,8 +277,6 @@ export class matchtheFollowingPage {
       browser.sleep(5000);
       this.okbutton().click();
       browser.sleep(1000);
-      this.clickOntappingMCQNextBtn().click();
-      browser.sleep(1500);
       this.Publishnavigation();
       this.createNewTaskBtn().isDisplayed().then(function (dis) {
          expect(dis).toBe(true, 'MatchthefollowingImagetoImageTask is created successfully')
@@ -269,11 +289,6 @@ export class matchtheFollowingPage {
       browser.sleep(1500);
       this.okbutton().click();
       browser.sleep(2500);
-      this.clickOntappingMCQNextBtn().click();
-      browser.sleep(1500);
-      this.acceptSaveTaskPopUp().click();
-      //this.PreviewpagerearrangingImage();
-      browser.sleep(500);
       this.Publishnavigation();
       this.createNewTaskBtn().isDisplayed().then(function (dis) {
          expect(dis).toBe(true, 'MatchthefollowingTexttoImageTask is created successfully')
@@ -295,8 +310,8 @@ export class matchtheFollowingPage {
          expect(dis).toBe(true, 'MatchthefollowingTexttoImageTask is created successfully')
       })
    }
-   Contenttypesearch() {
-      var contentsearch = element(by.xpath("//input[@type='search']"));
+    Contenttypesearch(){
+      var contentsearch = element(by.xpath("//input[@placeholder='All content types']"));
       this.createNewTaskBtn().click();
       browser.sleep(1000);
       contentsearch.sendKeys("Match the foll");
@@ -524,8 +539,6 @@ export class matchtheFollowingPage {
       browser.sleep(1500);
       this.acceptSaveTaskPopUp().click();
       browser.sleep(1500);
-      this.clickOntappingMCQNextBtn().click();
-      browser.sleep(5000);
       this.okbutton().click();
       browser.sleep(1500);
       this.Publishnavigation();
@@ -694,7 +707,7 @@ export class matchtheFollowingPage {
             this.OKbtn().click();
             browser.sleep(5000);
             this.overallfeedbackenglish();
-
+            this.Createpagecomments();
          })
       }
    }
@@ -729,7 +742,7 @@ export class matchtheFollowingPage {
             this.OKbtn().click();
             browser.sleep(5000);
             this.overallfeedbacktelugu();
-
+           this.Createpagecomments();
          })
       }
    }
@@ -1068,6 +1081,8 @@ export class matchtheFollowingPage {
 
    Publishnavigation() {
             browser.sleep(2000);
+            this.clickOntappingMCQNextBtn().click();
+            browser.sleep(1500);
             this.clickOntappingMCQNextBtn().click();
             browser.sleep(2000);
             this.publishBtn().click();

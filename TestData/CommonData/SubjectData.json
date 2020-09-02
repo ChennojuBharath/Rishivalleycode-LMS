@@ -52,6 +52,8 @@
         "Reviewerpassword": "password",
         "ApproverUsername": "veena",
         "Approverpassword": "password",
+        "CreatepageComment": "This is my Createpage Comment by Author",
+        "PreviewpageComment":"This is my Previewpage Comment by Author",
         "PreviewpageCommentApprover": "This is my Previewpage Comment by Approver",
         "PreviewpageCommentReviewer":"This is my Previewpage Comment by Reviewer"
         

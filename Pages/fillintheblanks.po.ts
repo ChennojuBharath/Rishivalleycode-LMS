@@ -40,8 +40,14 @@ export class fillintheblanksPage {
       return element(by.xpath("//a[@class='nav-link ng-star-inserted'][text()=' Fill In The Blanks']"))
    }
    Class1() {
-      return element(by.xpath("//mat-list-item[@ng-reflect-router-link='/task/task-list']/div[contains(text(),'Class 1')]"));
+      return element(by.xpath("//mat-list-item[@ng-reflect-router-link='/task/task-list']/div[contains(text(),'Class 2')]"));
    }
+   commentbutton() {
+      return element(by.xpath("(//span[contains(text(),'Add Comment')])[1]"))
+  }
+  Commentsavebtn() {
+   return element(by.xpath("//span[contains(text(),'SAVE')]"));
+}
    Taskcancelbtn() {
       return element(by.xpath("//span[text()='Cancel']"));
    }
@@ -171,6 +177,9 @@ export class fillintheblanksPage {
    typefile8() {
       return element(by.xpath("(//input[@type='file'])[8]"))
    }
+   typefile9() {
+      return element(by.xpath("(//input[@type='file'])[9]"))
+   }
    textbox1() {
       return element(by.xpath("(//div[@class='text-container ng-star-inserted']/input)[1]"))
    }
@@ -246,6 +255,9 @@ export class fillintheblanksPage {
             BrowserUtils.enterText(by.xpath("(//input[@formcontrolname='feedbackInfo'])[2]"), record["AverageScoreenglish"]);
             BrowserUtils.enterText(by.xpath("(//input[@formcontrolname='feedbackInfo'])[3]"), record["GoodScoreenglish"]);
             BrowserUtils.enterText(by.xpath("(//input[@formcontrolname='feedbackInfo'])[4]"), record["VeryGoodScoreenglish"]);
+            this.overallFeedbackCheckbox().isDisplayed().then(function (dis) {
+               expect(dis).toBe(true, 'Feedback can be entered successfully')
+            })
          })
       }
    }
@@ -268,6 +280,9 @@ export class fillintheblanksPage {
             BrowserUtils.enterText(by.xpath("(//input[@formcontrolname='feedbackInfo'])[2]"), record["AverageScore"]);
             BrowserUtils.enterText(by.xpath("(//input[@formcontrolname='feedbackInfo'])[3]"), record["GoodScore"]);
             BrowserUtils.enterText(by.xpath("(//input[@formcontrolname='feedbackInfo'])[4]"), record["VeryGoodScore"]);
+            this.overallFeedbackCheckbox().isDisplayed().then(function (dis) {
+               expect(dis).toBe(true, 'Feedback can be entered successfully')
+            })
          })
       }
    }
@@ -302,7 +317,10 @@ export class fillintheblanksPage {
             this.OKbtn().click();
             browser.sleep(2500);
             this.overallfeedbacktelugu();
-
+            this.Createpagecomments();
+            this.Activityid().isDisplayed().then(function (dis) {
+               expect(dis).toBe(true, 'FillintheblanksTask create data is entered  successfully with telugu data')
+            })
 
          })
       }
@@ -338,33 +356,10 @@ export class fillintheblanksPage {
             this.OKbtn().click();
             browser.sleep(2500);
             this.overallfeedbackenglish();
-
-         })
-      }
-   }
-
-   Previewforfillintheblanks() {
-      var dataRecs = dataProvider.getJsonDataFromFile('./TestData/fillintheblanksData/EnglishData.json', null)
-      if (dataRecs && dataRecs.length > 0) {
-         dataRecs.forEach(record => {
-            BrowserUtils.scrollIntoView(by.xpath("//div[text()=' PREVIEW ']"));
-            browser.sleep(2000);
-            // var Applesource = element(by.xpath("//div[@class='choice-cls']/button/div[@class='mat-button-focus-overlay']/../span[text()='" + record["Apple"] + "']"));
-            var loc1 = element(by.xpath("//span[text()='two']/.."));
-            //var loc2 = element(by.xpath("(//li[@class='blanks-container ng-star-inserted']//span[@class='dynamic-render']//input)[1]"));
-            var loc2 = element(by.xpath("(//span[@class='dynamic-render'])[1]"));
-            browser.actions().mouseDown(loc1).perform();
-            browser.sleep(500);
-            browser.actions().mouseMove(loc2).perform();
-            browser.sleep(500);
-            browser.actions().mouseDown(loc1).perform();
-            browser.sleep(500);
-            browser.actions().mouseMove(loc2).perform();
-            browser.actions().mouseUp().perform();
-            browser.sleep(2000000000);
-            this.Checkbtn().click();
-            browser.sleep(2000);
-            this.ShowSolutionbtn().click();
+            this.Createpagecomments();
+            this.Activityid().isDisplayed().then(function (dis) {
+               expect(dis).toBe(true, 'FillintheblanksTask create data is entered  successfully with english data')
+            })
          })
       }
    }
@@ -375,6 +370,9 @@ export class fillintheblanksPage {
       BrowserUtils.scrollIntoView(by.xpath("(//span[@mattooltip='Remove Slide'])[2]"));
       this.Deleteslide().click();
       browser.sleep(1000);
+      this.saveMCQ().isDisplayed().then(function (dis) {
+         expect(dis).toBe(true, 'FillintheblanksTask options and slides can be deleted  successfully')
+      })
    }
    DeleteSlideandOptions() {
       this.fibcreatepagetelugu();
@@ -386,8 +384,6 @@ export class fillintheblanksPage {
       this.saveMCQ().click();
       browser.sleep(1000);
       this.okbutton().click();
-      browser.sleep(1000);
-      this.clickOntappingMCQNextBtn().click();
       browser.sleep(1000);
       this.Publishnavigation();
       this.createNewTaskBtn().isDisplayed().then(function (dis) {
@@ -435,17 +431,54 @@ export class fillintheblanksPage {
       browser.sleep(2000);
       this.Class1().click();
       this.createNewTaskBtn().isDisplayed().then(function (dis) {
-         expect(dis).toBe(true, 'Task popup is closed successfully')
+         expect(dis).toBe(true, 'Task popup cancel button is working successfully')
       })
    }
+   Createpagecomments() {
+      browser.ignoreSynchronization = true
+      var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CommonData/SubjectData.json', null)
+      if (dataRecs && dataRecs.length > 0) {
+         dataRecs.forEach(record => {
+            BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Add Comment')]"));
+            this.commentbutton().click();
+            BrowserUtils.enterText(by.xpath("//textarea[@ng-reflect-name='commentData']"), record["CreatepageComment"]);
+            browser.sleep(500);
+            this.Commentsavebtn().click();
+            browser.sleep(1500);
+      this.Class1().isDisplayed().then(function (dis) {
+         expect(dis).toBe(true, 'Task popup is closed successfully')
+      })
+   })
+}
+   }
+   Previewpagecomments() {
+      browser.ignoreSynchronization = true
+      var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CommonData/SubjectData.json', null)
+      if (dataRecs && dataRecs.length > 0) {
+         dataRecs.forEach(record => {
+            BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Add Comment')]"));
+            this.commentbutton().click();
+            BrowserUtils.enterText(by.xpath("//textarea[@ng-reflect-name='commentData']"), record["PreviewpageComment"]);
+            browser.sleep(500);
+            this.Commentsavebtn().click();
+            browser.sleep(1500);
+      this.Class1().isDisplayed().then(function (dis) {
+         expect(dis).toBe(true, 'Task popup is closed successfully')
+      })
+   })
+}
+   }
    Contenttypesearch() {
-      var contentsearch = element(by.xpath("//input[@type='search']"));
+      var contentsearch = element(by.xpath("//input[@placeholder='All content types']"));
       this.createNewTaskBtn().click();
       browser.sleep(1000);
       contentsearch.sendKeys("Fill in the blanks");
       contentsearch.clear();
       browser.sleep(500);
       this.Class1().click();
+      contentsearch.isDisplayed().then(function (dis) {
+         expect(dis).toBe(true, 'content  type search is working successfully')
+      })
    }
    Previewcancelicon() {
       this.fibcreatepagetelugu();
@@ -475,14 +508,14 @@ export class fillintheblanksPage {
       this.okbutton().click();
       browser.sleep(1500);
       this.clickOntappingMCQNextBtn().click();
-      browser.sleep(500);
+      browser.sleep(2500);
       this.Backbtn().click();
-      browser.sleep(500);
+      browser.sleep(1500);
       this.Taskcancelbtn().click();
       browser.sleep(500);
       this.Class1().click();
       this.createNewTaskBtn().isDisplayed().then(function (dis) {
-         expect(dis).toBe(true, 'Preview cancelicon is working successfully')
+         expect(dis).toBe(true, 'Preview back button is working successfully')
       })
    }
    Previewbreadcrumbs() {
@@ -496,7 +529,7 @@ export class fillintheblanksPage {
       browser.sleep(1500);
       this.clickOntappingMCQNextBtn().click();
       BrowserUtils.scrollIntoView(by.xpath("//a[text()=' Task-list']"));
-      browser.sleep(500);
+      browser.sleep(1500);
       this.Previewbreadcrumb().click();
       browser.sleep(500);
       this.Class1().click();
@@ -581,8 +614,6 @@ export class fillintheblanksPage {
       browser.sleep(1500);
       this.okbutton().click();
       browser.sleep(1000);
-      this.clickOntappingMCQNextBtn().click();
-      browser.sleep(1500);
       this.Publishnavigation();
       this.createNewTaskBtn().isDisplayed().then(function (dis) {
          expect(dis).toBe(true, 'FillintheblanksTask is created successfully with telugu data')
@@ -597,8 +628,6 @@ export class fillintheblanksPage {
       this.saveMCQ().click();
       browser.sleep(1500);
       this.okbutton().click();
-      browser.sleep(1000);
-      this.clickOntappingMCQNextBtn().click();
       browser.sleep(1500);
       this.Publishnavigation();
       this.createNewTaskBtn().isDisplayed().then(function (dis) {
@@ -607,14 +636,16 @@ export class fillintheblanksPage {
    }
    Publishnavigation() {
       BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Next')]"));
-      browser.sleep(1000);
+      browser.sleep(2000);
       this.clickOntappingMCQNextBtn().click();
+      browser.sleep(3000);
+      this.Previewpagecomments();
       browser.sleep(1000);
       this.clickOntappingMCQNextBtn().click();
       browser.sleep(1000);
       BrowserUtils.waitUntilReady(this.publishBtn());
       this.publishBtn().click();
-      browser.sleep(1000);
+      browser.sleep(3000);
       this.succesfulCreationOfTasks().click();
       browser.sleep(1000);
       this.createNewTaskBtn().isDisplayed().then(function (dis) {
@@ -663,16 +694,19 @@ export class fillintheblanksPage {
             browser.sleep(1500);
             var bheema = "../../TestData/ImageFiles/bheema.jpeg";
             var bheemaPath = path.resolve(__dirname, bheema);
-            this.typefile2().sendKeys(bheemaPath);
+            this.typefile3().sendKeys(bheemaPath);
             browser.sleep(1500);
             var bheema = "../../TestData/ImageFiles/bheema.jpeg";
             var bheemaPath = path.resolve(__dirname, bheema);
-            this.typefile2().sendKeys(bheemaPath);
+            this.typefile4().sendKeys(bheemaPath);
             browser.sleep(1500);
             var pandavulu = "../../TestData/ImageFiles/pandavulu.jpeg";
             var pandavuluPath = path.resolve(__dirname, pandavulu);
-            this.typefile2().sendKeys(pandavuluPath);
+            this.typefile5().sendKeys(pandavuluPath);
             browser.sleep(500);
+            this.saveMCQ().isDisplayed().then(function (dis) {
+               expect(dis).toBe(true, 'FillintheblanksTask task with multiple slides is created successfully with telugu data')
+            })
          })
       }
    }
@@ -713,20 +747,23 @@ export class fillintheblanksPage {
             browser.sleep(1000);
             var train = "../../TestData/ImageFiles/Train.jpeg";
             var trainPath = path.resolve(__dirname, train);
-            this.typefile1().sendKeys(trainPath);
+            this.typefile6().sendKeys(trainPath);
             browser.sleep(500);
             var fish = '../../TestData/ImageFiles/fish.png';
             var fishPath = path.resolve(__dirname, fish);
-            this.typefile2().sendKeys(fishPath);
+            this.typefile7().sendKeys(fishPath);
             browser.sleep(500);
             var beehive = "../../TestData/ImageFiles/beehive.png";
             var beehivePath = path.resolve(__dirname, beehive);
-            this.typefile3().sendKeys(beehivePath);
+            this.typefile8().sendKeys(beehivePath);
             browser.sleep(500);
             var tunnel = "../../TestData/ImageFiles/tunnel.png";
             var tunnelPath = path.resolve(__dirname, tunnel);
-            this.typefile4().sendKeys(tunnelPath);
+            this.typefile9().sendKeys(tunnelPath);
             browser.sleep(500);
+            this.saveMCQ().isDisplayed().then(function (dis) {
+               expect(dis).toBe(true, 'FillintheblanksTask task with multiple slides is created successfully with english data')
+            })
          })
       }
    }
@@ -748,6 +785,9 @@ export class fillintheblanksPage {
             browser.sleep(1000);
             BrowserUtils.enterText(by.xpath("(//div[@class='text-container ng-star-inserted']/input)[4]"), record["Telugu4"]);
             browser.sleep(1000);
+            this.saveMCQ().isDisplayed().then(function (dis) {
+               expect(dis).toBe(true, 'FillintheblanksTask task with multiple questions is created successfully with telugu data')
+            })
          })
       }
    }
@@ -791,16 +831,19 @@ export class fillintheblanksPage {
             browser.sleep(1500);
             var bheema = "../../TestData/ImageFiles/bheema.jpeg";
             var bheemaPath = path.resolve(__dirname, bheema);
-            this.typefile2().sendKeys(bheemaPath);
+            this.typefile3().sendKeys(bheemaPath);
             browser.sleep(1500);
             var bheema = "../../TestData/ImageFiles/bheema.jpeg";
             var bheemaPath = path.resolve(__dirname, bheema);
-            this.typefile2().sendKeys(bheemaPath);
+            this.typefile4().sendKeys(bheemaPath);
             browser.sleep(1500);
             var pandavulu = "../../TestData/ImageFiles/pandavulu.jpeg";
             var pandavuluPath = path.resolve(__dirname, pandavulu);
-            this.typefile2().sendKeys(pandavuluPath);
+            this.typefile5().sendKeys(pandavuluPath);
             browser.sleep(500);
+            this.saveMCQ().isDisplayed().then(function (dis) {
+               expect(dis).toBe(true, 'FillintheblanksTask task with multiple questions is created successfully with english data')
+            })
          })
       }
    }

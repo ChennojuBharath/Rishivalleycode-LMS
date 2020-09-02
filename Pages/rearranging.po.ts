@@ -144,8 +144,14 @@ export class rearrangingPage {
       return element(by.xpath("//span[text()='×']"))
    }
    Class1() {
-      return element(by.xpath("//mat-list-item[@ng-reflect-router-link='/task/task-list']/div[contains(text(),'Class 1')]"));
+      return element(by.xpath("//mat-list-item[@ng-reflect-router-link='/task/task-list']/div[contains(text(),'Class 2')]"));
    }
+   commentbutton() {
+      return element(by.xpath("(//span[contains(text(),'Add Comment')])[1]"))
+  }
+  Commentsavebtn() {
+   return element(by.xpath("//span[contains(text(),'SAVE')]"));
+}
    Taskcancelbtn() {
       return element(by.xpath("//span[text()='Cancel']"));
    }
@@ -251,7 +257,7 @@ export class rearrangingPage {
             browser.sleep(2000);
             BrowserUtils.scrollIntoView(by.xpath("//span[text()='Save']"));
             browser.sleep(1000);
-            this.clickOntappingMCQNextBtn().click();
+            this.saveMCQ().click();
             browser.sleep(1000);
             this.okbutton().click();
             browser.sleep(1500);
@@ -263,6 +269,40 @@ export class rearrangingPage {
       })
 
    }
+   Createpagecomments() {
+      browser.ignoreSynchronization = true
+      var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CommonData/SubjectData.json', null)
+      if (dataRecs && dataRecs.length > 0) {
+         dataRecs.forEach(record => {
+            BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Add Comment')]"));
+            this.commentbutton().click();
+            BrowserUtils.enterText(by.xpath("//textarea[@ng-reflect-name='commentData']"), record["CreatepageComment"]);
+            browser.sleep(500);
+            this.Commentsavebtn().click();
+            browser.sleep(1500);
+      this.Class1().isDisplayed().then(function (dis) {
+         expect(dis).toBe(true, 'Task popup is closed successfully')
+      })
+   })
+}
+   }
+   Previewpagecomments() {
+      browser.ignoreSynchronization = true
+      var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CommonData/SubjectData.json', null)
+      if (dataRecs && dataRecs.length > 0) {
+         dataRecs.forEach(record => {
+            BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Add Comment')]"));
+            this.commentbutton().click();
+            BrowserUtils.enterText(by.xpath("//textarea[@ng-reflect-name='commentData']"), record["PreviewpageComment"]);
+            browser.sleep(500);
+            this.Commentsavebtn().click();
+            browser.sleep(1500);
+      this.Class1().isDisplayed().then(function (dis) {
+         expect(dis).toBe(true, 'Task popup is closed successfully')
+      })
+   })
+}
+   }
    CancelTask() {
       this.rearrangingcreatepageforenglish();
       this.Taskcancelbtn().click();
@@ -273,7 +313,7 @@ export class rearrangingPage {
       })
    }
    Contenttypesearch() {
-      var contentsearch = element(by.xpath("//input[@type='search']"));
+      var contentsearch = element(by.xpath("//input[@placeholder='All content types']"));
       this.createNewTaskBtn().click();
       browser.sleep(1000);
       contentsearch.sendKeys("Fill in the blanks");
@@ -338,8 +378,6 @@ export class rearrangingPage {
       this.saveMCQ().click();
       browser.sleep(2500);
       this.okbutton().click();
-      browser.sleep(1500);
-      this.clickOntappingMCQNextBtn().click();
       browser.sleep(1500);
       this.Publishnavigation();
    }
@@ -591,8 +629,6 @@ export class rearrangingPage {
       browser.sleep(2500);
       this.okbutton().click();
       browser.sleep(1500);
-      this.clickOntappingMCQNextBtn().click();
-      browser.sleep(1500);
       this.Publishnavigation();
    }
    createRearrangingTaskwithTexteng() {
@@ -604,9 +640,6 @@ export class rearrangingPage {
       browser.sleep(2500);
       this.okbutton().click();
       browser.sleep(1500);
-      this.clickOntappingMCQNextBtn().click();
-      browser.sleep(1500);
-      //this.PreviewpagerearrangingText();
       this.Publishnavigation();
    }
    createRearrangingTaskwithTexttelugu() {
@@ -624,6 +657,10 @@ export class rearrangingPage {
    }
 
    Publishnavigation() {
+            browser.sleep(2000);
+            this.clickOntappingMCQNextBtn().click();
+            browser.sleep(2000);
+            this.Previewpagecomments();
             browser.sleep(2000);
             this.clickOntappingMCQNextBtn().click();
             browser.sleep(2000);
@@ -667,6 +704,8 @@ export class rearrangingPage {
             browser.sleep(5000);
             this.overallfeedbackenglish();
             browser.sleep(500);
+            this.Createpagecomments();
+            browser.sleep(500);
          })
       }
    }
@@ -700,6 +739,8 @@ export class rearrangingPage {
             this.OKbtn().click();
             browser.sleep(5000);
             this.overallfeedbackenglish();
+            browser.sleep(500);
+            this.Createpagecomments();
             browser.sleep(500);
          })
       }
