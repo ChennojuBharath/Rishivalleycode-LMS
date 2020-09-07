@@ -8,13 +8,13 @@
     "Title": "Focus card Questions",
     "Instructions": "All Questions need to be answers",
     "ActivityRole": "Author",
-    "Textbox1": "Beehive",
+   "Textbox1": "Beehive",
     "Textbox2": "river",
-    "Textbox3": "peacock",
-    "Textbox4": "tiger",
-    "Textbox5": "peacockskin",
-    "Textbox6": "lionskin",
-    "Textbox7": "tigerskin",
+    "Textbox3": "Donkey",
+    "Textbox4": "Pandavulu",
+    "Textbox5": "Bheema",
+    "Textbox6": "bucket",
+    "Textbox7": "Calendar",
     "Textbox8": "doveskin"
   }
 ]

@@ -18,7 +18,7 @@ export class Approverview {
         return element(by.xpath("//mat-panel-title[text()=' Tasks ']"));
     }
     Class1() {
-        return element(by.xpath("//mat-list-item[@ng-reflect-router-link='/task/task-list']//div[text()='Class 1 ']"));
+        return element(by.xpath("//mat-list-item[@ng-reflect-router-link='/task/task-list']/div[contains(text(),'Class 2')]"));
     }
     clickOnClassLinks() {
         return by.xpath('//mat-panel-title[text()=" Tasks "]/../../following-sibling::div//mat-list-item');
@@ -80,36 +80,58 @@ export class Approverview {
                 browser.sleep(2000);
                 BrowserUtils.clickOnElement(subjectselection);
                 browser.sleep(2000);
-                BrowserUtils.getTotalElementCount(by.xpath("//a[@class='task-link']")).then((gettasklinkCount) => {
-                    console.log("loc is:" + gettasklinkCount);
-                    if (gettasklinkCount) {
-                        for (let tasklinkCount = 1; tasklinkCount <= gettasklinkCount; tasklinkCount++) {
-                            var loc = "(//a[@class='task-link'])[" + tasklinkCount + "]";
-                            console.log(loc);
-                            var tasklinkselection = by.xpath(loc);
-                            BrowserUtils.clickOnElement(tasklinkselection);
+                var loc = "(//td[contains(text(),'Pending Approve')]/..//a[@class='task-link'])[1]";
+                var tasklinkselection = by.xpath(loc);
+                BrowserUtils.clickOnElement(tasklinkselection);
+                browser.sleep(10000);
+                BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Add Comment')]"));
+                this.commentbutton().click();
+                BrowserUtils.enterText(by.xpath("//textarea[@ng-reflect-name='commentData']"), record["PreviewpageCommentApprover"]);
+                browser.sleep(500);
+                this.Commentsavebtn().click();
+                browser.sleep(1500);
+                BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Approve')]"));
+                 browser.sleep(2500);
+                this.Approverbtn().click();
+                browser.sleep(5500);
+                this.successmsgokbtn().click();
+                browser.sleep(10000);
+                this.Rivertext().isDisplayed().then(function (dis) {
+                    expect(dis).toBe(true, 'Task approval flow is successful')
+                })
+            })
+        }
+    }
+    Approvemultipletasktelugu() {
+        var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CommonData/SubjectData.json', null)
+        if (dataRecs && dataRecs.length > 0) {
+            dataRecs.forEach(record => {
+                browser.ignoreSynchronization = true
+                        for (let i = 1; i <= 2; i++) {
+                           var subjectselection = by.xpath("//span[text()='" + record["TaskSubject"] + "']");
                             browser.sleep(2000);
+                            BrowserUtils.clickOnElement(subjectselection);
+                            browser.sleep(2000);
+                            var tasklinkselection = by.xpath("(//td[contains(text(),'Pending Approve')]/..//a[@class='task-link'])[1]");
+                            BrowserUtils.clickOnElement(tasklinkselection);
+                            browser.sleep(10000);
                             BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Add Comment')]"));
                             this.commentbutton().click();
                             BrowserUtils.enterText(by.xpath("//textarea[@ng-reflect-name='commentData']"), record["PreviewpageCommentApprover"]);
                             browser.sleep(500);
                             this.Commentsavebtn().click();
                             browser.sleep(1500);
-                            BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Submit For Approver ')]"));
+                            BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Approve')]"));
                             this.Approverbtn().click();
-                            browser.sleep(1500);
+                            browser.sleep(5000);
                             this.successmsgokbtn().click();
+                            browser.sleep(20000);
                             this.Rivertext().isDisplayed().then(function (dis) {
-                                expect(dis).toBe(true, 'Task review flow is successful')
+                                expect(dis).toBe(true, 'Task  approval flow is successful')
                             })
-                        }
-                    }
-                    else {
-                        console.log("There are no tasks to approve");
                     }
 
                 })
-            })
         }
     }
     Approvetaskenglish() {
@@ -121,7 +143,37 @@ export class Approverview {
                 browser.sleep(2000);
                 BrowserUtils.clickOnElement(subjectselection);
                 browser.sleep(2000);
-                BrowserUtils.getTotalElementCount(by.xpath("//a[@class='task-link']")).then((gettasklinkCount) => {
+                var loc = "(//td[contains(text(),'Pending Approve')]/..//a[@class='task-link'])[1]";
+                var tasklinkselection = by.xpath(loc);
+                BrowserUtils.clickOnElement(tasklinkselection);
+                browser.sleep(10000);
+                BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Add Comment')]"));
+                this.commentbutton().click();
+                BrowserUtils.enterText(by.xpath("//textarea[@ng-reflect-name='commentData']"), record["PreviewpageCommentApprover"]);
+                browser.sleep(500);
+                this.Commentsavebtn().click();
+                browser.sleep(1500);
+                BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Approve')]"));
+                this.Approverbtn().click();
+                browser.sleep(5000);
+                this.successmsgokbtn().click();
+                browser.sleep(10000);
+                this.Rivertext().isDisplayed().then(function (dis) {
+                    expect(dis).toBe(true, 'Task approvalflow is successful')
+                })
+            })
+        }
+    }
+    Approvemultipletaskenglish() {
+        var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CommonData/SubjectData.json', null)
+        if (dataRecs && dataRecs.length > 0) {
+            dataRecs.forEach(record => {
+                browser.ignoreSynchronization = true
+                var subjectselection = by.xpath("//span[text()='" + record["EnglishTaskSubject"] + "']");
+                browser.sleep(2000);
+                BrowserUtils.clickOnElement(subjectselection);
+                browser.sleep(2000);
+                BrowserUtils.getTotalElementCount(by.xpath("(//td[contains(text(),'Pending Approve')]/..//a[@class='task-link'])[1]")).then((gettasklinkCount) => {
                     console.log("loc is:" + gettasklinkCount);
                     if (gettasklinkCount) {
                         for (let tasklinkCount = 1; tasklinkCount <= gettasklinkCount; tasklinkCount++) {
@@ -129,19 +181,20 @@ export class Approverview {
                             console.log(loc);
                             var tasklinkselection = by.xpath(loc);
                             BrowserUtils.clickOnElement(tasklinkselection);
-                            browser.sleep(2000);
+                            browser.sleep(10000);
                             BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Add Comment')]"));
                             this.commentbutton().click();
                             BrowserUtils.enterText(by.xpath("//textarea[@ng-reflect-name='commentData']"), record["PreviewpageCommentApprover"]);
                             browser.sleep(500);
                             this.Commentsavebtn().click();
                             browser.sleep(1500);
-                            BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Submit For Approver ')]"));
+                            BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Approve')]"));
                             this.Approverbtn().click();
-                            browser.sleep(1500);
+                            browser.sleep(5000);
                             this.successmsgokbtn().click();
+                            browser.sleep(10000);
                             this.Rivertext().isDisplayed().then(function (dis) {
-                                expect(dis).toBe(true, 'Task review flow is successful')
+                                expect(dis).toBe(true, 'Task  approval flow is successful')
                             })
                         }
                     }
@@ -155,7 +208,7 @@ export class Approverview {
 
     }
     ClickAllclasses() {
-        var dataRecs = dataProvider.getJsonDataFromFile('./TestData/ApproverData/ApproverData.json', null)
+        var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CommonData/SubjectData.json', null)
         if (dataRecs && dataRecs.length > 0) {
             dataRecs.forEach(record => {
                 BrowserUtils.waitUntilReady(this.Class1());
@@ -167,244 +220,155 @@ export class Approverview {
         }
     }
     Approvetaskswithoutcomments() {
-        var dataRecs = dataProvider.getJsonDataFromFile('./TestData/ApproverData/ApproverData.json', null)
+        var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CommonData/SubjectData.json', null)
         if (dataRecs && dataRecs.length > 0) {
             dataRecs.forEach(record => {
                 browser.ignoreSynchronization = true
                 var subjectselection = by.xpath("//span[text()='" + record["Subject"] + "']");
                 BrowserUtils.clickOnElement(subjectselection);
                 browser.sleep(1500);
-                BrowserUtils.getTotalElementCount(by.xpath("//a[contains(text(),'" + record["Tasklinksort"] + "')]")).then((gettasklinkCount) => {
-                    console.log("loc is:" + gettasklinkCount);
-                    if (gettasklinkCount) {
-                        for (let tasklinkCount = 1; tasklinkCount <= 1; tasklinkCount++) {
-                            var loc = "(//a[contains(text(),'" + record["Tasklinksort"] + "')])[" + tasklinkCount + "]";
-                            console.log(loc);
-                            var tasklinkselection = by.xpath(loc);
-                            BrowserUtils.clickOnElement(tasklinkselection);
-                            browser.sleep(2000);
-                            BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Add Comment')]"));
-                            this.commentbutton().click();
-                            BrowserUtils.enterText(by.xpath("//textarea[@ng-reflect-name='commentData']"), record["Comment"]);
-                            browser.sleep(500);
-                            this.Commentcancelbtn().click();
-                            browser.sleep(1500);
-                            BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Approve')]"));
-                            this.Approverbtn().click();
-                            browser.sleep(1500);
-                            this.successmsgokbtn().click();
-                            this.Rivertext().isDisplayed().then(function (dis) {
-                                expect(dis).toBe(true, 'Task can be reviewed without comments')
-                            })
-                        }
-                    }
-                    else {
-                        console.log("There are no tasks to check comments scenario");
-                    }
-
+                var loc = "(//td[contains(text(),'Pending Approve')]/..//a[@class='task-link'])[1]";
+                var tasklinkselection = by.xpath(loc);
+                BrowserUtils.clickOnElement(tasklinkselection);
+                browser.sleep(10000);
+                BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Add Comment')]"));
+                this.commentbutton().click();
+                BrowserUtils.enterText(by.xpath("//textarea[@ng-reflect-name='commentData']"), record["Comment"]);
+                browser.sleep(500);
+                this.Commentcancelbtn().click();
+                browser.sleep(1500);
+                BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Approve')]"));
+                this.Approverbtn().click();
+                browser.sleep(1500);
+                this.successmsgokbtn().click();
+                this.Rivertext().isDisplayed().then(function (dis) {
+                    expect(dis).toBe(true, 'Task can be reviewed without comments')
                 })
             })
         }
     }
     conformdraftapprovetasks() {
-        var dataRecs = dataProvider.getJsonDataFromFile('./TestData/ApproverData/ApproverData.json', null)
+        var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CommonData/SubjectData.json', null)
         if (dataRecs && dataRecs.length > 0) {
             dataRecs.forEach(record => {
                 browser.ignoreSynchronization = true
                 var subjectselection = by.xpath("//span[text()='" + record["Subject"] + "']");
                 BrowserUtils.clickOnElement(subjectselection);
                 browser.sleep(1500);
-                BrowserUtils.getTotalElementCount(by.xpath("//a[contains(text(),'" + record["Tasklinksort"] + "')]")).then((gettasklinkCount) => {
-                    console.log("loc is:" + gettasklinkCount);
-                    if (gettasklinkCount) {
-                        for (let tasklinkCount = 1; tasklinkCount <= 1; tasklinkCount++) {
-                            var loc = "(//a[contains(text(),'" + record["Tasklinksort"] + "')])[" + tasklinkCount + "]";
-                            console.log(loc);
-                            var tasklinkselection = by.xpath(loc);
-                            BrowserUtils.clickOnElement(tasklinkselection);
-                            browser.sleep(2000);
-                            BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Add Comment')]"));
-                            this.commentbutton().click();
-                            BrowserUtils.enterText(by.xpath("//textarea[@ng-reflect-name='commentData']"), record["Comment"]);
-                            browser.sleep(500);
-                            this.Commentsavebtn().click();
-                            browser.sleep(1500);
-                            BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Approve')]"));
-                            this.Draftbtn().click();
-                            browser.sleep(1500);
-                            this.Conformdraftbtn().click();
-                            browser.sleep(1500);
-                            this.Rivertext().isDisplayed().then(function (dis) {
-                                expect(dis).toBe(true, 'Task can be drafted successfully')
-                            })
-                        }
-                    }
-                    else {
-                        console.log("There are no tasks to draft");
-                    }
-
+                var loc = "(//td[contains(text(),'Pending Approve')]/..//a[@class='task-link'])[1]";
+                var tasklinkselection = by.xpath(loc);
+                BrowserUtils.clickOnElement(tasklinkselection);
+                browser.sleep(10000);
+                BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Add Comment')]"));
+                this.commentbutton().click();
+                BrowserUtils.enterText(by.xpath("//textarea[@ng-reflect-name='commentData']"), record["Comment"]);
+                browser.sleep(500);
+                this.Commentsavebtn().click();
+                browser.sleep(1500);
+                BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Approve')]"));
+                 this.Draftbtn().click();
+                browser.sleep(1500);
+                this.Canceldraftbtn().click();
+                browser.sleep(1500);
+                this.Draftbtn().click();
+                browser.sleep(1500);
+                this.Conformdraftbtn().click();
+                browser.sleep(1500);
+                this.Rivertext().isDisplayed().then(function (dis) {
+                    expect(dis).toBe(true, 'Task can be drafted successfully')
                 })
             })
         }
     }
     canceldraftapprovetasks() {
-        var dataRecs = dataProvider.getJsonDataFromFile('./TestData/ApproverData/ApproverData.json', null)
+        var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CommonData/SubjectData.json', null)
         if (dataRecs && dataRecs.length > 0) {
             dataRecs.forEach(record => {
                 browser.ignoreSynchronization = true
                 var subjectselection = by.xpath("//span[text()='" + record["Subject"] + "']");
                 BrowserUtils.clickOnElement(subjectselection);
                 browser.sleep(1500);
-                BrowserUtils.getTotalElementCount(by.xpath("//a[contains(text(),'" + record["Tasklinksort"] + "')]")).then((gettasklinkCount) => {
-                    console.log("loc is:" + gettasklinkCount);
-                    if (gettasklinkCount) {
-                        for (let tasklinkCount = 1; tasklinkCount <= 1; tasklinkCount++) {
-                            var loc = "(//a[contains(text(),'" + record["Tasklinksort"] + "')])[" + tasklinkCount + "]";
-                            console.log(loc);
-                            var tasklinkselection = by.xpath(loc);
-                            BrowserUtils.clickOnElement(tasklinkselection);
-                            browser.sleep(2000);
-                            BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Add Comment')]"));
-                            this.commentbutton().click();
-                            BrowserUtils.enterText(by.xpath("//textarea[@ng-reflect-name='commentData']"), record["Comment"]);
-                            browser.sleep(500);
-                            this.Commentsavebtn().click();
-                            browser.sleep(1500);
-                            BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Approve')]"));
-                            this.Draftbtn().click();
-                            browser.sleep(1500);
-                            this.Canceldraftbtn().click();
-                            browser.sleep(1500);
-                            this.Previewbackbtn().click();
-                            browser.sleep(1500);
-                            this.Rivertext().isDisplayed().then(function (dis) {
-                                expect(dis).toBe(true, 'Draft can be cancelled successful')
-                            })
-                        }
-                    }
-                    else {
-                        console.log("There are no tasks to check draft operation");
-                    }
-
+                var loc = "(//td[contains(text(),'Pending Approve')]/..//a[@class='task-link'])[1]";
+                var tasklinkselection = by.xpath(loc);
+                BrowserUtils.clickOnElement(tasklinkselection);
+                browser.sleep(10000);
+                BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Add Comment')]"));
+                this.commentbutton().click();
+                BrowserUtils.enterText(by.xpath("//textarea[@ng-reflect-name='commentData']"), record["Comment"]);
+                browser.sleep(500);
+                this.Commentsavebtn().click();
+                browser.sleep(1500);
+                BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Approve')]"));
+                this.Previewbackbtn().click();
+                browser.sleep(1500);
+                this.Rivertext().isDisplayed().then(function (dis) {
+                    expect(dis).toBe(true, 'Draft can be cancelled successful')
                 })
             })
         }
 
     }
     editcomments() {
-        var dataRecs = dataProvider.getJsonDataFromFile('./TestData/ApproverData/ApproverData.json', null)
+        var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CommonData/SubjectData.json', null)
         if (dataRecs && dataRecs.length > 0) {
             dataRecs.forEach(record => {
                 browser.ignoreSynchronization = true
                 var subjectselection = by.xpath("//span[text()='" + record["Subject"] + "']");
                 BrowserUtils.clickOnElement(subjectselection);
                 browser.sleep(1500);
-                BrowserUtils.getTotalElementCount(by.xpath("//a[contains(text(),'" + record["Tasklinksort"] + "')]")).then((gettasklinkCount) => {
-                    console.log("loc is:" + gettasklinkCount);
-                    if (gettasklinkCount) {
-                        for (let tasklinkCount = 1; tasklinkCount <= 1; tasklinkCount++) {
-                            var loc = "(//a[contains(text(),'" + record["Tasklinksort"] + "')])[" + tasklinkCount + "]";
-                            console.log(loc);
-                            var tasklinkselection = by.xpath(loc);
-                            BrowserUtils.clickOnElement(tasklinkselection);
-                            browser.sleep(2000);
-                            BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Add Comment')]"));
-                            this.commentbutton().click();
-                            BrowserUtils.enterText(by.xpath("//textarea[@ng-reflect-name='commentData']"), record["Comment"]);
-                            browser.sleep(500);
-                            this.Commentsavebtn().click();
-                            browser.sleep(1500);
-                            this.Commentsediticon().click();
-                            BrowserUtils.enterText(by.xpath("//textarea[@ng-reflect-name='commentData']"), record["Comment"]);
-                            browser.sleep(500);
-                            this.Commentsavebtn().click();
-                            browser.sleep(1500);
-                            BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Approve')]"));
-                            this.Approverbtn().click();
-                            browser.sleep(1500);
-                            this.successmsgokbtn().click();
-                            browser.sleep(1500);
-                            this.Rivertext().isDisplayed().then(function (dis) {
-                                expect(dis).toBe(true, 'Comments edit is worrking successful')
-                            })
-                        }
-                    }
-                    else {
-                        console.log("There are no tasks to edit comments");
-                    }
-
+                var loc = "(//td[contains(text(),'Pending Approve')]/..//a[@class='task-link'])[1]";
+                var tasklinkselection = by.xpath(loc);
+                BrowserUtils.clickOnElement(tasklinkselection);
+                browser.sleep(10000);
+                BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Add Comment')]"));
+                this.commentbutton().click();
+                BrowserUtils.enterText(by.xpath("//textarea[@ng-reflect-name='commentData']"), record["Comment"]);
+                browser.sleep(500);
+                this.Commentsavebtn().click();
+                browser.sleep(1500);
+                this.Commentsediticon().click();
+                BrowserUtils.enterText(by.xpath("//textarea[@ng-reflect-name='commentData']"), record["Comment"]);
+                browser.sleep(500);
+                this.Commentsavebtn().click();
+                browser.sleep(1500);
+                BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Approve')]"));
+                this.Class1().click();
+                browser.sleep(5000);
+                this.Class1().isDisplayed().then(function (dis) {
+                    expect(dis).toBe(true, 'Comments edit is worrking successful')
                 })
             })
         }
     }
     deletecomments() {
-        var dataRecs = dataProvider.getJsonDataFromFile('./TestData/ApproverData/ApproverData.json', null)
+        var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CommonData/SubjectData.json', null)
         if (dataRecs && dataRecs.length > 0) {
             dataRecs.forEach(record => {
                 browser.ignoreSynchronization = true
                 var subjectselection = by.xpath("//span[text()='" + record["Subject"] + "']");
                 BrowserUtils.clickOnElement(subjectselection);
                 browser.sleep(1500);
-                BrowserUtils.getTotalElementCount(by.xpath("//a[contains(text(),'" + record["Tasklinksort"] + "')]")).then((gettasklinkCount) => {
-                    console.log("loc is:" + gettasklinkCount);
-                    if (gettasklinkCount) {
-                        for (let tasklinkCount = 1; tasklinkCount <= 1; tasklinkCount++) {
-                            var loc = "(//a[contains(text(),'" + record["Tasklinksort"] + "')])[" + tasklinkCount + "]";
-                            console.log(loc);
-                            var tasklinkselection = by.xpath(loc);
-                            BrowserUtils.clickOnElement(tasklinkselection);
-                            browser.sleep(2000);
-                            BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Add Comment')]"));
-                            this.commentbutton().click();
-                            BrowserUtils.enterText(by.xpath("//textarea[@ng-reflect-name='commentData']"), record["Comment"]);
-                            browser.sleep(500);
-                            this.Commentsavebtn().click();
-                            browser.sleep(1500);
-                            this.Commentsdeleteicon().click();
-                            browser.sleep(1500);
-                            BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Approve')]"));
-                            this.Approverbtn().click();
-                            browser.sleep(1500);
-                            this.successmsgokbtn().click();
-                            this.Rivertext().isDisplayed().then(function (dis) {
-                                expect(dis).toBe(true, 'Delete review comment flow is successful')
-                            })
-                        }
-                    }
-                    else {
-                        console.log("There are no tasks to Delete the comments");
-                    }
-
+                var loc = "(//td[contains(text(),'Pending Approve')]/..//a[@class='task-link'])[1]";
+                var tasklinkselection = by.xpath(loc);
+                BrowserUtils.clickOnElement(tasklinkselection);
+                browser.sleep(10000);
+                BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Add Comment')]"));
+                this.commentbutton().click();
+                BrowserUtils.enterText(by.xpath("//textarea[@ng-reflect-name='commentData']"), record["Comment"]);
+                browser.sleep(500);
+                this.Commentsavebtn().click();
+                browser.sleep(1500);
+                this.Commentsdeleteicon().click();
+                browser.sleep(1500);
+                BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Approve')]"));
+                this.Class1().click();
+                browser.sleep(5000);
+                this.Class1().isDisplayed().then(function (dis) {
+                    expect(dis).toBe(true, 'Delete  approval comment flow is successful')
                 })
+
             })
         }
-    }
-    deletetasks() {
-        browser.ignoreSynchronization = true
-        browser.sleep(2000);
-        BrowserUtils.getTotalElementCount(by.xpath("//i[text()='delete']")).then((getediticonCount) => {
-            console.log("loc is:" + getediticonCount);
-            if (getediticonCount) {
-                for (let editiconCount = 1; editiconCount <= getediticonCount; editiconCount++) {
-                    var loc = "(//i[text()='delete'])[" + editiconCount + "]";
-                    console.log(loc);
-                    var editiconselection = by.xpath(loc);
-                    BrowserUtils.clickOnElement(editiconselection);
-                    browser.sleep(2000);
-                    this.successmsgokbtn().click();
-                    browser.sleep(2000);
-                    this.Rivertext().isDisplayed().then(function (dis) {
-                        expect(dis).toBe(true, 'Delete tasks  is successful')
-                    })
-                }
-            }
-            else {
-                console.log("There are no tasks to delete");
-            }
-
-
-
-        })
     }
 
 }

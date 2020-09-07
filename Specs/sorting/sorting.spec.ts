@@ -27,14 +27,8 @@ describe('Sorting Tasks Creation', () => {
     it('Closing the task popup using cancel button', () => {
         Sorting.CancelTask();
     });
-    it('Closing the task popup using cancel Icon', () => {
-        Sorting.Cancelicon();
-    });
-    it('Check for the content type search', () => {
-        Sorting.Contenttypesearch();
-    });
-    it('Check the task preview page close icon', () => {
-        Sorting.Previewcancelicon()
+    it('Verify drafted task can be send to review', () => {
+        Sorting.UpdateSortingtask();
     });
     it('Check the task preview page back button', () => {
         Sorting.Previewbackbutton()

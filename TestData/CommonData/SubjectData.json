@@ -9,7 +9,7 @@
         "Time": "01:15",
         "fibTeluguTitle": "ఖాలీలు పూరించడం",
         "fibTeluguInstructions": "పట్టికలోని అక్షరాలతో పదాలు తయారు చేయండి",
-        "fibEnglishTitle": "Fill in the blanks",
+        "fibEnglishTitle": "FillintheBlanks",
         "fibEnglishInstructions": "Drag the source to required blanks",
         "RearrangingTeluguTitle": "సరైన క్రమంలో అమర్చడం",
         "RearrangingTeluguInstructions": "కింది గేయ పాదాలు చదివి సరియగు క్రమంలో అమర్చండి.",
@@ -55,7 +55,8 @@
         "CreatepageComment": "This is my Createpage Comment by Author",
         "PreviewpageComment":"This is my Previewpage Comment by Author",
         "PreviewpageCommentApprover": "This is my Previewpage Comment by Approver",
-        "PreviewpageCommentReviewer":"This is my Previewpage Comment by Reviewer"
+        "PreviewpageCommentReviewer":"This is my Previewpage Comment by Reviewer",
+        "UpdateRearranging":"Rearranging"
         
     }
 ]

@@ -15,13 +15,15 @@ describe('Verify Login Page', () => {
   });
   it('keycloak login', () => {
     browser.ignoreSynchronization = true
-    browser.waitForAngularEnabled(false);
-    //browser.waitForAngularEnabled(true);
+    //  setTimeout(() => {
+    //  browser.waitForAngularEnabled(false);  
+    // }, 20000);
+    //browser.waitForAngularEnabled(false);
     var dataObj = dataProvider.getJsonDataFromFile('./TestData/loginData.json', 'Taskauthorlogindata')
     loginPg.Taskauthor(dataObj);
     setTimeout(() => {
       browser.waitForAngularEnabled(true);  
-    }, 20000);
+    }, 2000000);
   });
 
 

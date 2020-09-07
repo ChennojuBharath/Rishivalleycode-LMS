@@ -14,10 +14,10 @@ describe('trueorfalse task Creation Page', () => {
         taskPg.ClickAllsubjects();
     });
     it('Check for the task with pictureandtext can be created', () => {
-        trueorfalsePg.createTrueorfalsetaskwithtexttelugu();
+        trueorfalsePg. createTrueorfalsetasktelugumultiplequestions();
     });
     it('Check for the task with pictureandtext can be created', () => {
-        trueorfalsePg.createTrueorfalsetaskwithtextandpictureenglish();
+        trueorfalsePg.createTrueorfalsetaskenglishmultiplequestions();
     });
       it('To Search data in list of tasks', () => {
         trueorfalsePg.SearchTaskfromlist();
@@ -25,11 +25,8 @@ describe('trueorfalse task Creation Page', () => {
     it('Closing the task popup using cancel button', () => {
         trueorfalsePg.CancelTask();
     });
-    it('Check for the content type search', () => {
-        trueorfalsePg.Contenttypesearch();
-    });
-    it('Check the task preview page breadcrumbs are working', () => {
-        trueorfalsePg.Previewcancelicon()
+     it('Update drafted task to reviewer', () => {
+        trueorfalsePg. Updatetrueorfalsetask();
     });
     it('Check the task preview page back button', () => {
         trueorfalsePg.Previewbackbutton()

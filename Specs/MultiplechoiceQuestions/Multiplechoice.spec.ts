@@ -10,34 +10,33 @@ describe('Tapping MCQ Tasks Creation', () => {
     it('Verify the tab click for Subject tabs', () => {
         taskPg.ClickAllsubjects();
     });
-    it('Create task flow check for TapingMCQ with Text to Text', () => {
+    it('Create task flow check for TapingMCQ with all scenarios', () => {
         taskPg.createTappingMCQTasktexttelugu();
+    });
+    it('Create task flow check for TapingMCQ with all scenarios', () => {
+        taskPg.createTappingMCQTasktextenglish();
     });
 
     it('To Search data in list of tasks', () => {
         taskPg.SearchTaskfromlist();
     });
-    it('Verify MCQ task can be updated', () => {
-        taskPg.UpdateMCQ();
-    });
     it('Closing the task popup using cancel button', () => {
         taskPg.CancelTask();
     });
-    it('Check for the content type search', () => {
-        taskPg.Contenttypesearch();
+    it('Verify MCQ task can be updated', () => {
+        taskPg.UpdateMCQ();
     });
- 
     it('Check the task preview page back button', () => {
         taskPg.Previewbackbutton();
     });
     it('Check the task publish page back button', () => {
         taskPg.Publishbackbutton();
-   })
-   it('Check the task preview page breadcrumbs are working', () => {
-    taskPg.Previewbreadcrumbs()
-  });
-  it('Check the task publish page breadcrumbs are working', () => {
-    taskPg.Publishbreadcrmbs();
-  }) 
-  
+    })
+    it('Check the task preview page breadcrumbs are working', () => {
+        taskPg.Previewbreadcrumbs()
+    });
+    it('Check the task publish page breadcrumbs are working', () => {
+        taskPg.Publishbreadcrmbs();
+    })
+
 })

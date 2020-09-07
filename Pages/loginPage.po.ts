@@ -48,7 +48,7 @@ export class loginPage {
         this.keycloakusername().sendKeys(Taskauthorlogindata.keycloakusername);
         this.keycloakpassword().sendKeys(Taskauthorlogindata.keycloakpassword);
         this.keycloakloginbtn().click();
-        browser.sleep(2000);
+        browser.sleep(15000);
     } 
      Taskreviewer(Taskreviewerlogindata){
         this.keycloakusername().sendKeys(Taskreviewerlogindata.keycloakusername);

@@ -20,8 +20,11 @@ it('To Search data in list of tasks', () => {
 it('Closing the task popup using cancel button', () => {
   focuscards.CancelTask();
 });
-it('Check for the content type search', () => {
-  focuscards.Contenttypesearch();
+it('To update focus cards task', () => {
+  focuscards.Updatefocuscardsbylink();
+});
+it('To check focus cards task delete', () => {
+  focuscards.focuscardsdelete();
 });
 it('Check the task preview page back button', () => {
   focuscards.Previewbackbutton()

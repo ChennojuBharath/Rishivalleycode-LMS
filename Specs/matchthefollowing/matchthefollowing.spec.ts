@@ -29,6 +29,9 @@ it('To Search data in list of tasks', () => {
 it('Closing the task popup using cancel button', () => {
     matchtheFollowing.CancelTask();
 });
+it('Update match the following task', () => {
+    matchtheFollowing.Updatematchthefoll();
+});
 it('Check for the content type search', () => {
     matchtheFollowing.Contenttypesearch();
 });

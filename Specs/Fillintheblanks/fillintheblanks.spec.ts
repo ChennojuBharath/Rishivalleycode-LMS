@@ -21,14 +21,14 @@ it('Create task flow check for fill in the blanks in english subject', () => {
 it('Verify deletion of Options and Slides is working', () => {
   fillintheblanks.DeleteSlideandOptions();
 })
+it('Closing the task popup using cancel button', () => {
+  fillintheblanks.CancelTask();
+});
 it('Update drafted fill in the blanks task', () => {
   fillintheblanks.Updatefillintheblanks();
 })
 it('To Search data in list of tasks', () => {
   fillintheblanks.SearchTaskfromlist();
-});
-it('Closing the task popup using cancel button', () => {
-  fillintheblanks.CancelTask();
 });
 it('Check for the content type search', () => {
   fillintheblanks.Contenttypesearch();

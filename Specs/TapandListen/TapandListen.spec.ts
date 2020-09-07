@@ -12,14 +12,11 @@ describe('Tap and Listen task Creation Page', () => {
     it('Verify the tab click for Subject tabs', () => {
         taskPg.ClickAllsubjects();
     });
-    it('Create Tap and Listen task with Text with audio', () => {
+    it('Create Tap and Listen task with all scenarios in telugu', () => {
         Tapandlisten.createTapandlistenTaskwithTexttelugu();
     });
-     it('Create Tap and Listen task picture with audio', () => {
-        Tapandlisten.createTapandlistenTaskwithpicturetelugu();
-    });
-    it('Create Tap and Listen task with Picture and Text with audio', () => {
-        Tapandlisten.createTapandlistenTaskwithPictureandTexttelugu();
+   it('Create Tap and Listen task with Text  all scenarios in english', () => {
+        Tapandlisten.createTapandlistenTaskwithTextenglish();
     });
     it('To Search data in list of tasks', () => {
         Tapandlisten.SearchTaskfromlist();
@@ -27,8 +24,8 @@ describe('Tap and Listen task Creation Page', () => {
     it('Closing the task popup using cancel button', () => {
         Tapandlisten.CancelTask();
     });
-    it('Check for the content type search', () => {
-        Tapandlisten.Contenttypesearch();
+     it('Verify Drafted task can be sent for review', () => {
+        Tapandlisten.Updatetapandlistentask();
     });
     it('Check the task preview page back button', () => {
         Tapandlisten.Previewbackbutton();

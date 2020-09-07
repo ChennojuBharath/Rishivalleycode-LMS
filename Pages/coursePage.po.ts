@@ -62,7 +62,7 @@ export class coursePage {
         return element(by.xpath("(//mat-icon[text()='add'])[1]"));
     }
     AddnewActivity() {
-        return element(by.xpath("//span[text()=' ADD NEW ACTIVITY ']"));
+        return element(by.xpath("//span[contains(text(),' Add New Activity ')]"));
     }
     TabActivity() {
         return element(by.xpath("//span[text()='Tab Activity ']"));
@@ -72,6 +72,57 @@ export class coursePage {
     }
     assessmentactivity() {
         return element(by.xpath("//span[contains(text(),'Assessment')]"));
+    }
+    input2() {
+        return element(by.xpath("(//input[@placeholder='enter no. here'])[2]"));
+    }
+    input3() {
+        return element(by.xpath("(//input[@placeholder='enter no. here'])[3]"));
+    }
+    input4() {
+        return element(by.xpath("(//input[@placeholder='enter no. here'])[4]"));
+    }
+    input5() {
+        return element(by.xpath("(//input[@placeholder='enter no. here'])[5]"));
+    }
+    input6() {
+        return element(by.xpath("(//input[@placeholder='enter no. here'])[6]"));
+    }
+    input7() {
+        return element(by.xpath("(//input[@placeholder='enter no. here'])[7]"));
+    }
+    input8() {
+        return element(by.xpath("(//input[@placeholder='enter no. here'])[8]"));
+    }
+    input9() {
+        return element(by.xpath("(//input[@placeholder='enter no. here'])[9]"));
+    }
+    input10() {
+        return element(by.xpath("(//input[@placeholder='enter no. here'])[10]"));
+    }
+    input11() {
+        return element(by.xpath("(//input[@placeholder='enter no. here'])[11]"));
+    }
+    input12() {
+        return element(by.xpath("(//input[@placeholder='enter no. here'])[12]"));
+    }
+    input13() {
+        return element(by.xpath("(//input[@placeholder='enter no. here'])[13]"));
+    }
+    input14() {
+        return element(by.xpath("(//input[@placeholder='enter no. here'])[14]"));
+    }
+    input15() {
+        return element(by.xpath("(//input[@placeholder='enter no. here'])[15]"));
+    }
+    input16() {
+        return element(by.xpath("(//input[@placeholder='enter no. here'])[16]"));
+    }
+    input17() {
+        return element(by.xpath("(//input[@placeholder='enter no. here'])[17]"));
+    }
+    input18() {
+        return element(by.xpath("(//input[@placeholder='enter no. here'])[18]"));
     }
     introductionactivity() {
         return element(by.xpath("//span[contains(text(),'Introduction')]"));
@@ -206,7 +257,7 @@ export class coursePage {
         return element(by.xpath("(//span[@class='checkround'])[4]"));
     }
     Taskcheckround5() {
-        return element(by.xpath("(//span[@class='checkround'])[25"));
+        return element(by.xpath("(//span[@class='checkround'])[5]"));
     }
     Taskcheckround6() {
         return element(by.xpath("(//span[@class='checkround'])[6]"));
@@ -224,7 +275,7 @@ export class coursePage {
         return element(by.xpath("//span[text()='ADD']"));
     }
     AddTaskbtn() {
-        return element(by.xpath("//span[text()='ADD']"));
+        return element(by.xpath("//span[contains(text(),'Add Task')]"));
     }
     Tasktypedropdown() {
         return element(by.xpath("//span[text()='ADD']"));
@@ -287,7 +338,7 @@ export class coursePage {
         return element(by.xpath("//div[text()='Publish']"));
     }
     Class1() {
-        return element(by.xpath("//mat-panel-title[@ng-reflect-router-link='/classes/all-courses']/../../following-sibling::div/div/mat-list/mat-list-item/div[text()='Class 1 ']"));
+        return element(by.xpath("//mat-list-item[@ng-reflect-router-link='/classes/all-courses']/div[contains(text(),'Class 2')]"));
     }
     Maths() {
         return element(by.xpath("//div[@class='mat-tab-label-content'][text()='MATHS']"));
@@ -402,9 +453,9 @@ export class coursePage {
         });
     }
     ExportCourse() {
-        this.Exportbutton().click();
         browser.sleep(2000);
-        this.acceptSaveTaskPopUp().click();
+        this.Exportbutton().click();
+        browser.sleep(10000);
         this.Createnewcoursebutton().isDisplayed().then(function (dis) {
             expect(dis).toBe(true, 'Course can be exported successfully')
         })
@@ -416,17 +467,23 @@ export class coursePage {
         BrowserUtils.waitUntilReady(this.Previewclose());
         browser.sleep(500);
         this.Previewclose().click();
+        this.Class1().isDisplayed().then(function (dis) {
+            expect(dis).toBe(true, 'Milestone course preview is displayed successfully')
+        })
     }
     clickallsubjects() {
         BrowserUtils.countAndClick(this.clickOnSubjectsLinks());
         this.Maths().click();
         this.Createnewcoursebutton().isDisplayed().then(function (dis) {
             expect(dis).toBe(true, 'Course subject links are clickable')
+            this.Class1().isDisplayed().then(function (dis) {
+                expect(dis).toBe(true, 'course subjects are clickable ')
+            })
         })
     }
     Coursedata() {
         browser.ignoreSynchronization = true
-        var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CourseData/EnglishData.json', null)
+        var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CourseData/English.json', null)
         if (dataRecs && dataRecs.length > 0) {
             dataRecs.forEach(record => {
                 browser.sleep(1000);
@@ -508,10 +565,10 @@ export class coursePage {
             })
         }
     }
-    
+
     Coursedataforenglishwithmultiplemilestones() {
         browser.ignoreSynchronization = true
-        var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CourseData/EnglishData.json', null)
+        var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CourseData/English.json', null)
         if (dataRecs && dataRecs.length > 0) {
             dataRecs.forEach(record => {
                 browser.sleep(1000);
@@ -540,12 +597,15 @@ export class coursePage {
                 this.SubmitforApproval().click();
                 browser.sleep(500);
                 this.CorseOKbtn().click();
+                this.Class1().isDisplayed().then(function (dis) {
+                    expect(dis).toBe(true, ' Course data for english with multiplemilestones are created successfully ')
+                })
             })
         }
     }
     Nontabactivitiesforenglish() {
         browser.ignoreSynchronization = true
-        var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CourseData/EnglishData.json', null)
+        var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CourseData/English.json', null)
         if (dataRecs && dataRecs.length > 0) {
             dataRecs.forEach(record => {
                 this.AddnewActivity().click();
@@ -553,7 +613,9 @@ export class coursePage {
                 //1st activity
                 this.engBatBallnontabactivity().click();
                 browser.sleep(500);
-                BrowserUtils.enterText(by.xpath("//input[@dicimalnumber][@placeholder='enter no. here']"), record["BatBallnontabActivityNo"]);
+                this.input4().click();
+                browser.sleep(500);
+                BrowserUtils.enterText(by.xpath("(//input[@dicimalnumber][@placeholder='enter no. here'])[3]"), record["BatBallnontabActivityNo"]);
                 browser.sleep(2000);
                 this.nonTabTask().click();
                 browser.sleep(1500);
@@ -568,7 +630,9 @@ export class coursePage {
                 browser.sleep(500);
                 this.engKitenontabactivity().click();
                 browser.sleep(500);
-                BrowserUtils.enterText(by.xpath("//input[@dicimalnumber][@placeholder='enter no. here']"), record["KitenontabActivityNo"]);
+                this.input5().click();
+                browser.sleep(500);
+                BrowserUtils.enterText(by.xpath("(//input[@dicimalnumber][@placeholder='enter no. here'])[4]"), record["KitenontabActivityNo"]);
                 browser.sleep(2000);
                 this.nonTabTask().click();
                 browser.sleep(1500);
@@ -582,7 +646,9 @@ export class coursePage {
                 browser.sleep(500);
                 this.engLampnontabactivity().click();
                 browser.sleep(500);
-                BrowserUtils.enterText(by.xpath("//input[@dicimalnumber][@placeholder='enter no. here']"), record["LampnontabActivityNo"]);
+                this.input6().click();
+                browser.sleep(500);
+                BrowserUtils.enterText(by.xpath("(//input[@dicimalnumber][@placeholder='enter no. here'])[5]"), record["LampnontabActivityNo"]);
                 browser.sleep(2000);
                 this.nonTabTask().click();
                 browser.sleep(1500);
@@ -596,7 +662,9 @@ export class coursePage {
                 browser.sleep(500);
                 this.engMarblesnontabactivity().click();
                 browser.sleep(500);
-                BrowserUtils.enterText(by.xpath("//input[@dicimalnumber][@placeholder='enter no. here']"), record["MarblesnontabActivityNo"]);
+                this.input7().click();
+                browser.sleep(500);
+                BrowserUtils.enterText(by.xpath("(//input[@dicimalnumber][@placeholder='enter no. here'])[6]"), record["MarblesnontabActivityNo"]);
                 browser.sleep(2000);
                 this.nonTabTask().click();
                 browser.sleep(1500);
@@ -610,7 +678,9 @@ export class coursePage {
                 browser.sleep(500);
                 this.engMicnontabactivity().click();
                 browser.sleep(500);
-                BrowserUtils.enterText(by.xpath("//input[@dicimalnumber][@placeholder='enter no. here']"), record["MicnontabActivityNo"]);
+                this.input8().click();
+                browser.sleep(500);
+                BrowserUtils.enterText(by.xpath("(//input[@dicimalnumber][@placeholder='enter no. here'])[7]"), record["MicnontabActivityNo"]);
                 browser.sleep(2000);
                 this.nonTabTask().click();
                 browser.sleep(1500);
@@ -624,7 +694,9 @@ export class coursePage {
                 browser.sleep(500);
                 this.engPuzzlenontabactivity().click();
                 browser.sleep(500);
-                BrowserUtils.enterText(by.xpath("//input[@dicimalnumber][@placeholder='enter no. here']"), record["PuzzlenontabActivityNo"]);
+                this.input9().click();
+                browser.sleep(500);
+                BrowserUtils.enterText(by.xpath("(//input[@dicimalnumber][@placeholder='enter no. here'])[8]"), record["PuzzlenontabActivityNo"]);
                 browser.sleep(2000);
                 this.nonTabTask().click();
                 browser.sleep(1500);
@@ -638,7 +710,9 @@ export class coursePage {
                 browser.sleep(500);
                 this.engRingsInTabnontabactivity().click();
                 browser.sleep(500);
-                BrowserUtils.enterText(by.xpath("//input[@dicimalnumber][@placeholder='enter no. here']"), record["RingsInTabnontabActivityNo"]);
+                this.input10().click();
+                browser.sleep(500);
+                BrowserUtils.enterText(by.xpath("(//input[@dicimalnumber][@placeholder='enter no. here'])[9]"), record["RingsInTabnontabActivityNo"]);
                 browser.sleep(2000);
                 this.nonTabTask().click();
                 browser.sleep(1500);
@@ -652,7 +726,9 @@ export class coursePage {
                 browser.sleep(500);
                 this.engRingsnontabactivity().click();
                 browser.sleep(500);
-                BrowserUtils.enterText(by.xpath("//input[@dicimalnumber][@placeholder='enter no. here']"), record["RingsnontabActivityNo"]);
+                this.input11().click();
+                browser.sleep(500);
+                BrowserUtils.enterText(by.xpath("(//input[@dicimalnumber][@placeholder='enter no. here'])[10]"), record["RingsnontabActivityNo"]);
                 browser.sleep(2000);
                 this.nonTabTask().click();
                 browser.sleep(1500);
@@ -666,7 +742,9 @@ export class coursePage {
                 browser.sleep(500);
                 this.engRiverBanknontabactivity().click();
                 browser.sleep(500);
-                BrowserUtils.enterText(by.xpath("//input[@dicimalnumber][@placeholder='enter no. here']"), record["RiverBanknontabActivityNo"]);
+                this.input12().click();
+                browser.sleep(500);
+                BrowserUtils.enterText(by.xpath("(//input[@dicimalnumber][@placeholder='enter no. here'])[11]"), record["RiverBanknontabActivityNo"]);
                 browser.sleep(2000);
                 this.nonTabTask().click();
                 browser.sleep(1500);
@@ -680,7 +758,9 @@ export class coursePage {
                 browser.sleep(500);
                 this.engRiverBanknontabactivity().click();
                 browser.sleep(500);
-                BrowserUtils.enterText(by.xpath("//input[@dicimalnumber][@placeholder='enter no. here']"), record["RiverBanknontabActivityNo"]);
+                this.input13().click();
+                browser.sleep(500);
+                BrowserUtils.enterText(by.xpath("(//input[@dicimalnumber][@placeholder='enter no. here'])[12]"), record["RiverBanknontabActivityNo"]);
                 browser.sleep(2000);
                 this.nonTabTask().click();
                 browser.sleep(1500);
@@ -694,7 +774,9 @@ export class coursePage {
                 browser.sleep(500);
                 this.engRoleplaynontabactivity().click();
                 browser.sleep(500);
-                BrowserUtils.enterText(by.xpath("//input[@dicimalnumber][@placeholder='enter no. here']"), record["RoleplaynontabActivityNo"]);
+                this.input14().click();
+                browser.sleep(500);
+                BrowserUtils.enterText(by.xpath("(//input[@dicimalnumber][@placeholder='enter no. here'])[13]"), record["RoleplaynontabActivityNo"]);
                 browser.sleep(2000);
                 this.nonTabTask().click();
                 browser.sleep(1500);
@@ -708,7 +790,9 @@ export class coursePage {
                 browser.sleep(500);
                 this.engShehnaiInTabnontabactivity().click();
                 browser.sleep(500);
-                BrowserUtils.enterText(by.xpath("//input[@dicimalnumber][@placeholder='enter no. here']"), record["ShehnainontabActivityNo"]);
+                this.input15().click();
+                browser.sleep(500);
+                BrowserUtils.enterText(by.xpath("(//input[@dicimalnumber][@placeholder='enter no. here'])[14]"), record["ShehnainontabActivityNo"]);
                 browser.sleep(2000);
                 this.nonTabTask().click();
                 browser.sleep(1500);
@@ -722,7 +806,9 @@ export class coursePage {
                 browser.sleep(500);
                 this.engShuttleBatnontabactivity().click();
                 browser.sleep(500);
-                BrowserUtils.enterText(by.xpath("//input[@dicimalnumber][@placeholder='enter no. here']"), record["ShuttleBatnontabActivityNo"]);
+                this.input16().click();
+                browser.sleep(500);
+                BrowserUtils.enterText(by.xpath("(//input[@dicimalnumber][@placeholder='enter no. here'])[15]"), record["ShuttleBatnontabActivityNo"]);
                 browser.sleep(2000);
                 this.nonTabTask().click();
                 browser.sleep(1500);
@@ -736,7 +822,9 @@ export class coursePage {
                 browser.sleep(500);
                 this.engTextbooknontabactivity().click();
                 browser.sleep(500);
-                BrowserUtils.enterText(by.xpath("//input[@dicimalnumber][@placeholder='enter no. here']"), record["TextbooknontabActivityNo"]);
+                this.input17().click();
+                browser.sleep(500);
+                BrowserUtils.enterText(by.xpath("(//input[@dicimalnumber][@placeholder='enter no. here'])[16]"), record["TextbooknontabActivityNo"]);
                 browser.sleep(2000);
                 this.nonTabTask().click();
                 browser.sleep(1500);
@@ -750,7 +838,9 @@ export class coursePage {
                 browser.sleep(500);
                 this.engTopInTabnontabactivity().click();
                 browser.sleep(500);
-                BrowserUtils.enterText(by.xpath("//input[@dicimalnumber][@placeholder='enter no. here']"), record["TopInTabnontabActivityNo"]);
+                this.input18().click();
+                browser.sleep(500);
+                BrowserUtils.enterText(by.xpath("(//input[@dicimalnumber][@placeholder='enter no. here'])[17]"), record["TopInTabnontabActivityNo"]);
                 browser.sleep(2000);
                 this.nonTabTask().click();
                 browser.sleep(1500);
@@ -760,15 +850,18 @@ export class coursePage {
                 var stepsPath = path.resolve(__dirname, steps);
                 this.typefile2().sendKeys(stepsPath);
                 browser.sleep(1000);
+                this.Class1().isDisplayed().then(function (dis) {
+                    expect(dis).toBe(true, ' Course data for english with non tab activities are created successfully ')
+                })
             })
         }
     }
-    Coursedataforteluguwithmultiplemilestones() {
+    coursewithallactivities() {
         browser.ignoreSynchronization = true
-        var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CourseData/TeluguData.json', null)
+        var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CourseData/English.json', null)
         if (dataRecs && dataRecs.length > 0) {
             dataRecs.forEach(record => {
-                browser.sleep(1000);
+                browser.sleep(5000);
                 BrowserUtils.enterText(by.xpath("//input[@name='title']"), record["Retakes"]);
                 browser.sleep(1000);
                 BrowserUtils.selectDropdownValue(by.xpath("//select[@name='year']"), record["Academicyear"]);
@@ -778,30 +871,6 @@ export class coursePage {
                 browser.sleep(500);
                 this.Commentsavebtn().click();
                 browser.sleep(1500);
-                this.milestonedata1();
-                this.milestonedata2();
-                this.milestonedata3();
-                this.milestonedata4();
-                this.milestonedata5();
-                this.milestonedata6();
-                this.milestonedata7();
-                this.commentbutton().click();
-                BrowserUtils.enterText(by.xpath("//textarea[@ng-reflect-name='commentData']"), record["MilestonepageComment"]);
-                browser.sleep(500);
-                this.Commentsavebtn().click();
-                browser.sleep(500);
-                BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Submit For Approval')]"));
-                this.SubmitforApproval().click();
-                browser.sleep(500);
-                this.CorseOKbtn().click();
-            })
-        }
-    }
-    milestonedata1() {
-        browser.ignoreSynchronization = true
-        var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CourseData/EnglishData.json', null)
-        if (dataRecs && dataRecs.length > 0) {
-            dataRecs.forEach(record => {
                 this.AddMilestonecontainer().click();
                 browser.sleep(500);
                 this.AddMilestoneicon().click();
@@ -831,14 +900,99 @@ export class coursePage {
                 browser.sleep(500);
                 BrowserUtils.waitUntilReady(this.SaveCourse());
                 this.Homebtn().click();
+                browser.sleep(5000);
+                BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Submit For Approval')]"));
+                this.SubmitforApproval().click();
+                browser.sleep(5000);
+                this.CorseOKbtn().click();
+                this.Class1().isDisplayed().then(function (dis) {
+                    expect(dis).toBe(true, ' Course data for english with all activities are created successfully ')
+                })
+            })
+        }
+    }
+    Coursedataforteluguwithmultiplemilestones() {
+        browser.ignoreSynchronization = true
+        var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CourseData/Telugu.json', null)
+        if (dataRecs && dataRecs.length > 0) {
+            dataRecs.forEach(record => {
+                browser.sleep(5000);
+                BrowserUtils.enterText(by.xpath("//input[@name='title']"), record["Retakes"]);
+                browser.sleep(1000);
+                BrowserUtils.selectDropdownValue(by.xpath("//select[@name='year']"), record["Academicyear"]);
+                BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Add Comment')]"));
+                this.commentbutton().click();
+                BrowserUtils.enterText(by.xpath("//textarea[@ng-reflect-name='commentData']"), record["HomepageComment"]);
                 browser.sleep(500);
+                this.Commentsavebtn().click();
+                browser.sleep(1500);
+                this.milestonedata1();
+                this.milestonedata2();
+                this.milestonedata3();
+                this.milestonedata4();
+                this.milestonedata5();
+                this.milestonedata6();
+                this.milestonedata7();
+                this.commentbutton().click();
+                BrowserUtils.enterText(by.xpath("//textarea[@ng-reflect-name='commentData']"), record["MilestonepageComment"]);
+                browser.sleep(500);
+                this.Commentsavebtn().click();
+                browser.sleep(500);
+                BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Submit For Approval')]"));
+                this.SubmitforApproval().click();
+                browser.sleep(5000);
+                this.CorseOKbtn().click();
+                this.Class1().isDisplayed().then(function (dis) {
+                    expect(dis).toBe(true, ' Course data for telugu with multiplemilestones are created successfully ')
+                })
+            })
+        }
+    }
+    milestonedata1() {
+        browser.ignoreSynchronization = true
+        var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CourseData/English.json', null)
+        if (dataRecs && dataRecs.length > 0) {
+            dataRecs.forEach(record => {
+                this.AddMilestonecontainer().click();
+                browser.sleep(500);
+                this.AddMilestoneicon().click();
+                browser.sleep(5000);
+                BrowserUtils.enterText(by.xpath("//input[@formcontrolname='daysToComplete']"), record["Completiondays"]);
+                this.PracticeActivitywithmultipletasks();
+                this.AssessmentActivitywithmultipletasks();
+                this.IntroductionActivity();
+                this.commentbutton().click();
+                BrowserUtils.enterText(by.xpath("//textarea[@ng-reflect-name='commentData']"), record["EditpageComment"]);
+                browser.sleep(500);
+                this.Commentsavebtn().click();
+                browser.sleep(1500);
+                BrowserUtils.scrollIntoView(by.xpath("//span[text()='Save']"));
+                browser.sleep(500);
+                this.SaveCourse().click();
+                browser.sleep(3500);
+                BrowserUtils.waitUntilReady(this.MilestoneOKbtn());
+                this.MilestoneOKbtn().click();
+                browser.sleep(5000);
+                this.previewcommentbutton().click();
+                BrowserUtils.enterText(by.xpath("//textarea[@ng-reflect-name='commentData']"), record["Comment"]);
+                browser.sleep(500);
+                this.Commentsavebtn().click();
+                browser.sleep(1500);
+                this.Milestonecoursepreview();
+                browser.sleep(500);
+                BrowserUtils.waitUntilReady(this.SaveCourse());
+                this.Homebtn().click();
+                browser.sleep(5000);
+                this.Class1().isDisplayed().then(function (dis) {
+                    expect(dis).toBe(true, ' milestone1 data is created successfully ')
+                })
             })
         }
 
     }
     milestonedata2() {
         browser.ignoreSynchronization = true
-        var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CourseData/EnglishData.json', null)
+        var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CourseData/English.json', null)
         if (dataRecs && dataRecs.length > 0) {
             dataRecs.forEach(record => {
                 this.AddMilestonecontainer().click();
@@ -870,14 +1024,17 @@ export class coursePage {
                 browser.sleep(500);
                 BrowserUtils.waitUntilReady(this.SaveCourse());
                 this.Homebtn().click();
-                browser.sleep(500);
+                browser.sleep(5000);
+                this.Class1().isDisplayed().then(function (dis) {
+                    expect(dis).toBe(true, ' milestone2 data is created successfully ')
+                })
             })
         }
 
     }
     milestonedata3() {
         browser.ignoreSynchronization = true
-        var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CourseData/EnglishData.json', null)
+        var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CourseData/English.json', null)
         if (dataRecs && dataRecs.length > 0) {
             dataRecs.forEach(record => {
                 this.AddMilestonecontainer().click();
@@ -909,14 +1066,17 @@ export class coursePage {
                 browser.sleep(500);
                 BrowserUtils.waitUntilReady(this.SaveCourse());
                 this.Homebtn().click();
-                browser.sleep(500);
+                browser.sleep(5000);
+                this.Class1().isDisplayed().then(function (dis) {
+                    expect(dis).toBe(true, ' milestone3 data is created successfully ')
+                })
             })
         }
 
     }
     milestonedata4() {
         browser.ignoreSynchronization = true
-        var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CourseData/EnglishData.json', null)
+        var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CourseData/English.json', null)
         if (dataRecs && dataRecs.length > 0) {
             dataRecs.forEach(record => {
                 this.AddMilestonecontainer().click();
@@ -948,14 +1108,17 @@ export class coursePage {
                 browser.sleep(500);
                 BrowserUtils.waitUntilReady(this.SaveCourse());
                 this.Homebtn().click();
-                browser.sleep(500);
+                browser.sleep(5000);
+                this.Class1().isDisplayed().then(function (dis) {
+                    expect(dis).toBe(true, ' milestone4 data is created successfully ')
+                })
             })
         }
 
     }
     milestonedata5() {
         browser.ignoreSynchronization = true
-        var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CourseData/EnglishData.json', null)
+        var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CourseData/English.json', null)
         if (dataRecs && dataRecs.length > 0) {
             dataRecs.forEach(record => {
                 this.AddMilestonecontainer().click();
@@ -987,14 +1150,17 @@ export class coursePage {
                 browser.sleep(500);
                 BrowserUtils.waitUntilReady(this.SaveCourse());
                 this.Homebtn().click();
-                browser.sleep(500);
+                browser.sleep(5000);
+                this.Class1().isDisplayed().then(function (dis) {
+                    expect(dis).toBe(true, ' milestone5 data is created successfully ')
+                })
             })
         }
 
     }
     milestonedata7() {
         browser.ignoreSynchronization = true
-        var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CourseData/EnglishData.json', null)
+        var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CourseData/English.json', null)
         if (dataRecs && dataRecs.length > 0) {
             dataRecs.forEach(record => {
                 this.AddMilestonecontainer().click();
@@ -1026,14 +1192,17 @@ export class coursePage {
                 browser.sleep(500);
                 BrowserUtils.waitUntilReady(this.SaveCourse());
                 this.Homebtn().click();
-                browser.sleep(500);
+                browser.sleep(5000);
+                this.Class1().isDisplayed().then(function (dis) {
+                    expect(dis).toBe(true, ' milestone7 data is created successfully ')
+                })
             })
         }
 
     }
     milestonedata6() {
         browser.ignoreSynchronization = true
-        var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CourseData/EnglishData.json', null)
+        var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CourseData/English.json', null)
         if (dataRecs && dataRecs.length > 0) {
             dataRecs.forEach(record => {
                 this.AddMilestonecontainer().click();
@@ -1065,14 +1234,17 @@ export class coursePage {
                 browser.sleep(500);
                 BrowserUtils.waitUntilReady(this.SaveCourse());
                 this.Homebtn().click();
-                browser.sleep(500);
+                browser.sleep(5000);
+                this.Class1().isDisplayed().then(function (dis) {
+                    expect(dis).toBe(true, ' milestone6 data is created successfully ')
+                })
             })
         }
 
     }
     PracticeActivitywithmultipletasks() {
         browser.ignoreSynchronization = true
-        var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CourseData/EnglishData.json', null)
+        var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CourseData/English.json', null)
         if (dataRecs && dataRecs.length > 0) {
             dataRecs.forEach(record => {
                 this.AddnewActivity().click();
@@ -1132,46 +1304,27 @@ export class coursePage {
                 BrowserUtils.selectDropdownValue(by.xpath("//select[contains(@class,'year-list-dropdown')]"), record["Class"]);
                 browser.sleep(2000);
                 this.Taskcheckround5().click();
+                browser.sleep(2000);
                 this.AddTask().click();
-                browser.sleep(2000);
-                this.AddTaskbtn().click();
-                browser.sleep(2000);
-                this.TabTask6().click();
-                browser.sleep(200);
-                this.Taskselection6().click();
-                browser.sleep(2000);
-                BrowserUtils.selectDropdownValue(by.xpath("//select[contains(@class,'year-list-dropdown')]"), record["Class"]);
-                browser.sleep(2000);
-                this.Taskcheckround6().click();
-                this.AddTask().click();
-                browser.sleep(2000);
-                this.AddTaskbtn().click();
-                browser.sleep(2000);
-                this.TabTask7().click();
-                browser.sleep(200);
-                this.Taskselection7().click();
-                browser.sleep(2000);
-                BrowserUtils.selectDropdownValue(by.xpath("//select[contains(@class,'year-list-dropdown')]"), record["Class"]);
-                browser.sleep(2000);
-                this.Taskcheckround7().click();
-                this.AddTask().click();
-                browser.sleep(2000);
-                this.AddTaskbtn().click();
-                browser.sleep(2000);
-
+                browser.sleep(4000);
+                this.Class1().isDisplayed().then(function (dis) {
+                    expect(dis).toBe(true, ' Practice activity data is created successfully ')
+                })
             })
         }
     }
     AssessmentActivitywithmultipletasks() {
         browser.ignoreSynchronization = true
-        var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CourseData/EnglishData.json', null)
+        var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CourseData/English.json', null)
         if (dataRecs && dataRecs.length > 0) {
             dataRecs.forEach(record => {
                 this.AddnewActivity().click();
                 browser.sleep(500);
                 this.assessmentactivity().click();
                 browser.sleep(500);
-                BrowserUtils.enterText(by.xpath("//input[@dicimalnumber][@placeholder='enter no. here']"), record["AssessmentActivityNo"]);
+                this.input2().click();
+                browser.sleep(500);
+                BrowserUtils.enterText(by.xpath("(//input[@dicimalnumber][@placeholder='enter no. here'])[2]"), record["AssessmentActivityNo"]);
                 browser.sleep(2000);
                 this.TabTask().click();
                 browser.sleep(200);
@@ -1224,46 +1377,27 @@ export class coursePage {
                 BrowserUtils.selectDropdownValue(by.xpath("//select[contains(@class,'year-list-dropdown')]"), record["Class"]);
                 browser.sleep(2000);
                 this.Taskcheckround5().click();
+                browser.sleep(2000);
                 this.AddTask().click();
-                browser.sleep(2000);
-                this.AddTaskbtn().click();
-                browser.sleep(2000);
-                this.TabTask6().click();
-                browser.sleep(200);
-                this.Taskselection6().click();
-                browser.sleep(2000);
-                BrowserUtils.selectDropdownValue(by.xpath("//select[contains(@class,'year-list-dropdown')]"), record["Class"]);
-                browser.sleep(2000);
-                this.Taskcheckround6().click();
-                this.AddTask().click();
-                browser.sleep(2000);
-                this.AddTaskbtn().click();
-                browser.sleep(2000);
-                this.TabTask7().click();
-                browser.sleep(200);
-                this.Taskselection7().click();
-                browser.sleep(2000);
-                BrowserUtils.selectDropdownValue(by.xpath("//select[contains(@class,'year-list-dropdown')]"), record["Class"]);
-                browser.sleep(2000);
-                this.Taskcheckround7().click();
-                this.AddTask().click();
-                browser.sleep(2000);
-                this.AddTaskbtn().click();
-                browser.sleep(2000);
-
+                browser.sleep(4000);
+                this.Class1().isDisplayed().then(function (dis) {
+                    expect(dis).toBe(true, ' Assessment activity data is created successfully ')
+                })
             })
         }
     }
     IntroductionActivity() {
         browser.ignoreSynchronization = true
-        var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CourseData/EnglishData.json', null)
+        var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CourseData/English.json', null)
         if (dataRecs && dataRecs.length > 0) {
             dataRecs.forEach(record => {
                 this.AddnewActivity().click();
                 browser.sleep(500);
                 this.introductionactivity().click();
+                browser.sleep(1500);
+                this.input3().click();
                 browser.sleep(500);
-                BrowserUtils.enterText(by.xpath("//input[@dicimalnumber][@placeholder='enter no. here']"), record["ActivityNo"]);
+                BrowserUtils.enterText(by.xpath("(//input[@dicimalnumber][@placeholder='enter no. here'])[3]"), record["IntroductionActivityNo"]);
                 browser.sleep(200);
                 this.TabTask().click();
                 browser.sleep(200);
@@ -1272,13 +1406,18 @@ export class coursePage {
                 BrowserUtils.selectDropdownValue(by.xpath("//select[contains(@class,'year-list-dropdown')]"), record["Class"]);
                 browser.sleep(2000);
                 this.Taskcheckround().click();
+                browser.sleep(2000);
                 this.AddTask().click();
+                browser.sleep(4000);
+                this.Class1().isDisplayed().then(function (dis) {
+                    expect(dis).toBe(true, ' Introduction activity data is created successfully ')
+                })
             })
         }
     }
     Milestoneupdate() {
         browser.ignoreSynchronization = true
-        var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CourseData/EnglishData.json', null)
+        var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CourseData/English.json', null)
         if (dataRecs && dataRecs.length > 0) {
             dataRecs.forEach(record => {
                 var linkselection = by.xpath("//td[contains(text(),'Draft')]/..//a[text()='" + record["Coursesubjectlink"] + "']");
@@ -1301,7 +1440,7 @@ export class coursePage {
     }
     createNewCourseenglish() {
         browser.ignoreSynchronization = true
-        var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CourseData/EnglishData.json', null)
+        var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CourseData/English.json', null)
         if (dataRecs && dataRecs.length > 0) {
             dataRecs.forEach(record => {
                 browser.sleep(5000);
@@ -1313,9 +1452,23 @@ export class coursePage {
             })
         }
     }
+    createcoursewithallactivities() {
+        browser.ignoreSynchronization = true
+        var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CourseData/Telugu.json', null)
+        if (dataRecs && dataRecs.length > 0) {
+            dataRecs.forEach(record => {
+                browser.sleep(5000);
+                this.Createnewcoursebutton().click();
+                browser.sleep(4000);
+                BrowserUtils.selectDropdownValue(by.xpath("//select[@name='subject']"), record["Subject"]);
+                browser.sleep(1000);
+                this.coursewithallactivities();
+            })
+        }
+    }
     createNewCoursetelugu() {
         browser.ignoreSynchronization = true
-        var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CourseData/EnglishData.json', null)
+        var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CourseData/Telugu.json', null)
         if (dataRecs && dataRecs.length > 0) {
             dataRecs.forEach(record => {
                 browser.sleep(5000);

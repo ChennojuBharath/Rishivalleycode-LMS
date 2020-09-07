@@ -11,6 +11,12 @@
         "Question": "NarendraModi is the PrimeMinster of India?",
         "Option1": "True",
         "Option2": "False",
+         "Question2": "Gandhi's full name is Mohandas Karamchand Gandhi.?",
+        "Option3": "True",
+        "Option4": "False",
+         "Question3": "Gandhiji's mother Putlibai did not tell stories with much love?",
+        "Option5": "True",
+        "Option6": "False",
         "ActivityRole": "Author"
       }
 ]

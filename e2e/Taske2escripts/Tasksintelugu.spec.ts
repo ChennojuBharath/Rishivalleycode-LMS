@@ -112,7 +112,7 @@ describe('Run the LMS scripts end to end', () => {
         }, 20000);
       });
       it('Verify review tasks and send for approval is successful', () => {
-        Reviewer.Reviewtaskstelugu();
+        Reviewer.Reviewtasksfortelugu();
      });
      it('logout from reviewer application', () => {
         loginPg.logoutoperation()
