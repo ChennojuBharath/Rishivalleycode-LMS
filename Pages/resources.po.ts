@@ -52,7 +52,7 @@ export class Resources {
         return element(by.xpath("//input[@type='file']"))
     }
     OKbtn() {
-        return element(by.xpath("//span[text()='OK']"));
+        return element(by.xpath("//button[text()='OK']"));
     }
     savebtn() {
         return element(by.xpath("//span[contains(text(),'Save')]"))
@@ -83,8 +83,12 @@ export class Resources {
         browser.sleep(500);
         this.selectall().click();
         browser.sleep(2500);
+        this.selecttype().click();
+        browser.sleep(500);
         this.selectGeneric().click();
         browser.sleep(2500);
+        this.selecttype().click();
+        browser.sleep(500);
         this.selectclass().click();
         browser.sleep(2500);
         this.Resourcelink().isDisplayed().then(function (dis) {

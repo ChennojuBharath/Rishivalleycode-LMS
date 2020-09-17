@@ -11,6 +11,10 @@ Approver = new Approverview();
 let taskPg: tasksPage
 taskPg = new tasksPage();
 describe('Approver flow ', () => {
+  beforeAll(() => {
+    browser.manage().window().maximize();
+    BrowserUtils.enterUrl();  
+  });
      it('keycloak login', () => {
     browser.ignoreSynchronization = true
      browser.manage().window().maximize();
@@ -42,4 +46,7 @@ describe('Approver flow ', () => {
   it('Verify comments for tasks can be deleted', () => {
     Approver.deletecomments();
   });
+  it('logout from approver application', () => {
+    loginPg.logoutoperation()
+});
 })

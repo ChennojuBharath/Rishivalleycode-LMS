@@ -455,7 +455,9 @@ export class coursePage {
     ExportCourse() {
         browser.sleep(2000);
         this.Exportbutton().click();
-        browser.sleep(10000);
+        browser.sleep(15000);
+        this.Subjectok().click();
+        browser.sleep(5000);
         this.Createnewcoursebutton().isDisplayed().then(function (dis) {
             expect(dis).toBe(true, 'Course can be exported successfully')
         })
@@ -613,7 +615,7 @@ export class coursePage {
                 //1st activity
                 this.engBatBallnontabactivity().click();
                 browser.sleep(500);
-                this.input4().click();
+                this.input3().click();
                 browser.sleep(500);
                 BrowserUtils.enterText(by.xpath("(//input[@dicimalnumber][@placeholder='enter no. here'])[3]"), record["BatBallnontabActivityNo"]);
                 browser.sleep(2000);
@@ -856,7 +858,7 @@ export class coursePage {
             })
         }
     }
-    coursewithallactivities() {
+        coursewithallactivities() {
         browser.ignoreSynchronization = true
         var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CourseData/English.json', null)
         if (dataRecs && dataRecs.length > 0) {
@@ -878,6 +880,7 @@ export class coursePage {
                 BrowserUtils.enterText(by.xpath("//input[@formcontrolname='daysToComplete']"), record["Completiondays"]);
                 this.PracticeActivitywithmultipletasks();
                 this.AssessmentActivitywithmultipletasks();
+                this.IntroductionActivity();
                 this.Nontabactivitiesforenglish();
                 this.commentbutton().click();
                 BrowserUtils.enterText(by.xpath("//textarea[@ng-reflect-name='commentData']"), record["EditpageComment"]);
@@ -1426,18 +1429,6 @@ export class coursePage {
             })
         }
     }
-    CloneMilestone() {
-
-    }
-    Milestonedelete() {
-
-    }
-    Coursedelete() {
-
-    }
-    Courseeview() {
-
-    }
     createNewCourseenglish() {
         browser.ignoreSynchronization = true
         var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CourseData/English.json', null)
@@ -1469,6 +1460,34 @@ export class coursePage {
     createNewCoursetelugu() {
         browser.ignoreSynchronization = true
         var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CourseData/Telugu.json', null)
+        if (dataRecs && dataRecs.length > 0) {
+            dataRecs.forEach(record => {
+                browser.sleep(5000);
+                this.Createnewcoursebutton().click();
+                browser.sleep(4000);
+                BrowserUtils.selectDropdownValue(by.xpath("//select[@name='subject']"), record["Subject"]);
+                browser.sleep(1000);
+                this.Coursedataforteluguwithmultiplemilestones();
+            })
+        }
+    }
+    createNewCourseevs() {
+        browser.ignoreSynchronization = true
+        var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CourseData/EVS.json', null)
+        if (dataRecs && dataRecs.length > 0) {
+            dataRecs.forEach(record => {
+                browser.sleep(5000);
+                this.Createnewcoursebutton().click();
+                browser.sleep(4000);
+                BrowserUtils.selectDropdownValue(by.xpath("//select[@name='subject']"), record["Subject"]);
+                browser.sleep(1000);
+                this.Coursedataforteluguwithmultiplemilestones();
+            })
+        }
+    }
+    createNewCoursemaths() {
+        browser.ignoreSynchronization = true
+        var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CourseData/Maths.json', null)
         if (dataRecs && dataRecs.length > 0) {
             dataRecs.forEach(record => {
                 browser.sleep(5000);

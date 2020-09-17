@@ -8,26 +8,26 @@ describe('Resource Creation Page', () => {
   Resource = new Resources();
   let loginPg: loginPage;
   loginPg = new loginPage();
+  beforeAll(() => {
+    browser.manage().window().maximize();
+    BrowserUtils.enterUrl();
+  });
   it('Course Author login', () => {
-    beforeAll(() => {
-      browser.manage().window().maximize();
-      BrowserUtils.enterUrl();
-    });
-    it('Course Author login', () => {
-      browser.ignoreSynchronization = true
-      browser.waitForAngularEnabled(false);
-      var dataObj = dataProvider.getJsonDataFromFile('./TestData/loginData.json', 'Courseauthorlogindata')
-      loginPg.Courseauthor(dataObj);
-      setTimeout(() => {
-        browser.waitForAngularEnabled(true);
-      }, 20000);
-    });
-    it('Verify Resource can  be created with class data', () => {
-      Resource.Createclasstyperesourcesfortelugu();
-    });
-    it('Verify Resource can  be created with generic data', () => {
-      Resource.Creategenerictyperesourcestelugu();
-    });
-
+    browser.ignoreSynchronization = true
+    browser.waitForAngularEnabled(false);
+    var dataObj = dataProvider.getJsonDataFromFile('./TestData/loginData.json', 'Courseauthorlogindata')
+    loginPg.Courseauthor(dataObj);
+    setTimeout(() => {
+      browser.waitForAngularEnabled(true);
+    }, 20000);
+  });
+  it('Verify Resource can  be created with class data', () => {
+    Resource.Createclasstyperesourcesfortelugu();
+  });
+  it('Verify Resource can  be created with generic data', () => {
+    Resource.Creategenerictyperesourcestelugu();
+  });
+  it('logout from approver application', () => {
+    loginPg.logoutoperation()
   })
 })

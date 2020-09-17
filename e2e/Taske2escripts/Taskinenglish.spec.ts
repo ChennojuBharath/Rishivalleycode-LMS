@@ -97,7 +97,7 @@ describe('Run the LMS scripts end to end', () => {
         focuscards.createfocuscardsTaskenglish();
     });
     it('logout from application', () => {
-        loginPg.logoutoperation()
+        loginPg.Logoutoperation()
     });
     it('Task reviewer login', () => {
         browser.ignoreSynchronization = true
@@ -112,7 +112,7 @@ describe('Run the LMS scripts end to end', () => {
         Reviewer.Reviewtasksforenglish();
      });
      it('logout from reviewer application', () => {
-        loginPg.logoutoperation()
+        loginPg.Logoutoperation()
     });
      it('Task approver login', () => {
         browser.ignoreSynchronization = true

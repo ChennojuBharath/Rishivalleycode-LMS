@@ -1232,7 +1232,7 @@ export class tasksPage {
                 browser.sleep(3000);
                 this.resourcePanelElement().click();
                 browser.sleep(3000);
-                this.createNewTaskBtn().isDisplayed().then(function (dis) {
+                this.resourcePanelElement().isDisplayed().then(function (dis) {
                     expect(dis).toBe(true, 'resource link is clickable')
                 })
             })

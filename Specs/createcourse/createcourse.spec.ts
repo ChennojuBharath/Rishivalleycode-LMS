@@ -9,6 +9,10 @@ describe('Course Creation Page', () => {
   coursePg = new coursePage();
   let loginPg: loginPage;
   loginPg = new loginPage();
+  beforeAll(() => {
+    browser.manage().window().maximize();
+    BrowserUtils.enterUrl();  
+  });
       it('keycloak login', () => {
     browser.ignoreSynchronization = true
      browser.manage().window().maximize();
@@ -33,6 +37,9 @@ describe('Course Creation Page', () => {
   })
   it('Checking for the Export button is working or not', () => {
     coursePg.ExportCourse();
+  })
+  it('logout from approver application', () => {
+    loginPg.logoutoperation()
   })
 })
 

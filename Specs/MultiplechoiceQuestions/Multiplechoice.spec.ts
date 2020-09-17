@@ -1,9 +1,27 @@
-import { browser, by, element, ExpectedConditions } from 'protractor';
+import { browser} from "protractor";
+import { BrowserUtils } from '../../utils/browser.utils';
+import { dataProvider } from '../../TestData/dataprovider';
+import { loginPage } from '../../Pages/loginPage.po';
 import { tasksPage } from '../../Pages/multiplechoicePage.po';
 
 describe('Tapping MCQ Tasks Creation', () => {
+    let loginPg: loginPage;
+loginPg = new loginPage();
     let taskPg: tasksPage
     taskPg = new tasksPage();
+    beforeAll(() => {
+        browser.manage().window().maximize();
+        BrowserUtils.enterUrl();  
+      });
+      it('Task author login', () => {
+        browser.ignoreSynchronization = true
+        browser.waitForAngularEnabled(false);
+        var dataObj = dataProvider.getJsonDataFromFile('./TestData/loginData.json', 'Taskauthorlogindata')
+        loginPg.Taskauthor(dataObj);
+        setTimeout(() => {
+          browser.waitForAngularEnabled(true);  
+        }, 20000);
+      });
     it('Verify tasks by performing click action on every class', () => {
         taskPg.ClickAllclasses();
     });
@@ -38,5 +56,7 @@ describe('Tapping MCQ Tasks Creation', () => {
     it('Check the task publish page breadcrumbs are working', () => {
         taskPg.Publishbreadcrmbs();
     })
-
+    it('logout from application', () => {
+        loginPg.logoutoperation()
+      });
 })

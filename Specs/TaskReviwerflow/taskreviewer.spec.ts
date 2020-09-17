@@ -11,7 +11,10 @@ Reviewer = new Reviewerview();
 let taskPg: tasksPage
 taskPg = new tasksPage();
 describe('Reviewer flow ', () => {
- 
+   beforeAll(() => {
+      browser.manage().window().maximize();
+      BrowserUtils.enterUrl();  
+    });
      it('keycloak login', () => {
     browser.ignoreSynchronization = true
      browser.manage().window().maximize();
@@ -43,4 +46,7 @@ describe('Reviewer flow ', () => {
    it('Verify comments for tasks can be deleted', () => {
       Reviewer.deletecomments();
    });
+   it('logout from reviewer application', () => {
+      loginPg.logoutoperation()
+  });
 })

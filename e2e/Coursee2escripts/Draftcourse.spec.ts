@@ -28,7 +28,7 @@ describe('Create courese end to end', () => {
         coursePg.createNewCourseenglish();
     });
     it('logout from application', () => {
-        loginPg.logoutoperation()
+      loginPg.Logoutoperation()
     });
     it('Course Approver login', () => {
         browser.ignoreSynchronization = true

@@ -25,7 +25,7 @@ describe('Create courese end to end', () => {
         }, 20000);
     });
     it('check course can be created with multiple tasks', () => {
-        coursePg.createNewCoursetelugu();
+        coursePg.createNewCourseevs();
     });
     it('logout from application', () => {
         loginPg.Logoutoperation()

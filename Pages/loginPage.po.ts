@@ -14,7 +14,6 @@ export class loginPage {
         return element(by.xpath("//input[@name='login']"));
     }
     userName() {
-        //return element(by.xpath('//input[@name="username"]'));
         return element(by.xpath('//input[@ng-reflect-name="userName"]'));
     }
     profileicon(){
@@ -24,7 +23,6 @@ export class loginPage {
         return element(by.xpath("//button[@role='menuitem']")); 
     }
     passWord() {
-        //return element(by.xpath('//input[@name="password"]'));
         return element(by.xpath('//input[@ng-reflect-name="password"]'));
     }
     loginButton() {
@@ -76,10 +74,19 @@ export class loginPage {
     }
     logoutoperation(){
         browser.ignoreSynchronization = true
+        browser.sleep(10000);
+        this.profileicon().click();
+        browser.sleep(2000);
+        this.logout().click();
+        browser.sleep(2000);
+    }
+    Logoutoperation(){
+        browser.ignoreSynchronization = true
         browser.sleep(2000);
         this.profileicon().click();
         browser.sleep(2000);
         this.logout().click();
+        browser.sleep(2000);
         this.keycloakusername().isDisplayed().then(function (dis) {
             expect(dis).toBe(true, 'logout from application is successful')
          })

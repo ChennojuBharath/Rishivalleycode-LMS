@@ -37,6 +37,7 @@ export class courseapprovalPage {
           var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CourseData/EnglishData.json', null)
           if (dataRecs && dataRecs.length > 0) {
               dataRecs.forEach(record => {
+               browser.sleep(15000);
                browser.ignoreSynchronization = true
                var classselection = by.xpath("//mat-list-item[@ng-reflect-router-link='/classes/all-courses']/../mat-list-item/div[text()='" + record["Class"] + "']");
                BrowserUtils.clickOnElement(classselection);
@@ -113,6 +114,7 @@ export class courseapprovalPage {
         var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CourseData/TeluguData.json', null)
         if (dataRecs && dataRecs.length > 0) {
             dataRecs.forEach(record => {
+               browser.sleep(15000);
              browser.ignoreSynchronization = true
              var classselection = by.xpath("//mat-list-item[@ng-reflect-router-link='/classes/all-courses']/../mat-list-item/div[text()='" + record["Class"] + "']");
              BrowserUtils.clickOnElement(classselection);
