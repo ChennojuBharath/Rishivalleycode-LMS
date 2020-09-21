@@ -186,8 +186,6 @@ export class Reviewerview {
                 this.Rivertext().isDisplayed().then(function (dis) {
                     expect(dis).toBe(true, 'Task review flow is successful')
                 })
-
-
             })
         }
     }

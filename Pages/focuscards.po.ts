@@ -239,10 +239,9 @@ export class focuscardsPage {
         this.clickOntappingMCQNextBtn().click();
         browser.sleep(500);
         this.Publishnavigation();
-        this.createNewTaskBtn().isDisplayed().then(function (dis) {
-            expect(dis).toBe(true, 'Focal cards Task is created successfully')
+        this.Class1().isDisplayed().then(function (dis) {
+            expect(dis).toBe(true, 'Focus cards Task is created successfully with telugu')
         })
-
     }
     createfocuscardsTaskenglish() {
         this.CreateFocuscardsenglish();
@@ -254,7 +253,7 @@ export class focuscardsPage {
         browser.sleep(1500);
         this.Publishnavigation();
         this.createNewTaskBtn().isDisplayed().then(function (dis) {
-            expect(dis).toBe(true, 'Focal cards Task is created successfully')
+            expect(dis).toBe(true, 'Focus cards Task is created successfully with english')
         })
 
     }
@@ -268,7 +267,7 @@ export class focuscardsPage {
         browser.sleep(1500);
         this.Publishnavigation();
         this.createNewTaskBtn().isDisplayed().then(function (dis) {
-            expect(dis).toBe(true, 'Focal cards Task is created successfully')
+            expect(dis).toBe(true, 'Focus cards Task is created successfully with evs')
         })
 
     }
@@ -281,8 +280,8 @@ export class focuscardsPage {
         this.acceptSaveTaskPopUp().click();
         browser.sleep(1500);
         this.Publishnavigation();
-        this.createNewTaskBtn().isDisplayed().then(function (dis) {
-            expect(dis).toBe(true, 'Focal cards Task is created successfully')
+        this.Class1().isDisplayed().then(function (dis) {
+            expect(dis).toBe(true, 'Focus cards Task is created successfully with maths')
         })
 
     }
@@ -669,6 +668,9 @@ export class focuscardsPage {
         contentsearch.clear();
         browser.sleep(500);
         this.Class1().click();
+        this.Class1().isDisplayed().then(function (dis) {
+            expect(dis).toBe(true, 'Contenttype search is working successfully')
+        })
     }
     Previewbackbutton() {
         this.CreateFocuscardsenglish();

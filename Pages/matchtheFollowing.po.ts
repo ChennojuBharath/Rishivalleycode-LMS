@@ -320,7 +320,7 @@ export class matchtheFollowingPage {
         browser.sleep(1000);
         this.Publishnavigation();
         this.createNewTaskBtn().isDisplayed().then(function (dis) {
-            expect(dis).toBe(true, 'MatchthefollowingImagetoImageTask is created successfully')
+            expect(dis).toBe(true, 'MatchthefollowingImagetoImageTask is created successfully with evs')
         })
     }
     createMatchthefollowingImagetoImageTaskmaths() {
@@ -334,7 +334,7 @@ export class matchtheFollowingPage {
         browser.sleep(1000);
         this.Publishnavigation();
         this.createNewTaskBtn().isDisplayed().then(function (dis) {
-            expect(dis).toBe(true, 'MatchthefollowingImagetoImageTask is created successfully')
+            expect(dis).toBe(true, 'MatchthefollowingImagetoImageTask is created successfully with maths')
         })
     }
     createMatchthefollowingTexttoImageTasktelugu() {
@@ -347,7 +347,7 @@ export class matchtheFollowingPage {
         browser.sleep(2500);
         this.Publishnavigation();
         this.createNewTaskBtn().isDisplayed().then(function (dis) {
-            expect(dis).toBe(true, 'MatchthefollowingTexttoImageTask is created successfully')
+            expect(dis).toBe(true, 'MatchthefollowingTexttoImageTask is created successfully with telugu')
         })
     }
     createMatchthefollowingTexttoImageTaskenglish() {
@@ -363,7 +363,7 @@ export class matchtheFollowingPage {
         browser.sleep(500);
         this.Publishnavigation();
         this.createNewTaskBtn().isDisplayed().then(function (dis) {
-            expect(dis).toBe(true, 'MatchthefollowingTexttoImageTask is created successfully')
+            expect(dis).toBe(true, 'MatchthefollowingTexttoImageTask is created successfully with english')
         })
     }
     createMatchthefollowingTexttoImageTaskevs() {
@@ -379,7 +379,7 @@ export class matchtheFollowingPage {
         browser.sleep(500);
         this.Publishnavigation();
         this.createNewTaskBtn().isDisplayed().then(function (dis) {
-            expect(dis).toBe(true, 'MatchthefollowingTexttoImageTask is created successfully')
+            expect(dis).toBe(true, 'MatchthefollowingTexttoImageTask is created successfully with evs')
         })
     }
     createMatchthefollowingTexttoImageTaskmaths() {
@@ -395,7 +395,7 @@ export class matchtheFollowingPage {
         browser.sleep(500);
         this.Publishnavigation();
         this.createNewTaskBtn().isDisplayed().then(function (dis) {
-            expect(dis).toBe(true, 'MatchthefollowingTexttoImageTask is created successfully')
+            expect(dis).toBe(true, 'MatchthefollowingTexttoImageTask is created successfully with maths')
         })
     }
     Contenttypesearch() {
@@ -406,6 +406,9 @@ export class matchtheFollowingPage {
         contentsearch.clear();
         browser.sleep(500);
         this.Class1().click();
+        this.createNewTaskBtn().isDisplayed().then(function (dis) {
+            expect(dis).toBe(true, 'Contenttypesearch is working successfully')
+        })
     }
     Createcancelbutton() {
         this.matchingcreatepageenglish();
@@ -641,7 +644,7 @@ export class matchtheFollowingPage {
         browser.sleep(1500);
         this.Publishnavigation();
         this.createNewTaskBtn().isDisplayed().then(function (dis) {
-            expect(dis).toBe(true, 'MatchthefollowingImagetoTextTask is created successfully')
+            expect(dis).toBe(true, 'MatchthefollowingImagetoTextTask is created successfully with telugu')
         })
     }
     createMatchthefollowingImagetoTextTaskenglish() {
@@ -658,7 +661,7 @@ export class matchtheFollowingPage {
         browser.sleep(1500);
         this.Publishnavigation();
         this.createNewTaskBtn().isDisplayed().then(function (dis) {
-            expect(dis).toBe(true, 'MatchthefollowingImagetoTextTask is created successfully')
+            expect(dis).toBe(true, 'MatchthefollowingImagetoTextTask is created successfully with english')
         })
     }
     createMatchthefollowingTexttoTextTasktelugu() {
@@ -673,7 +676,7 @@ export class matchtheFollowingPage {
         browser.sleep(500);
         this.Publishnavigation();
         this.createNewTaskBtn().isDisplayed().then(function (dis) {
-            expect(dis).toBe(true, 'MatchthefollowingTexttoTextTask is created successfully')
+            expect(dis).toBe(true, 'MatchthefollowingTexttoTextTask is created successfully with telugu')
         })
     }
     createMatchthefollowingTexttoTextTaskenglish() {
@@ -688,7 +691,7 @@ export class matchtheFollowingPage {
         browser.sleep(500);
         this.Publishnavigation();
         this.createNewTaskBtn().isDisplayed().then(function (dis) {
-            expect(dis).toBe(true, 'MatchthefollowingTexttoTextTask is created successfully')
+            expect(dis).toBe(true, 'MatchthefollowingTexttoTextTask is created successfully with english')
         })
     }
     MatchImagetoTexttelugu() {

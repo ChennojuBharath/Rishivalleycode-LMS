@@ -666,7 +666,7 @@ export class fillintheblanksPage {
             this.okbutton().click();
             browser.sleep(1000);
             this.Publishnavigation();
-            this.createNewTaskBtn().isDisplayed().then(function (dis) {
+            this.Class1().isDisplayed().then(function (dis) {
                   expect(dis).toBe(true, 'FillintheblanksTask is created successfully with telugu data')
             })
       }
@@ -681,7 +681,7 @@ export class fillintheblanksPage {
             this.okbutton().click();
             browser.sleep(1500);
             this.Publishnavigation();
-            this.createNewTaskBtn().isDisplayed().then(function (dis) {
+            this.Class1().isDisplayed().then(function (dis) {
                   expect(dis).toBe(true, 'FillintheblanksTask is created successfully with english data')
             })
       }
@@ -696,7 +696,7 @@ export class fillintheblanksPage {
             this.okbutton().click();
             browser.sleep(1500);
             this.Publishnavigation();
-            this.createNewTaskBtn().isDisplayed().then(function (dis) {
+            this.Class1().isDisplayed().then(function (dis) {
                   expect(dis).toBe(true, 'FillintheblanksTask is created successfully with english data')
             })
       }
@@ -711,8 +711,8 @@ export class fillintheblanksPage {
             this.okbutton().click();
             browser.sleep(1500);
             this.Publishnavigation();
-            this.createNewTaskBtn().isDisplayed().then(function (dis) {
-                  expect(dis).toBe(true, 'FillintheblanksTask is created successfully with english data')
+            this.Class1().isDisplayed().then(function (dis) {
+                  expect(dis).toBe(true, 'FillintheblanksTask is created successfully with maths data')
             })
       }
       Publishnavigation() {

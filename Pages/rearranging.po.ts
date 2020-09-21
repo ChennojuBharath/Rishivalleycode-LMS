@@ -538,6 +538,9 @@ export class rearrangingPage {
         this.clickOntappingMCQNextBtn().click();
         browser.sleep(1500);
         this.Publishnavigation();
+        this.Class1().isDisplayed().then(function (dis) {
+            expect(dis).toBe(true, 'RearrangingTask  with Images is created successfully with english data')
+      })
     }
     createRearrangingTaskwithImagesmaths() {
         this.rearrangingcreatepageformaths();
@@ -553,6 +556,9 @@ export class rearrangingPage {
         this.clickOntappingMCQNextBtn().click();
         browser.sleep(1500);
         this.Publishnavigation();
+        this.Class1().isDisplayed().then(function (dis) {
+            expect(dis).toBe(true, 'RearrangingTask is created successfully with maths data')
+      })
     }
     createRearrangingTaskwithImagesevs() {
         this.rearrangingcreatepageforevs();
@@ -568,6 +574,9 @@ export class rearrangingPage {
         this.clickOntappingMCQNextBtn().click();
         browser.sleep(1500);
         this.Publishnavigation();
+        this.Class1().isDisplayed().then(function (dis) {
+            expect(dis).toBe(true, 'RearrangingTask is created successfully with evs data')
+      })
     }
     Previewbackbutton() {
         this.rearrangingcreatepagefortelugu();
@@ -676,6 +685,9 @@ export class rearrangingPage {
         this.okbutton().click();
         browser.sleep(1500);
         this.Publishnavigation();
+        this.Class1().isDisplayed().then(function (dis) {
+            expect(dis).toBe(true, 'RearrangingTask with Images is created successfully with telugu data')
+      }) 
     }
     createRearrangingTaskwithTexteng() {
         this.rearrangingcreatepageforenglish();
@@ -689,6 +701,9 @@ export class rearrangingPage {
         this.okbutton().click();
         browser.sleep(1500);
         this.Publishnavigation();
+        this.Class1().isDisplayed().then(function (dis) {
+            expect(dis).toBe(true, 'RearrangingTask with text is created successfully with english data')
+      }) 
     }
     createRearrangingTaskwithTextevs() {
         this.rearrangingcreatepageforevs();
@@ -702,6 +717,9 @@ export class rearrangingPage {
         this.okbutton().click();
         browser.sleep(1500);
         this.Publishnavigation();
+        this.Class1().isDisplayed().then(function (dis) {
+            expect(dis).toBe(true, 'RearrangingTask with text is created successfully with evs data')
+      }) 
     }
     createRearrangingTaskwithTextmaths() {
         this.rearrangingcreatepageformaths();
@@ -715,6 +733,9 @@ export class rearrangingPage {
         this.okbutton().click();
         browser.sleep(1500);
         this.Publishnavigation();
+        this.Class1().isDisplayed().then(function (dis) {
+            expect(dis).toBe(true, 'RearrangingTask with text is created successfully with maths data')
+      }) 
     }
     createRearrangingTaskwithTexttelugu() {
         this.rearrangingcreatepagefortelugu();
@@ -728,8 +749,10 @@ export class rearrangingPage {
         browser.sleep(1500);
         this.clickOntappingMCQNextBtn().click();
         browser.sleep(1500);
-        //this.PreviewpagerearrangingText();
         this.Publishnavigation();
+        this.Class1().isDisplayed().then(function (dis) {
+            expect(dis).toBe(true, 'RearrangingTask with text is created successfully with telugu data')
+      }) 
     }
 
     Publishnavigation() {

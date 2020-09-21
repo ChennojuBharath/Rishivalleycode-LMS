@@ -749,7 +749,7 @@ export class trueorfalsePage {
         this.Previewfortrueorfalse();
         this.Publishnavigation();
         this.createNewTaskBtn().isDisplayed().then(function (dis) {
-            expect(dis).toBe(true, 'createTrueorfalsetaskwithtext is created successfully')
+            expect(dis).toBe(true, 'createTrueorfalsetaskwithtext is created successfully with telugu')
         })
     }
     createTrueorfalsetasktelugumultiplequestions() {
@@ -764,7 +764,7 @@ export class trueorfalsePage {
         this.Previewfortrueorfalse();
         this.Publishnavigation();
         this.createNewTaskBtn().isDisplayed().then(function (dis) {
-            expect(dis).toBe(true, 'createTrueorfalsetaskis created successfully')
+            expect(dis).toBe(true, 'createTrueorfalsetaskis created successfully with telugu')
         })
     }
     createTrueorfalsetaskenglishmultiplequestions() {
@@ -779,7 +779,7 @@ export class trueorfalsePage {
         this.Previewfortrueorfalse();
         this.Publishnavigation();
         this.createNewTaskBtn().isDisplayed().then(function (dis) {
-            expect(dis).toBe(true, 'createTrueorfalsetask is created successfully')
+            expect(dis).toBe(true, 'createTrueorfalsetask is created successfully with english')
         })
     }
     createTrueorfalsetaskwithtextenglish() {
@@ -797,7 +797,7 @@ export class trueorfalsePage {
         this.Previewfortrueorfalse();
         this.Publishnavigation();
         this.createNewTaskBtn().isDisplayed().then(function (dis) {
-            expect(dis).toBe(true, 'createTrueorfalsetaskwithtext is created successfully')
+            expect(dis).toBe(true, 'createTrueorfalsetaskwithtext is created successfully witl english')
         })
     }
     createTrueorfalsetaskwithtextevs() {
@@ -815,7 +815,7 @@ export class trueorfalsePage {
         this.Previewfortrueorfalse();
         this.Publishnavigation();
         this.createNewTaskBtn().isDisplayed().then(function (dis) {
-            expect(dis).toBe(true, 'createTrueorfalsetaskwithtext is created successfully')
+            expect(dis).toBe(true, 'createTrueorfalsetaskwithtext is created successfully with evs')
         })
     }
     createTrueorfalsetaskwithtextmaths() {
@@ -833,7 +833,7 @@ export class trueorfalsePage {
         this.Previewfortrueorfalse();
         this.Publishnavigation();
         this.createNewTaskBtn().isDisplayed().then(function (dis) {
-            expect(dis).toBe(true, 'createTrueorfalsetaskwithtext is created successfully')
+            expect(dis).toBe(true, 'createTrueorfalsetaskwithtext is created successfully with maths')
         })
     }
     createTrueorfalsetaskwithtextandpicturetelugu() {
@@ -851,7 +851,7 @@ export class trueorfalsePage {
         this.Previewfortrueorfalse();
         this.Publishnavigation();
         this.createNewTaskBtn().isDisplayed().then(function (dis) {
-            expect(dis).toBe(true, 'createTrueorfalsetaskwithtext is created successfully')
+            expect(dis).toBe(true, 'createTrueorfalsetaskwithtext is created successfully with telugu')
         })
     }
     createTrueorfalsetaskwithtextandpictureenglish() {
@@ -866,7 +866,7 @@ export class trueorfalsePage {
         this.Previewfortrueorfalse();
         this.Publishnavigation();
         this.createNewTaskBtn().isDisplayed().then(function (dis) {
-            expect(dis).toBe(true, 'createTrueorfalsetaskwithtext is created successfully')
+            expect(dis).toBe(true, 'createTrueorfalsetaskwithtext is created successfully with english')
         })
     }
     createTrueorfalsetaskwithtextandpictureevs() {
@@ -881,7 +881,7 @@ export class trueorfalsePage {
         this.Previewfortrueorfalse();
         this.Publishnavigation();
         this.createNewTaskBtn().isDisplayed().then(function (dis) {
-            expect(dis).toBe(true, 'createTrueorfalsetaskwithtext is created successfully')
+            expect(dis).toBe(true, 'createTrueorfalsetaskwithtext is created successfully with evs')
         })
     }
     createTrueorfalsetaskwithtextandpicturemaths() {
@@ -896,7 +896,7 @@ export class trueorfalsePage {
         this.Previewfortrueorfalse();
         this.Publishnavigation();
         this.createNewTaskBtn().isDisplayed().then(function (dis) {
-            expect(dis).toBe(true, 'createTrueorfalsetaskwithtext is created successfully')
+            expect(dis).toBe(true, 'createTrueorfalsetaskwithtext is created successfully with maths')
         })
     }
     Previewcancelicon() {

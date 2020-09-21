@@ -562,6 +562,9 @@ export class sortingPage {
         this.Previewpageimage();
         browser.sleep(1500);
         this.Publishnavigation();
+        this.Class1().isDisplayed().then(function (dis) {
+            expect(dis).toBe(true, 'createImageSortingTask is created successfully ')
+        })
     }
     createImageSortingTasktelugu() {
         this.sortingcreatepagetelugu();
@@ -578,6 +581,9 @@ export class sortingPage {
         this.Previewpageimage();
         browser.sleep(1500);
         this.Publishnavigation();
+        this.Class1().isDisplayed().then(function (dis) {
+            expect(dis).toBe(true, 'createImageSortingTask is created successfully with telugu')
+        })
     }
     createImageSortingTaskenglish() {
         this.sortingcreatepageenglish();
@@ -593,6 +599,9 @@ export class sortingPage {
         this.Previewpageimage();
         browser.sleep(1500);
         this.Publishnavigation();
+        this.Class1().isDisplayed().then(function (dis) {
+            expect(dis).toBe(true, 'createImageSortingTask is created successfully with english')
+        })
     }
     createImageSortingTaskevs() {
         this.sortingcreatepageevs();
@@ -608,6 +617,9 @@ export class sortingPage {
         this.Previewpageimage();
         browser.sleep(1500);
         this.Publishnavigation();
+        this.Class1().isDisplayed().then(function (dis) {
+            expect(dis).toBe(true, 'createImageSortingTask is created successfully with evs')
+        })
     }
     createImageSortingTaskmaths() {
         this.sortingcreatepagemaths();
@@ -623,6 +635,9 @@ export class sortingPage {
         this.Previewpageimage();
         browser.sleep(1500);
         this.Publishnavigation();
+        this.Class1().isDisplayed().then(function (dis) {
+            expect(dis).toBe(true, 'createImageSortingTask is created successfully with maths')
+        })
     }
     Updatesortingbylink() {
         browser.sleep(2000);
@@ -758,6 +773,9 @@ export class sortingPage {
         this.Previewpagetext();
         browser.sleep(1500);
         this.Publishnavigation();
+        this.Class1().isDisplayed().then(function (dis) {
+            expect(dis).toBe(true, 'createTextSortingTask is created successfully')
+        })
     }
     createTextSortingTaskenglish() {
         this.sortingcreatepageenglish();
@@ -775,6 +793,9 @@ export class sortingPage {
         this.Previewpagetext();
         browser.sleep(1500);
         this.Publishnavigation();
+        this.Class1().isDisplayed().then(function (dis) {
+            expect(dis).toBe(true, 'createTextSortingTask is created successfully with english')
+        })
     }
     createTextSortingTaskevs() {
         this.sortingcreatepageevs();
@@ -792,6 +813,9 @@ export class sortingPage {
         this.Previewpagetext();
         browser.sleep(1500);
         this.Publishnavigation();
+        this.Class1().isDisplayed().then(function (dis) {
+            expect(dis).toBe(true, 'createTextSortingTask is created successfully with evs')
+        })
     }
     createTextSortingTaskmaths() {
         this.sortingcreatepagemaths();
@@ -809,6 +833,9 @@ export class sortingPage {
         this.Previewpagetext();
         browser.sleep(1500);
         this.Publishnavigation();
+        this.Class1().isDisplayed().then(function (dis) {
+            expect(dis).toBe(true, 'createTextSortingTask is created successfully with maths')
+        })
     }
     createTextSortingTasktelugu() {
         this.sortingcreatepagetelugu();
@@ -826,6 +853,9 @@ export class sortingPage {
         this.Previewpagetext();
         browser.sleep(1500);
         this.Publishnavigation();
+        this.Class1().isDisplayed().then(function (dis) {
+            expect(dis).toBe(true, 'createTextSortingTask is created successfully with telugu')
+        })
     }
     Contenttypesearch() {
         var contentsearch = element(by.xpath("//input[@placeholder='All content types']"));
