@@ -1005,7 +1005,6 @@ export class coursePage {
                 BrowserUtils.enterText(by.xpath("//input[@formcontrolname='daysToComplete']"), record["Completiondays"]);
                 this.PracticeActivitywithmultipletasks();
                 this.AssessmentActivitywithmultipletasks();
-                this.Nontabactivitiesforenglish();
                 this.commentbutton().click();
                 BrowserUtils.enterText(by.xpath("//textarea[@ng-reflect-name='commentData']"), record["EditpageComment"]);
                 browser.sleep(500);
@@ -1047,7 +1046,6 @@ export class coursePage {
                 BrowserUtils.enterText(by.xpath("//input[@formcontrolname='daysToComplete']"), record["Completiondays"]);
                 this.PracticeActivitywithmultipletasks();
                 this.AssessmentActivitywithmultipletasks();
-                this.Nontabactivitiesforenglish();
                 this.commentbutton().click();
                 BrowserUtils.enterText(by.xpath("//textarea[@ng-reflect-name='commentData']"), record["EditpageComment"]);
                 browser.sleep(500);
@@ -1089,7 +1087,6 @@ export class coursePage {
                 BrowserUtils.enterText(by.xpath("//input[@formcontrolname='daysToComplete']"), record["Completiondays"]);
                 this.PracticeActivitywithmultipletasks();
                 this.AssessmentActivitywithmultipletasks();
-                this.Nontabactivitiesforenglish();
                 this.commentbutton().click();
                 BrowserUtils.enterText(by.xpath("//textarea[@ng-reflect-name='commentData']"), record["EditpageComment"]);
                 browser.sleep(500);
@@ -1131,7 +1128,6 @@ export class coursePage {
                 BrowserUtils.enterText(by.xpath("//input[@formcontrolname='daysToComplete']"), record["Completiondays"]);
                 this.PracticeActivitywithmultipletasks();
                 this.AssessmentActivitywithmultipletasks();
-                this.Nontabactivitiesforenglish();
                 this.commentbutton().click();
                 BrowserUtils.enterText(by.xpath("//textarea[@ng-reflect-name='commentData']"), record["EditpageComment"]);
                 browser.sleep(500);
@@ -1173,7 +1169,6 @@ export class coursePage {
                 BrowserUtils.enterText(by.xpath("//input[@formcontrolname='daysToComplete']"), record["Completiondays"]);
                 this.PracticeActivitywithmultipletasks();
                 this.AssessmentActivitywithmultipletasks();
-                this.Nontabactivitiesforenglish();
                 this.commentbutton().click();
                 BrowserUtils.enterText(by.xpath("//textarea[@ng-reflect-name='commentData']"), record["EditpageComment"]);
                 browser.sleep(500);
@@ -1215,7 +1210,6 @@ export class coursePage {
                 BrowserUtils.enterText(by.xpath("//input[@formcontrolname='daysToComplete']"), record["Completiondays"]);
                 this.PracticeActivitywithmultipletasks();
                 this.AssessmentActivitywithmultipletasks();
-                this.Nontabactivitiesforenglish();
                 this.commentbutton().click();
                 BrowserUtils.enterText(by.xpath("//textarea[@ng-reflect-name='commentData']"), record["EditpageComment"]);
                 browser.sleep(500);
