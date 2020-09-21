@@ -164,6 +164,66 @@ export class Approverview {
             })
         }
     }
+    Approvetaskmaths() {
+        var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CommonData/SubjectData.json', null)
+        if (dataRecs && dataRecs.length > 0) {
+            dataRecs.forEach(record => {
+                browser.ignoreSynchronization = true
+                var subjectselection = by.xpath("//span[text()='" + record["MathsTaskSubject"] + "']");
+                browser.sleep(2000);
+                BrowserUtils.clickOnElement(subjectselection);
+                browser.sleep(2000);
+                var loc = "(//td[contains(text(),'Pending Approve')]/..//a[@class='task-link'])[1]";
+                var tasklinkselection = by.xpath(loc);
+                BrowserUtils.clickOnElement(tasklinkselection);
+                browser.sleep(10000);
+                BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Add Comment')]"));
+                this.commentbutton().click();
+                BrowserUtils.enterText(by.xpath("//textarea[@ng-reflect-name='commentData']"), record["PreviewpageCommentApprover"]);
+                browser.sleep(500);
+                this.Commentsavebtn().click();
+                browser.sleep(1500);
+                BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Approve')]"));
+                this.Approverbtn().click();
+                browser.sleep(5000);
+                this.successmsgokbtn().click();
+                browser.sleep(10000);
+                this.Rivertext().isDisplayed().then(function (dis) {
+                    expect(dis).toBe(true, 'Task approvalflow is successful')
+                })
+            })
+        }
+    }
+    Approvetaskevs() {
+        var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CommonData/SubjectData.json', null)
+        if (dataRecs && dataRecs.length > 0) {
+            dataRecs.forEach(record => {
+                browser.ignoreSynchronization = true
+                var subjectselection = by.xpath("//span[text()='" + record["EvsTaskSubject"] + "']");
+                browser.sleep(2000);
+                BrowserUtils.clickOnElement(subjectselection);
+                browser.sleep(2000);
+                var loc = "(//td[contains(text(),'Pending Approve')]/..//a[@class='task-link'])[1]";
+                var tasklinkselection = by.xpath(loc);
+                BrowserUtils.clickOnElement(tasklinkselection);
+                browser.sleep(10000);
+                BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Add Comment')]"));
+                this.commentbutton().click();
+                BrowserUtils.enterText(by.xpath("//textarea[@ng-reflect-name='commentData']"), record["PreviewpageCommentApprover"]);
+                browser.sleep(500);
+                this.Commentsavebtn().click();
+                browser.sleep(1500);
+                BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Approve')]"));
+                this.Approverbtn().click();
+                browser.sleep(5000);
+                this.successmsgokbtn().click();
+                browser.sleep(10000);
+                this.Rivertext().isDisplayed().then(function (dis) {
+                    expect(dis).toBe(true, 'Task approvalflow is successful')
+                })
+            })
+        }
+    }
     Approvemultipletaskenglish() {
         var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CommonData/SubjectData.json', null)
         if (dataRecs && dataRecs.length > 0) {

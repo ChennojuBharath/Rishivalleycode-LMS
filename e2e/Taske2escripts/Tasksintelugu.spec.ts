@@ -39,15 +39,12 @@ describe('Run the LMS scripts end to end', () => {
     browser.manage().window().maximize();
     BrowserUtils.enterUrl();  
   });
-    it('keycloak login', () => {
-        browser.ignoreSynchronization = true
-        browser.waitForAngularEnabled(false);
-        var dataObj = dataProvider.getJsonDataFromFile('./TestData/loginData.json', 'Taskauthorlogindata')
-        loginPg.Taskauthor(dataObj);
-        setTimeout(() => {
-            browser.waitForAngularEnabled(true);
-        }, 20000);
-    });
+  it('Task author login', () => {
+    browser.waitForAngularEnabled(false);
+    var dataObj = dataProvider.getJsonDataFromFile('./TestData/loginData.json', 'Taskauthorlogindata')
+    loginPg.Taskauthor(dataObj);
+    browser.sleep(5000);
+  });
     it('Verify tasks by performing click action on every class', () => {
         taskPg.ClickAllclasses();
     });
@@ -68,7 +65,7 @@ describe('Run the LMS scripts end to end', () => {
     });
     it('Create task flow check for TapingMCQ with Text to Text with telugu  subject', () => {
         taskPg.createTappingMCQTasktexttelugu();
-    });
+     });
     it('Create Sorting task with Text with telugu subject', () => {
         Sorting.createTextSortingTasktelugu();
     });
@@ -103,13 +100,10 @@ describe('Run the LMS scripts end to end', () => {
         loginPg.Logoutoperation()
     });
     it('Task reviewer login', () => {
-        browser.ignoreSynchronization = true
         browser.waitForAngularEnabled(false);
         var dataObj = dataProvider.getJsonDataFromFile('./TestData/loginData.json', 'Taskreviewerlogindata')
         loginPg.Taskreviewer(dataObj);
-        setTimeout(() => {
-          browser.waitForAngularEnabled(true);  
-        }, 20000);
+        browser.sleep(5000);
       });
       it('Verify review tasks and send for approval is successful', () => {
         Reviewer.Reviewtasksfortelugu();
@@ -117,14 +111,11 @@ describe('Run the LMS scripts end to end', () => {
      it('logout from reviewer application', () => {
         loginPg.Logoutoperation()
     });
-     it('Task approver login', () => {
-        browser.ignoreSynchronization = true
+    it('Task approver login', () => {
         browser.waitForAngularEnabled(false);
         var dataObj = dataProvider.getJsonDataFromFile('./TestData/loginData.json', 'Taskapproverlogindata')
         loginPg.Taskapprover(dataObj);
-        setTimeout(() => {
-          browser.waitForAngularEnabled(true);  
-        }, 20000);
+        browser.sleep(5000);
       });
       it('Verify  approval of tasks is successful', () => {
         Approver.Approvetasktelugu();

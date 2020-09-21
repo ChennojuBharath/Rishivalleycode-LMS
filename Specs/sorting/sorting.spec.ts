@@ -16,13 +16,10 @@ describe('Sorting Tasks Creation', () => {
         BrowserUtils.enterUrl();  
       });
       it('Task author login', () => {
-        browser.ignoreSynchronization = true
         browser.waitForAngularEnabled(false);
         var dataObj = dataProvider.getJsonDataFromFile('./TestData/loginData.json', 'Taskauthorlogindata')
         loginPg.Taskauthor(dataObj);
-        setTimeout(() => {
-          browser.waitForAngularEnabled(true);  
-        }, 20000);
+        browser.sleep(5000);
       });
     it('Verify tasks by performing click action on every class', () => {
         taskPg.ClickAllclasses();

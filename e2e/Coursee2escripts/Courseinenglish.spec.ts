@@ -16,14 +16,11 @@ describe('Create courese end to end', () => {
         BrowserUtils.enterUrl();
     });
     it('Course Author login', () => {
-        browser.ignoreSynchronization = true
         browser.waitForAngularEnabled(false);
         var dataObj = dataProvider.getJsonDataFromFile('./TestData/loginData.json', 'Courseauthorlogindata')
         loginPg.Courseauthor(dataObj);
-        setTimeout(() => {
-            browser.waitForAngularEnabled(true);
-        }, 20000);
-    });
+        browser.sleep(5000);
+      });
     it('check course can be created with multiple tasks', () => {
         coursePg.createNewCourseenglish();
     });
@@ -31,14 +28,11 @@ describe('Create courese end to end', () => {
         loginPg.Logoutoperation()
     });
     it('Course Approver login', () => {
-        browser.ignoreSynchronization = true
         browser.waitForAngularEnabled(false);
         var dataObj = dataProvider.getJsonDataFromFile('./TestData/loginData.json', 'Courseapproverlogindata')
         loginPg.Courseapprover(dataObj);
-        setTimeout(() => {
-            browser.waitForAngularEnabled(true);
-        }, 20000);
-    });
+        browser.sleep(5000);
+      });
     it('check course can be created with multiple tasks', () => {
         approval.approvecourseforenglish();
     });

@@ -3,6 +3,8 @@
         "Class": " Class 4 ",
         "TaskSubject": "TELUGU",
         "EnglishTaskSubject": "ENGLISH",
+        "EvsTaskSubject": "EVS",
+        "MathsTaskSubject": "MATHS",
         "HindiSubject": "HINDI",
         "AcivityType": "Practice",
         "AcivityTypes": "Assessment,Introduction",

@@ -15,15 +15,11 @@ describe('Approver flow ', () => {
     browser.manage().window().maximize();
     BrowserUtils.enterUrl();  
   });
-     it('keycloak login', () => {
-    browser.ignoreSynchronization = true
-     browser.manage().window().maximize();
-    BrowserUtils.enterUrl();
+  it('Task approver login', () => {
+    browser.waitForAngularEnabled(false);
     var dataObj = dataProvider.getJsonDataFromFile('./TestData/loginData.json', 'Taskapproverlogindata')
     loginPg.Taskapprover(dataObj);
-    setTimeout(() => {
-      browser.waitForAngularEnabled(true);  
-    }, 2000000);
+    browser.sleep(5000);
   });
   it('Verify tasks by performing click action on every class', () => {
     taskPg.ClickAllclasses();

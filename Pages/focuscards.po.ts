@@ -258,6 +258,34 @@ export class focuscardsPage {
         })
 
     }
+    createfocuscardsTaskevs() {
+        this.CreateFocuscardsevs();
+        this.focuscardsTaskenglish();
+        browser.sleep(10000);
+        this.saveMCQ().click();
+        browser.sleep(8000);
+        this.acceptSaveTaskPopUp().click();
+        browser.sleep(1500);
+        this.Publishnavigation();
+        this.createNewTaskBtn().isDisplayed().then(function (dis) {
+            expect(dis).toBe(true, 'Focal cards Task is created successfully')
+        })
+
+    }
+    createfocuscardsTaskmaths() {
+        this.CreateFocuscardsenglish();
+        this.focuscardsTaskenglish();
+        browser.sleep(10000);
+        this.saveMCQ().click();
+        browser.sleep(8000);
+        this.acceptSaveTaskPopUp().click();
+        browser.sleep(1500);
+        this.Publishnavigation();
+        this.createNewTaskBtn().isDisplayed().then(function (dis) {
+            expect(dis).toBe(true, 'Focal cards Task is created successfully')
+        })
+
+    }
     CreateFocuscardsenglish() {
         var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CommonData/SubjectData.json', null)
         if (dataRecs && dataRecs.length > 0) {
@@ -269,6 +297,78 @@ export class focuscardsPage {
                 this.FocusCardsLink().click();
                 browser.sleep(5000);
                 BrowserUtils.selectDropdownValue(by.xpath("//select[@name='subjectNames']"), record["EnglishTaskSubject"]);
+                browser.sleep(1000);
+                BrowserUtils.selectDropdownValue(by.xpath("(//select[@class='rv-select w-100 ng-untouched ng-pristine ng-valid'])[2]"), record["AcivityType"]);
+                browser.sleep(1000);
+                this.Activityid().sendKeys(this.ClickonRandomArray());
+                browser.sleep(500);
+                BrowserUtils.enterText(by.xpath("(//input[@ng-reflect-name])[1]"), record["FocuscardsEnglishTitle"]);
+                browser.sleep(1000);
+                BrowserUtils.enterText(by.xpath("//textarea[@ng-reflect-name]"), record["FocuscardsEnglishInstructions"]);
+                browser.sleep(500);
+                BrowserUtils.enterText(by.xpath("//input[@placeholder='__:__']"), record["Time"]);
+                browser.sleep(1000);
+                var path1 = '../../TestData/AudioFiles/sample.mp3';
+                var audioPath = path.resolve(__dirname, path1);
+                browser.sleep(5000);
+                this.typefile1().sendKeys(audioPath);
+                browser.sleep(10000);
+                this.OKbtn().click();
+                browser.sleep(5000);
+                this.overallfeedbackenglish();
+                browser.sleep(1000);
+                this.Createpagecomments();
+                browser.sleep(1500);
+            })
+        }
+    }
+    CreateFocuscardsmaths() {
+        var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CommonData/SubjectData.json', null)
+        if (dataRecs && dataRecs.length > 0) {
+            dataRecs.forEach(record => {
+                browser.ignoreSynchronization = true
+                browser.sleep(5000);
+                this.createNewTaskBtn().click();
+                browser.sleep(3000);
+                this.FocusCardsLink().click();
+                browser.sleep(5000);
+                BrowserUtils.selectDropdownValue(by.xpath("//select[@name='subjectNames']"), record["MathsTaskSubject"]);
+                browser.sleep(1000);
+                BrowserUtils.selectDropdownValue(by.xpath("(//select[@class='rv-select w-100 ng-untouched ng-pristine ng-valid'])[2]"), record["AcivityType"]);
+                browser.sleep(1000);
+                this.Activityid().sendKeys(this.ClickonRandomArray());
+                browser.sleep(500);
+                BrowserUtils.enterText(by.xpath("(//input[@ng-reflect-name])[1]"), record["FocuscardsEnglishTitle"]);
+                browser.sleep(1000);
+                BrowserUtils.enterText(by.xpath("//textarea[@ng-reflect-name]"), record["FocuscardsEnglishInstructions"]);
+                browser.sleep(500);
+                BrowserUtils.enterText(by.xpath("//input[@placeholder='__:__']"), record["Time"]);
+                browser.sleep(1000);
+                var path1 = '../../TestData/AudioFiles/sample.mp3';
+                var audioPath = path.resolve(__dirname, path1);
+                browser.sleep(5000);
+                this.typefile1().sendKeys(audioPath);
+                browser.sleep(10000);
+                this.OKbtn().click();
+                browser.sleep(5000);
+                this.overallfeedbackenglish();
+                browser.sleep(1000);
+                this.Createpagecomments();
+                browser.sleep(1500);
+            })
+        }
+    }
+    CreateFocuscardsevs() {
+        var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CommonData/SubjectData.json', null)
+        if (dataRecs && dataRecs.length > 0) {
+            dataRecs.forEach(record => {
+                browser.ignoreSynchronization = true
+                browser.sleep(5000);
+                this.createNewTaskBtn().click();
+                browser.sleep(3000);
+                this.FocusCardsLink().click();
+                browser.sleep(5000);
+                BrowserUtils.selectDropdownValue(by.xpath("//select[@name='subjectNames']"), record["EvsTaskSubject"]);
                 browser.sleep(1000);
                 BrowserUtils.selectDropdownValue(by.xpath("(//select[@class='rv-select w-100 ng-untouched ng-pristine ng-valid'])[2]"), record["AcivityType"]);
                 browser.sleep(1000);
@@ -407,7 +507,7 @@ export class focuscardsPage {
                 browser.sleep(1000);
                 var path1 = '../../TestData/AudioFiles/sample.mp3';
                 var audioPath = path.resolve(__dirname, path1);
-                browser.sleep(5000);
+                browser.sleep(500);
                 this.typefile1().sendKeys(audioPath);
                 browser.sleep(5000);
                 this.OKbtn().click();
@@ -664,7 +764,7 @@ export class focuscardsPage {
         this.Previewpagecomments();
         browser.sleep(2000);
         this.clickOntappingMCQNextBtn().click();
-        browser.sleep(2000);
+        browser.sleep(10000);
         this.publishBtn().click();
         browser.sleep(10000);
         this.succesfulCreationOfTasks().click();

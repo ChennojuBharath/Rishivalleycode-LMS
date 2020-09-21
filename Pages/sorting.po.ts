@@ -594,6 +594,36 @@ export class sortingPage {
         browser.sleep(1500);
         this.Publishnavigation();
     }
+    createImageSortingTaskevs() {
+        this.sortingcreatepageevs();
+        this.UploadImage();
+        browser.sleep(500);
+        this.saveMCQ().click();
+        browser.sleep(3000);
+        BrowserUtils.waitUntilReady(this.acceptSaveTaskPopUp());
+        this.acceptSaveTaskPopUp().click();
+        browser.sleep(2000);
+        this.clickOntappingMCQNextBtn().click();
+        browser.sleep(2500);
+        this.Previewpageimage();
+        browser.sleep(1500);
+        this.Publishnavigation();
+    }
+    createImageSortingTaskmaths() {
+        this.sortingcreatepagemaths();
+        this.UploadImage();
+        browser.sleep(500);
+        this.saveMCQ().click();
+        browser.sleep(3000);
+        BrowserUtils.waitUntilReady(this.acceptSaveTaskPopUp());
+        this.acceptSaveTaskPopUp().click();
+        browser.sleep(2000);
+        this.clickOntappingMCQNextBtn().click();
+        browser.sleep(2500);
+        this.Previewpageimage();
+        browser.sleep(1500);
+        this.Publishnavigation();
+    }
     Updatesortingbylink() {
         browser.sleep(2000);
         var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CommonData/SubjectData.json', null)
@@ -734,7 +764,41 @@ export class sortingPage {
         this.UploadTextenglish();
         browser.sleep(2000);
         BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Save')]"));
+        browser.sleep(3500);
+        this.saveMCQ().click();
         browser.sleep(500);
+        BrowserUtils.waitUntilReady(this.acceptSaveTaskPopUp());
+        browser.sleep(5000);
+        this.OKbtn().click();
+        browser.sleep(2000);
+        this.clickOntappingMCQNextBtn().click();
+        this.Previewpagetext();
+        browser.sleep(1500);
+        this.Publishnavigation();
+    }
+    createTextSortingTaskevs() {
+        this.sortingcreatepageevs();
+        this.UploadTextenglish();
+        browser.sleep(2000);
+        BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Save')]"));
+        browser.sleep(3500);
+        this.saveMCQ().click();
+        browser.sleep(500);
+        BrowserUtils.waitUntilReady(this.acceptSaveTaskPopUp());
+        browser.sleep(5000);
+        this.OKbtn().click();
+        browser.sleep(2000);
+        this.clickOntappingMCQNextBtn().click();
+        this.Previewpagetext();
+        browser.sleep(1500);
+        this.Publishnavigation();
+    }
+    createTextSortingTaskmaths() {
+        this.sortingcreatepagemaths();
+        this.UploadTextenglish();
+        browser.sleep(2000);
+        BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Save')]"));
+        browser.sleep(3500);
         this.saveMCQ().click();
         browser.sleep(500);
         BrowserUtils.waitUntilReady(this.acceptSaveTaskPopUp());
@@ -751,7 +815,7 @@ export class sortingPage {
         this.UploadTexttelugu();
         browser.sleep(5000);
         BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Save')]"));
-        browser.sleep(500);
+        browser.sleep(3500);
         this.saveMCQ().click();
         browser.sleep(500);
         BrowserUtils.waitUntilReady(this.acceptSaveTaskPopUp());
@@ -922,6 +986,78 @@ export class sortingPage {
                 this.SortingLink().click();
                 browser.sleep(5000);
                 BrowserUtils.selectDropdownValue(by.xpath("//select[@name='subjectNames']"), record["EnglishTaskSubject"]);
+                browser.sleep(1000);
+                BrowserUtils.selectDropdownValue(by.xpath("(//span[@class='input-text-align'])[2]"), record["AcivityType"]);
+                browser.sleep(1000);
+                this.Activityid().sendKeys(this.ClickonRandomArray());
+                browser.sleep(500);
+                BrowserUtils.enterText(by.xpath("(//input[@ng-reflect-name])[1]"), record["sortingEnglishTitle"]);
+                browser.sleep(1000);
+                BrowserUtils.enterText(by.xpath("//textarea[@ng-reflect-name]"), record["sortingEnglishInstructions"]);
+                browser.sleep(500);
+                BrowserUtils.enterText(by.xpath("//input[@placeholder='__:__']"), record["Time"]);
+                browser.sleep(1000);
+                var path1 = '../../TestData/AudioFiles/Telugu/sorting.wav';
+                var audioPath = path.resolve(__dirname, path1);
+                browser.sleep(5000);
+                this.typefile1().sendKeys(audioPath);
+                browser.sleep(5000);
+                this.OKbtn().click();
+                browser.sleep(5000);
+                this.overallfeedbackenglish();
+                browser.sleep(2000);
+                this.Createpagecomments();
+                browser.sleep(1500);
+            })
+        }
+    }
+    sortingcreatepageevs() {
+        var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CommonData/SubjectData.json', null)
+        if (dataRecs && dataRecs.length > 0) {
+            dataRecs.forEach(record => {
+                browser.ignoreSynchronization = true
+                browser.sleep(5000);
+                this.createNewTaskBtn().click();
+                browser.sleep(3000);
+                this.SortingLink().click();
+                browser.sleep(5000);
+                BrowserUtils.selectDropdownValue(by.xpath("//select[@name='subjectNames']"), record["EvsTaskSubject"]);
+                browser.sleep(1000);
+                BrowserUtils.selectDropdownValue(by.xpath("(//span[@class='input-text-align'])[2]"), record["AcivityType"]);
+                browser.sleep(1000);
+                this.Activityid().sendKeys(this.ClickonRandomArray());
+                browser.sleep(500);
+                BrowserUtils.enterText(by.xpath("(//input[@ng-reflect-name])[1]"), record["sortingEnglishTitle"]);
+                browser.sleep(1000);
+                BrowserUtils.enterText(by.xpath("//textarea[@ng-reflect-name]"), record["sortingEnglishInstructions"]);
+                browser.sleep(500);
+                BrowserUtils.enterText(by.xpath("//input[@placeholder='__:__']"), record["Time"]);
+                browser.sleep(1000);
+                var path1 = '../../TestData/AudioFiles/Telugu/sorting.wav';
+                var audioPath = path.resolve(__dirname, path1);
+                browser.sleep(5000);
+                this.typefile1().sendKeys(audioPath);
+                browser.sleep(5000);
+                this.OKbtn().click();
+                browser.sleep(5000);
+                this.overallfeedbackenglish();
+                browser.sleep(2000);
+                this.Createpagecomments();
+                browser.sleep(1500);
+            })
+        }
+    }
+    sortingcreatepagemaths() {
+        var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CommonData/SubjectData.json', null)
+        if (dataRecs && dataRecs.length > 0) {
+            dataRecs.forEach(record => {
+                browser.ignoreSynchronization = true
+                browser.sleep(5000);
+                this.createNewTaskBtn().click();
+                browser.sleep(3000);
+                this.SortingLink().click();
+                browser.sleep(5000);
+                BrowserUtils.selectDropdownValue(by.xpath("//select[@name='subjectNames']"), record["MathsTaskSubject"]);
                 browser.sleep(1000);
                 BrowserUtils.selectDropdownValue(by.xpath("(//span[@class='input-text-align'])[2]"), record["AcivityType"]);
                 browser.sleep(1000);

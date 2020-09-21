@@ -12,14 +12,11 @@ describe('Resource Creation Page', () => {
     browser.manage().window().maximize();
     BrowserUtils.enterUrl();
   });
-  it('Course Author login', () => {
-    browser.ignoreSynchronization = true
+  it('Task Resource login', () => {
     browser.waitForAngularEnabled(false);
-    var dataObj = dataProvider.getJsonDataFromFile('./TestData/loginData.json', 'Courseauthorlogindata')
-    loginPg.Courseauthor(dataObj);
-    setTimeout(() => {
-      browser.waitForAngularEnabled(true);
-    }, 20000);
+    var dataObj = dataProvider.getJsonDataFromFile('./TestData/loginData.json', 'Taskauthorlogindata')
+    loginPg.Taskauthor(dataObj);
+    browser.sleep(5000);
   });
   it('Verify Resource can  be created with class data', () => {
     Resource.Createclasstyperesourcesforenglish();

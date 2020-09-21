@@ -188,7 +188,33 @@ export class tapandlistenPage {
         this.Publishnavigation();
     }
     createTapandlistenTaskwithTextenglish() {
-        this.Tapandlistencreatepagetelugu();
+        this.Tapandlistencreatepageenglish();
+        browser.sleep(500);
+        this.TexttoAudiotelugu();
+        this.PicturetoAudio();
+        this.PictureandTexttoVideotelugu();
+        browser.sleep(2000);
+        this.saveMCQ().click();
+        browser.sleep(10000);
+        this.okbutton().click();
+        browser.sleep(500);
+        this.Publishnavigation();
+    }
+    createTapandlistenTaskwithTextevs() {
+        this.Tapandlistencreatepageevs();
+        browser.sleep(500);
+        this.TexttoAudiotelugu();
+        this.PicturetoAudio();
+        this.PictureandTexttoVideotelugu();
+        browser.sleep(2000);
+        this.saveMCQ().click();
+        browser.sleep(10000);
+        this.okbutton().click();
+        browser.sleep(500);
+        this.Publishnavigation();
+    }
+    createTapandlistenTaskwithTextmaths() {
+        this.Tapandlistencreatepagemaths();
         browser.sleep(500);
         this.TexttoAudiotelugu();
         this.PicturetoAudio();
@@ -362,6 +388,34 @@ export class tapandlistenPage {
     }
     createTapandlistenTaskwithPictureandTextenglish() {
         this.Tapandlistencreatepageenglish();
+        browser.sleep(500);
+        this.PictureandTextwithaudioenglish()
+        this.PictureandTexttoVideoenglish()
+        browser.sleep(500);
+        this.saveMCQ().click();
+        browser.sleep(5000);
+        this.okbutton().click();
+        browser.sleep(5000);
+        this.clickOntappingMCQNextBtn().click();
+        browser.sleep(500);
+        this.Publishnavigation();
+    }
+    createTapandlistenTaskwithPictureandTextevs() {
+        this.Tapandlistencreatepageevs();
+        browser.sleep(500);
+        this.PictureandTextwithaudioenglish()
+        this.PictureandTexttoVideoenglish()
+        browser.sleep(500);
+        this.saveMCQ().click();
+        browser.sleep(5000);
+        this.okbutton().click();
+        browser.sleep(5000);
+        this.clickOntappingMCQNextBtn().click();
+        browser.sleep(500);
+        this.Publishnavigation();
+    }
+    createTapandlistenTaskwithPictureandTextmaths() {
+        this.Tapandlistencreatepagemaths();
         browser.sleep(500);
         this.PictureandTextwithaudioenglish()
         this.PictureandTexttoVideoenglish()
@@ -967,6 +1021,72 @@ export class tapandlistenPage {
             })
         }
     }
+    Tapandlistencreatepageevs() {
+        var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CommonData/SubjectData.json', null)
+        if (dataRecs && dataRecs.length > 0) {
+            dataRecs.forEach(record => {
+                browser.ignoreSynchronization = true
+                browser.sleep(5000);
+                this.createNewTaskBtn().click();
+                browser.sleep(2000);
+                this.TapandListenLink().click();
+                browser.sleep(5000);
+                BrowserUtils.selectDropdownValue(by.xpath("//select[@name='subjectNames']"), record["EvsTaskSubject"]);
+                browser.sleep(1000);
+                BrowserUtils.selectDropdownValue(by.xpath("(//select[@class='rv-select w-100 ng-untouched ng-pristine ng-valid'])[2]"), record["AcivityType"]);
+                browser.sleep(1000);
+                this.Activityid().sendKeys(this.ClickonRandomArray());
+                browser.sleep(500);
+                BrowserUtils.enterText(by.xpath("(//input[@ng-reflect-name])[1]"), record["tappingEnglishTitle"]);
+                browser.sleep(1000);
+                BrowserUtils.enterText(by.xpath("//textarea[@ng-reflect-name]"), record["tappingEnglishInstructions"]);
+                browser.sleep(500);
+                BrowserUtils.enterText(by.xpath("//input[@placeholder='__:__']"), record["Time"]);
+                browser.sleep(1000);
+                var path1 = '../../TestData/AudioFiles/Telugu/Tapandlisten.wav';
+                var audioPath = path.resolve(__dirname, path1);
+                browser.sleep(500);
+                this.typefile1().sendKeys(audioPath);
+                browser.sleep(10000);
+                this.OKbtn().click();
+                browser.sleep(5000);
+                this.overallfeedbackenglish();
+            })
+        }
+    }
+    Tapandlistencreatepagemaths() {
+        var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CommonData/SubjectData.json', null)
+        if (dataRecs && dataRecs.length > 0) {
+            dataRecs.forEach(record => {
+                browser.ignoreSynchronization = true
+                browser.sleep(5000);
+                this.createNewTaskBtn().click();
+                browser.sleep(2000);
+                this.TapandListenLink().click();
+                browser.sleep(5000);
+                BrowserUtils.selectDropdownValue(by.xpath("//select[@name='subjectNames']"), record["MathsTaskSubject"]);
+                browser.sleep(1000);
+                BrowserUtils.selectDropdownValue(by.xpath("(//select[@class='rv-select w-100 ng-untouched ng-pristine ng-valid'])[2]"), record["AcivityType"]);
+                browser.sleep(1000);
+                this.Activityid().sendKeys(this.ClickonRandomArray());
+                browser.sleep(500);
+                BrowserUtils.enterText(by.xpath("(//input[@ng-reflect-name])[1]"), record["tappingEnglishTitle"]);
+                browser.sleep(1000);
+                BrowserUtils.enterText(by.xpath("//textarea[@ng-reflect-name]"), record["tappingEnglishInstructions"]);
+                browser.sleep(500);
+                BrowserUtils.enterText(by.xpath("//input[@placeholder='__:__']"), record["Time"]);
+                browser.sleep(1000);
+                var path1 = '../../TestData/AudioFiles/Telugu/Tapandlisten.wav';
+                var audioPath = path.resolve(__dirname, path1);
+                browser.sleep(500);
+                this.typefile1().sendKeys(audioPath);
+                browser.sleep(10000);
+                this.OKbtn().click();
+                browser.sleep(5000);
+                this.overallfeedbackenglish();
+            })
+        }
+    }
     Publishnavigation() {
         browser.sleep(2000);
         this.clickOntappingMCQNextBtn().click();
@@ -974,9 +1094,9 @@ export class tapandlistenPage {
         this.clickOntappingMCQNextBtn().click();
         browser.sleep(5000);
         this.publishBtn().click();
-        browser.sleep(1000);
+        browser.sleep(10000);
         this.succesfulCreationOfTasks().click();
-        browser.sleep(1000);
+        browser.sleep(5000);
         this.createNewTaskBtn().isDisplayed().then(function (dis) {
             expect(dis).toBe(true, 'Tasks is created successfully')
         })

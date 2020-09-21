@@ -158,6 +158,72 @@ export class Reviewerview {
             })
         }
     }
+    Reviewtasksforevs() {
+        var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CommonData/SubjectData.json', null)
+        if (dataRecs && dataRecs.length > 0) {
+            dataRecs.forEach(record => {
+                browser.ignoreSynchronization = true
+                var subjectselection = by.xpath("//span[text()='" + record["EvsTaskSubject"] + "']");
+                browser.sleep(2000);
+                BrowserUtils.clickOnElement(subjectselection);
+                browser.sleep(2000);
+                var loc = "(//a[@class='task-link'])[1]";
+                console.log(loc);
+                var tasklinkselection = by.xpath(loc);
+                BrowserUtils.clickOnElement(tasklinkselection);
+                browser.sleep(10000);
+                BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Add Comment')]"));
+                this.commentbutton().click();
+                BrowserUtils.enterText(by.xpath("//textarea[@ng-reflect-name='commentData']"), record["PreviewpageCommentReviewer"]);
+                browser.sleep(500);
+                this.Commentsavebtn().click();
+                browser.sleep(1500);
+                BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Submit For Approver ')]"));
+                this.SubmitForApproverbtn().click();
+                browser.sleep(10000);
+                this.successmsgokbtn().click();
+                browser.sleep(10000);
+                this.Rivertext().isDisplayed().then(function (dis) {
+                    expect(dis).toBe(true, 'Task review flow is successful')
+                })
+
+
+            })
+        }
+    }
+    Reviewtasksformaths() {
+        var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CommonData/SubjectData.json', null)
+        if (dataRecs && dataRecs.length > 0) {
+            dataRecs.forEach(record => {
+                browser.ignoreSynchronization = true
+                var subjectselection = by.xpath("//span[text()='" + record["MathsTaskSubject"] + "']");
+                browser.sleep(2000);
+                BrowserUtils.clickOnElement(subjectselection);
+                browser.sleep(2000);
+                var loc = "(//a[@class='task-link'])[1]";
+                console.log(loc);
+                var tasklinkselection = by.xpath(loc);
+                BrowserUtils.clickOnElement(tasklinkselection);
+                browser.sleep(10000);
+                BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Add Comment')]"));
+                this.commentbutton().click();
+                BrowserUtils.enterText(by.xpath("//textarea[@ng-reflect-name='commentData']"), record["PreviewpageCommentReviewer"]);
+                browser.sleep(500);
+                this.Commentsavebtn().click();
+                browser.sleep(1500);
+                BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Submit For Approver ')]"));
+                this.SubmitForApproverbtn().click();
+                browser.sleep(10000);
+                this.successmsgokbtn().click();
+                browser.sleep(10000);
+                this.Rivertext().isDisplayed().then(function (dis) {
+                    expect(dis).toBe(true, 'Task review flow is successful')
+                })
+
+
+            })
+        }
+    }
     Reviewtasksfortelugu() {
         var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CommonData/SubjectData.json', null)
         if (dataRecs && dataRecs.length > 0) {

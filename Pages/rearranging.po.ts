@@ -539,6 +539,36 @@ export class rearrangingPage {
         browser.sleep(1500);
         this.Publishnavigation();
     }
+    createRearrangingTaskwithImagesmaths() {
+        this.rearrangingcreatepageformaths();
+        browser.sleep(1500);
+        this.UploadImages();
+        browser.sleep(1500);
+        browser.sleep(500);
+        BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Save')]"));
+        this.saveMCQ().click();
+        browser.sleep(2500);
+        this.okbutton().click();
+        browser.sleep(1500);
+        this.clickOntappingMCQNextBtn().click();
+        browser.sleep(1500);
+        this.Publishnavigation();
+    }
+    createRearrangingTaskwithImagesevs() {
+        this.rearrangingcreatepageforevs();
+        browser.sleep(1500);
+        this.UploadImages();
+        browser.sleep(1500);
+        browser.sleep(500);
+        BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Save')]"));
+        this.saveMCQ().click();
+        browser.sleep(2500);
+        this.okbutton().click();
+        browser.sleep(1500);
+        this.clickOntappingMCQNextBtn().click();
+        browser.sleep(1500);
+        this.Publishnavigation();
+    }
     Previewbackbutton() {
         this.rearrangingcreatepagefortelugu();
         browser.sleep(1500);
@@ -660,14 +690,40 @@ export class rearrangingPage {
         browser.sleep(1500);
         this.Publishnavigation();
     }
-    createRearrangingTaskwithTexttelugu() {
-        this.rearrangingcreatepagefortelugu();
+    createRearrangingTaskwithTextevs() {
+        this.rearrangingcreatepageforevs();
+        browser.sleep(1500);
         this.UploadTextEnglish();
         browser.sleep(500);
         BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Save')]"));
         browser.sleep(1500);
         this.saveMCQ().click();
         browser.sleep(2500);
+        this.okbutton().click();
+        browser.sleep(1500);
+        this.Publishnavigation();
+    }
+    createRearrangingTaskwithTextmaths() {
+        this.rearrangingcreatepageformaths();
+        browser.sleep(1500);
+        this.UploadTextEnglish();
+        browser.sleep(500);
+        BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Save')]"));
+        browser.sleep(1500);
+        this.saveMCQ().click();
+        browser.sleep(2500);
+        this.okbutton().click();
+        browser.sleep(1500);
+        this.Publishnavigation();
+    }
+    createRearrangingTaskwithTexttelugu() {
+        this.rearrangingcreatepagefortelugu();
+        this.UploadTextEnglish();
+        browser.sleep(5000);
+        BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Save')]"));
+        browser.sleep(1500);
+        this.saveMCQ().click();
+        browser.sleep(10000);
         this.okbutton().click();
         browser.sleep(1500);
         this.clickOntappingMCQNextBtn().click();
@@ -677,16 +733,16 @@ export class rearrangingPage {
     }
 
     Publishnavigation() {
-        browser.sleep(2000);
-        this.clickOntappingMCQNextBtn().click();
         browser.sleep(5000);
+        this.clickOntappingMCQNextBtn().click();
+        browser.sleep(8000);
         this.Previewpagecomments();
         browser.sleep(5000);
         this.clickOntappingMCQNextBtn().click();
-        browser.sleep(2000);
+        browser.sleep(10000);
         BrowserUtils.waitUntilReady(this.publishBtn());
         this.publishBtn().click();
-        browser.sleep(8000);
+        browser.sleep(12000);
         this.succesfulCreationOfTasks().click();
         browser.sleep(1000);
         this.createNewTaskBtn().isDisplayed().then(function (dis) {
@@ -753,7 +809,76 @@ export class rearrangingPage {
                 browser.sleep(5000);
                 var path1 = '../../TestData/AudioFiles/Telugu/rearranging.wav';
                 var audioPath = path.resolve(__dirname, path1);
+                this.typefile1().sendKeys(audioPath);
+                browser.sleep(8000);
+                this.OKbtn().click();
                 browser.sleep(5000);
+                this.overallfeedbacktelugu();
+                browser.sleep(500);
+                this.Createpagecomments();
+                browser.sleep(500);
+            })
+        }
+    }
+    rearrangingcreatepageforevs() {
+        var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CommonData/SubjectData.json', null)
+        if (dataRecs && dataRecs.length > 0) {
+            dataRecs.forEach(record => {
+                browser.ignoreSynchronization = true
+                browser.sleep(5000);
+                this.createNewTaskBtn().click();
+                browser.sleep(1000);
+                this.RearrangingLink().click();
+                browser.sleep(4000);
+                BrowserUtils.selectDropdownValue(by.xpath("//select[@name='subjectNames']"), record["EvsTaskSubject"]);
+                browser.sleep(4000);
+                BrowserUtils.selectDropdownValue(by.xpath("(//select[@class='rv-select w-100 ng-untouched ng-pristine ng-valid'])[2]"), record["AcivityType"]);
+                browser.sleep(2000);
+                this.Activityid().sendKeys(this.ClickonRandomArray());
+                browser.sleep(2500);
+                BrowserUtils.enterText(by.xpath("(//input[@ng-reflect-name])[1]"), record["RearrangingTeluguTitle"]);
+                browser.sleep(2000);
+                BrowserUtils.enterText(by.xpath("//textarea[@ng-reflect-name]"), record["RearrangingTeluguInstructions"]);
+                browser.sleep(2500);
+                BrowserUtils.enterText(by.xpath("//input[@placeholder='__:__']"), record["Time"]);
+                browser.sleep(5000);
+                var path1 = '../../TestData/AudioFiles/Telugu/rearranging.wav';
+                var audioPath = path.resolve(__dirname, path1);
+                this.typefile1().sendKeys(audioPath);
+                browser.sleep(8000);
+                this.OKbtn().click();
+                browser.sleep(5000);
+                this.overallfeedbacktelugu();
+                browser.sleep(500);
+                this.Createpagecomments();
+                browser.sleep(500);
+            })
+        }
+    }
+    rearrangingcreatepageformaths() {
+        var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CommonData/SubjectData.json', null)
+        if (dataRecs && dataRecs.length > 0) {
+            dataRecs.forEach(record => {
+                browser.ignoreSynchronization = true
+                browser.sleep(5000);
+                this.createNewTaskBtn().click();
+                browser.sleep(1000);
+                this.RearrangingLink().click();
+                browser.sleep(4000);
+                BrowserUtils.selectDropdownValue(by.xpath("//select[@name='subjectNames']"), record["MathsTaskSubject"]);
+                browser.sleep(4000);
+                BrowserUtils.selectDropdownValue(by.xpath("(//select[@class='rv-select w-100 ng-untouched ng-pristine ng-valid'])[2]"), record["AcivityType"]);
+                browser.sleep(2000);
+                this.Activityid().sendKeys(this.ClickonRandomArray());
+                browser.sleep(2500);
+                BrowserUtils.enterText(by.xpath("(//input[@ng-reflect-name])[1]"), record["RearrangingTeluguTitle"]);
+                browser.sleep(2000);
+                BrowserUtils.enterText(by.xpath("//textarea[@ng-reflect-name]"), record["RearrangingTeluguInstructions"]);
+                browser.sleep(2500);
+                BrowserUtils.enterText(by.xpath("//input[@placeholder='__:__']"), record["Time"]);
+                browser.sleep(5000);
+                var path1 = '../../TestData/AudioFiles/Telugu/rearranging.wav';
+                var audioPath = path.resolve(__dirname, path1);
                 this.typefile1().sendKeys(audioPath);
                 browser.sleep(8000);
                 this.OKbtn().click();

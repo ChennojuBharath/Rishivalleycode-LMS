@@ -48,50 +48,44 @@ describe('Run the LMS scripts end to end', () => {
     it('Verify tasks by performing click action on every class', () => {
         taskPg.ClickAllclasses();
     });
-    it('Create fill in the blanks task with english subject', () => {
-        fillintheblanks.Fibtaskwithenglishdata();
+    it('Create fill in the blanks task with evs subject', () => {
+        fillintheblanks.Fibtaskwithevsdata();
     })
     it('Create Rearranging task with Images with english subject', () => {
-        Rearranging.createRearrangingTaskwithImageseng();
+        Rearranging.createRearrangingTaskwithImagesevs();
     });
     it('Create Rearranging task with text with english subject', () => {
-      Rearranging.createRearrangingTaskwithTexteng();
+      Rearranging.createRearrangingTaskwithTextevs();
   });
     it('Check true or false task is working with text', () => {
-        trueorfalsePg.createTrueorfalsetaskwithtextenglish();
+        trueorfalsePg.createTrueorfalsetaskwithtextevs();
     });
     it('Check true or false task is working with text and picture', () => {
-        trueorfalsePg.createTrueorfalsetaskwithtextandpictureenglish();
+        trueorfalsePg.createTrueorfalsetaskwithtextandpictureevs();
     });
-    it('Create task flow check for TapingMCQ with Text to Text with english subject', () => {
-        taskPg.createTappingMCQTasktextenglish();
+    it('Create task flow check for TapingMCQ with Text to Text with evs subject', () => {
+        taskPg.createTappingMCQTasktextevs();
     });
-    it('Create Sorting task with Text with english subject', () => {
-        Sorting.createTextSortingTaskenglish();
+    it('Create Sorting task with Text with evs subject', () => {
+        Sorting.createTextSortingTaskevs();
     });
-    it('Create Sorting task with Image with english subject', () => {
-        Sorting.createImageSortingTaskenglish();
+    it('Create Sorting task with Image with evs subject', () => {
+        Sorting.createImageSortingTaskevs();
     });
-    it('Create Tap and Listen task with Text with audio with english subject', () => {
-        Tapandlisten.createTapandlistenTaskwithTextenglish();
+    it('Create Tap and Listen task with Text with audio with evs subject', () => {
+        Tapandlisten.createTapandlistenTaskwithTextevs();
     });
-    it('Create Tap and Listen task with Picture and Text with audio with english subject', () => {
-        Tapandlisten.createTapandlistenTaskwithPictureandTextenglish();
+    it('Create Tap and Listen task with Picture and Text with audio with evs subject', () => {
+        Tapandlisten.createTapandlistenTaskwithPictureandTextevs();
     });
-    it('Create task flow check for Matchthefollowing for Image to Image selection with english subject', () => {
-        matchtheFollowing.createMatchthefollowingImagetoImageTaskenglish();
+    it('Create task flow check for Matchthefollowing for Image to Image selection with evs subject', () => {
+        matchtheFollowing.createMatchthefollowingImagetoImageTaskevs();
     });
-    it('Create task flow check for Matchthefollowing for Text to Image selection with english subject', () => {
-        matchtheFollowing.createMatchthefollowingTexttoImageTaskenglish();
-    });
-    it('Create task flow check for Matchthefollowing for Text to Text selection with english subject', () => {
-        matchtheFollowing.createMatchthefollowingTexttoTextTaskenglish();
-    });
-    it('Create task flow check for Matchthefollowing for Image to Text selection with english subject', () => {
-        matchtheFollowing.createMatchthefollowingImagetoTextTaskenglish();
+    it('Create task flow check for Matchthefollowing for Text to Image selection with evs subject', () => {
+        matchtheFollowing.createMatchthefollowingTexttoImageTaskevs();
     });
     it('Create task flow check for focuscards task', () => {
-        focuscards.createfocuscardsTaskenglish();
+        focuscards.createfocuscardsTaskevs();
     });
     it('logout from application', () => {
         loginPg.Logoutoperation()
@@ -103,7 +97,7 @@ describe('Run the LMS scripts end to end', () => {
       browser.sleep(5000);
     });
       it('Verify review tasks and send for approval is successful', () => {
-        Reviewer.Reviewtasksforenglish();
+        Reviewer.Reviewtasksforevs();
      });
      it('logout from reviewer application', () => {
         loginPg.Logoutoperation()
@@ -115,7 +109,7 @@ describe('Run the LMS scripts end to end', () => {
       browser.sleep(5000);
     });
       it('Verify approval of tasks is successful', () => {
-        Approver.Approvetaskenglish();
+        Approver.Approvetaskevs();
      });
      it('logout from approver application', () => {
         loginPg.logoutoperation()

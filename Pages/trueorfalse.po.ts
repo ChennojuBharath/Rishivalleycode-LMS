@@ -283,7 +283,75 @@ export class trueorfalsePage {
                 browser.sleep(1000);
                 var path1 = '../../TestData/AudioFiles/Telugu/TrueorFalse.mp3';
                 var audioPath = path.resolve(__dirname, path1);
+                browser.sleep(500);
+                this.typefile1().sendKeys(audioPath);
                 browser.sleep(5000);
+                this.OKbtn().click();
+                browser.sleep(5000);
+                browser.actions().mouseMove(this.overallFeedbackCheckbox()).perform();
+                this.overallfeedbackenglish();
+            })
+        }
+    }
+    createpageTrueorfalsetaskmaths() {
+        var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CommonData/SubjectData.json', null)
+        if (dataRecs && dataRecs.length > 0) {
+            dataRecs.forEach(record => {
+                browser.ignoreSynchronization = true
+                browser.sleep(5000);
+                this.createNewTaskBtn().click();
+                browser.sleep(1000);
+                this.TrueorfalseLink().click();
+                browser.sleep(5000);
+                BrowserUtils.selectDropdownValue(by.xpath("//select[@name='subjectNames']"), record["MathsTaskSubject"]);
+                browser.sleep(1000);
+                BrowserUtils.selectDropdownValue(by.xpath("(//span[@class='input-text-align'])[2]"), record["AcivityType"]);
+                browser.sleep(1000);
+                this.Activityid().sendKeys(this.ClickonRandomArray());
+                browser.sleep(500);
+                BrowserUtils.enterText(by.xpath("(//input[@ng-reflect-name])[1]"), record["TrueorfalseEnglishTitle"]);
+                browser.sleep(1000);
+                BrowserUtils.enterText(by.xpath("//textarea[@ng-reflect-name]"), record["TrueorfalseEnglishInstructions"]);
+                browser.sleep(500);
+                BrowserUtils.enterText(by.xpath("//input[@placeholder='__:__']"), record["Time"]);
+                browser.sleep(1000);
+                var path1 = '../../TestData/AudioFiles/Telugu/TrueorFalse.mp3';
+                var audioPath = path.resolve(__dirname, path1);
+                browser.sleep(500);
+                this.typefile1().sendKeys(audioPath);
+                browser.sleep(5000);
+                this.OKbtn().click();
+                browser.sleep(5000);
+                browser.actions().mouseMove(this.overallFeedbackCheckbox()).perform();
+                this.overallfeedbackenglish();
+            })
+        }
+    }
+    createpageTrueorfalsetaskevs() {
+        var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CommonData/SubjectData.json', null)
+        if (dataRecs && dataRecs.length > 0) {
+            dataRecs.forEach(record => {
+                browser.ignoreSynchronization = true
+                browser.sleep(5000);
+                this.createNewTaskBtn().click();
+                browser.sleep(1000);
+                this.TrueorfalseLink().click();
+                browser.sleep(5000);
+                BrowserUtils.selectDropdownValue(by.xpath("//select[@name='subjectNames']"), record["EvsTaskSubject"]);
+                browser.sleep(1000);
+                BrowserUtils.selectDropdownValue(by.xpath("(//span[@class='input-text-align'])[2]"), record["AcivityType"]);
+                browser.sleep(1000);
+                this.Activityid().sendKeys(this.ClickonRandomArray());
+                browser.sleep(500);
+                BrowserUtils.enterText(by.xpath("(//input[@ng-reflect-name])[1]"), record["TrueorfalseEnglishTitle"]);
+                browser.sleep(1000);
+                BrowserUtils.enterText(by.xpath("//textarea[@ng-reflect-name]"), record["TrueorfalseEnglishInstructions"]);
+                browser.sleep(500);
+                BrowserUtils.enterText(by.xpath("//input[@placeholder='__:__']"), record["Time"]);
+                browser.sleep(1000);
+                var path1 = '../../TestData/AudioFiles/Telugu/TrueorFalse.mp3';
+                var audioPath = path.resolve(__dirname, path1);
+                browser.sleep(500);
                 this.typefile1().sendKeys(audioPath);
                 browser.sleep(5000);
                 this.OKbtn().click();
@@ -347,12 +415,12 @@ export class trueorfalsePage {
         var dataRecs = dataProvider.getJsonDataFromFile('./TestData/TrueorfalseData/TeluguData.json', null)
         if (dataRecs && dataRecs.length > 0) {
             dataRecs.forEach(record => {
-                browser.sleep(2000);
+                browser.sleep(5000);
                 BrowserUtils.waitUntilReady(this.publishBtn());
                 this.publishBtn().click();
-                browser.sleep(1000);
+                browser.sleep(8000);
                 this.succesfulCreationOfTasks().click();
-                browser.sleep(1000);
+                browser.sleep(10000);
                 this.createNewTaskBtn().isDisplayed().then(function (dis) {
                     expect(dis).toBe(true, 'Tasks is created successfully')
                 })
@@ -673,7 +741,7 @@ export class trueorfalsePage {
         browser.sleep(1000);
         this.taskwithtexttelugu();
         this.taskwithpictureandtextenglish();
-        browser.sleep(1500);
+        browser.sleep(5000);
         this.saveMCQ().click();
         browser.sleep(1500);
         this.okbutton().click();
@@ -732,6 +800,42 @@ export class trueorfalsePage {
             expect(dis).toBe(true, 'createTrueorfalsetaskwithtext is created successfully')
         })
     }
+    createTrueorfalsetaskwithtextevs() {
+        this.createpageTrueorfalsetaskevs();
+        browser.sleep(1000);
+        this.taskwithpictureandtextenglish();
+        BrowserUtils.scrollIntoView(by.xpath("//span[text()='Save']"));
+        browser.sleep(1500);
+        this.saveMCQ().click();
+        browser.sleep(1500);
+        this.okbutton().click();
+        browser.sleep(2500);
+        this.clickOntappingMCQNextBtn().click();
+        browser.sleep(1500);
+        this.Previewfortrueorfalse();
+        this.Publishnavigation();
+        this.createNewTaskBtn().isDisplayed().then(function (dis) {
+            expect(dis).toBe(true, 'createTrueorfalsetaskwithtext is created successfully')
+        })
+    }
+    createTrueorfalsetaskwithtextmaths() {
+        this.createpageTrueorfalsetaskmaths();
+        browser.sleep(1000);
+        this.taskwithpictureandtextenglish();
+        BrowserUtils.scrollIntoView(by.xpath("//span[text()='Save']"));
+        browser.sleep(1500);
+        this.saveMCQ().click();
+        browser.sleep(1500);
+        this.okbutton().click();
+        browser.sleep(2500);
+        this.clickOntappingMCQNextBtn().click();
+        browser.sleep(1500);
+        this.Previewfortrueorfalse();
+        this.Publishnavigation();
+        this.createNewTaskBtn().isDisplayed().then(function (dis) {
+            expect(dis).toBe(true, 'createTrueorfalsetaskwithtext is created successfully')
+        })
+    }
     createTrueorfalsetaskwithtextandpicturetelugu() {
         this.createpageTrueorfalsetasktelugu();
         browser.sleep(1000);
@@ -752,6 +856,36 @@ export class trueorfalsePage {
     }
     createTrueorfalsetaskwithtextandpictureenglish() {
         this.createpageTrueorfalsetaskenglish();
+        browser.sleep(1000);
+        this.taskwithpictureandtextenglish();
+        browser.sleep(1500);
+        this.saveMCQ().click();
+        browser.sleep(1500);
+        this.okbutton().click();
+        browser.sleep(2500);
+        this.Previewfortrueorfalse();
+        this.Publishnavigation();
+        this.createNewTaskBtn().isDisplayed().then(function (dis) {
+            expect(dis).toBe(true, 'createTrueorfalsetaskwithtext is created successfully')
+        })
+    }
+    createTrueorfalsetaskwithtextandpictureevs() {
+        this.createpageTrueorfalsetaskevs();
+        browser.sleep(1000);
+        this.taskwithpictureandtextenglish();
+        browser.sleep(1500);
+        this.saveMCQ().click();
+        browser.sleep(1500);
+        this.okbutton().click();
+        browser.sleep(2500);
+        this.Previewfortrueorfalse();
+        this.Publishnavigation();
+        this.createNewTaskBtn().isDisplayed().then(function (dis) {
+            expect(dis).toBe(true, 'createTrueorfalsetaskwithtext is created successfully')
+        })
+    }
+    createTrueorfalsetaskwithtextandpicturemaths() {
+        this.createpageTrueorfalsetaskmaths();
         browser.sleep(1000);
         this.taskwithpictureandtextenglish();
         browser.sleep(1500);

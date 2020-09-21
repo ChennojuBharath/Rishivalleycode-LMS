@@ -362,6 +362,82 @@ export class fillintheblanksPage {
                   })
             }
       }
+      fibcreatepageevs() {
+            var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CommonData/SubjectData.json', null)
+            if (dataRecs && dataRecs.length > 0) {
+                  dataRecs.forEach(record => {
+                        browser.ignoreSynchronization = true
+                        browser.sleep(5000);
+                        this.createNewTaskBtn().click();
+                        browser.sleep(1000);
+                        this.fillintheblanksLink().click();
+                        BrowserUtils.waitUntilReady(this.selectSubject());
+                        browser.sleep(4000);
+                        BrowserUtils.selectDropdownValue(by.xpath("//select[@name='subjectNames']"), record["EvsTaskSubject"]);
+                        browser.sleep(5000);
+                        BrowserUtils.selectDropdownValue(by.xpath("(//select[@class='rv-select w-100 ng-untouched ng-pristine ng-valid'])[2]"), record["AcivityType"]);
+                        browser.sleep(1000);
+                        this.Activityid().sendKeys(this.ClickonRandomArray());
+                        browser.sleep(500);
+                        BrowserUtils.enterText(by.xpath("(//input[@ng-reflect-name])[1]"), record["fibEnglishTitle"]);
+                        browser.sleep(1000);
+                        BrowserUtils.enterText(by.xpath("//textarea[@ng-reflect-name]"), record["fibEnglishInstructions"]);
+                        browser.sleep(2500);
+                        BrowserUtils.enterText(by.xpath("//input[@minutesseconds]"), record["Time"]);
+                        browser.sleep(1000);
+                        var path1 = '../../TestData/AudioFiles/Telugu/fillintheblanks.wav';
+                        var audioPath = path.resolve(__dirname, path1);
+                        browser.sleep(1500);
+                        this.typefile1().sendKeys(audioPath);
+                        browser.sleep(5000);
+                        this.OKbtn().click();
+                        browser.sleep(2500);
+                        this.overallfeedbackenglish();
+                        this.Createpagecomments();
+                        this.Activityid().isDisplayed().then(function (dis) {
+                              expect(dis).toBe(true, 'FillintheblanksTask create data is entered  successfully with english data')
+                        })
+                  })
+            }
+      }
+      fibcreatepagemaths() {
+            var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CommonData/SubjectData.json', null)
+            if (dataRecs && dataRecs.length > 0) {
+                  dataRecs.forEach(record => {
+                        browser.ignoreSynchronization = true
+                        browser.sleep(5000);
+                        this.createNewTaskBtn().click();
+                        browser.sleep(1000);
+                        this.fillintheblanksLink().click();
+                        BrowserUtils.waitUntilReady(this.selectSubject());
+                        browser.sleep(4000);
+                        BrowserUtils.selectDropdownValue(by.xpath("//select[@name='subjectNames']"), record["MathsTaskSubject"]);
+                        browser.sleep(5000);
+                        BrowserUtils.selectDropdownValue(by.xpath("(//select[@class='rv-select w-100 ng-untouched ng-pristine ng-valid'])[2]"), record["AcivityType"]);
+                        browser.sleep(1000);
+                        this.Activityid().sendKeys(this.ClickonRandomArray());
+                        browser.sleep(500);
+                        BrowserUtils.enterText(by.xpath("(//input[@ng-reflect-name])[1]"), record["fibEnglishTitle"]);
+                        browser.sleep(1000);
+                        BrowserUtils.enterText(by.xpath("//textarea[@ng-reflect-name]"), record["fibEnglishInstructions"]);
+                        browser.sleep(2500);
+                        BrowserUtils.enterText(by.xpath("//input[@minutesseconds]"), record["Time"]);
+                        browser.sleep(1000);
+                        var path1 = '../../TestData/AudioFiles/Telugu/fillintheblanks.wav';
+                        var audioPath = path.resolve(__dirname, path1);
+                        browser.sleep(1500);
+                        this.typefile1().sendKeys(audioPath);
+                        browser.sleep(5000);
+                        this.OKbtn().click();
+                        browser.sleep(2500);
+                        this.overallfeedbackenglish();
+                        this.Createpagecomments();
+                        this.Activityid().isDisplayed().then(function (dis) {
+                              expect(dis).toBe(true, 'FillintheblanksTask create data is entered  successfully with english data')
+                        })
+                  })
+            }
+      }
       Deleteoptions() {
             BrowserUtils.scrollIntoView(by.xpath("(//span[@mattooltip='Remove Question'])[8]"));
             this.Deleteoption8().click();
@@ -609,6 +685,36 @@ export class fillintheblanksPage {
                   expect(dis).toBe(true, 'FillintheblanksTask is created successfully with english data')
             })
       }
+      Fibtaskwithevsdata() {
+            this.fibcreatepageevs();
+            this.Englishtaskwithmultiplequestions();
+            this.Englishtaskwithmultipleslides();
+            BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Save')]"));
+            browser.sleep(1000);
+            this.saveMCQ().click();
+            browser.sleep(10500);
+            this.okbutton().click();
+            browser.sleep(1500);
+            this.Publishnavigation();
+            this.createNewTaskBtn().isDisplayed().then(function (dis) {
+                  expect(dis).toBe(true, 'FillintheblanksTask is created successfully with english data')
+            })
+      }
+      Fibtaskwithmathsdata() {
+            this.fibcreatepagemaths();
+            this.Englishtaskwithmultiplequestions();
+            this.Englishtaskwithmultipleslides();
+            BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Save')]"));
+            browser.sleep(1000);
+            this.saveMCQ().click();
+            browser.sleep(10500);
+            this.okbutton().click();
+            browser.sleep(1500);
+            this.Publishnavigation();
+            this.createNewTaskBtn().isDisplayed().then(function (dis) {
+                  expect(dis).toBe(true, 'FillintheblanksTask is created successfully with english data')
+            })
+      }
       Publishnavigation() {
             BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Next')]"));
             browser.sleep(2000);
@@ -617,10 +723,10 @@ export class fillintheblanksPage {
             this.Previewpagecomments();
             browser.sleep(1000);
             this.clickOntappingMCQNextBtn().click();
-            browser.sleep(1000);
+            browser.sleep(10000);
             BrowserUtils.waitUntilReady(this.publishBtn());
             this.publishBtn().click();
-            browser.sleep(3000);
+            browser.sleep(10000);
             this.succesfulCreationOfTasks().click();
             browser.sleep(1000);
             this.createNewTaskBtn().isDisplayed().then(function (dis) {

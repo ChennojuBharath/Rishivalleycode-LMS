@@ -421,6 +421,9 @@ export class tasksPage {
     checkbox2() {
         return element(by.xpath("(//input[@type='checkbox'])[9]"));
     }
+    Checbox3() {
+        return element(by.xpath("(//input[@type='checkbox'])[10]"));
+    }
     checkbox3() {
         return element(by.xpath("(//input[@type='checkbox'])[15]"));
     }
@@ -727,11 +730,12 @@ export class tasksPage {
                 var watermelonPath = path.resolve(__dirname, watermelon);
                 this.typefile7().sendKeys(watermelonPath);
                 browser.sleep(2000);
-                var radish = "../../TestData/ImageFiles/radish.png";
+                var radish = "../../TestData/ImageFiles/apple.jpg";
                 var radishPath = path.resolve(__dirname, radish);
                 this.typefile8().sendKeys(radishPath);
                 browser.sleep(2000);
                 this.checkbox2().click();
+                this.Checbox3().click();
                 this.saveMCQ().isDisplayed().then(function (dis) {
                     expect(dis).toBe(true, ' MCQTexttoPicture task is created successfully')
                 })
@@ -972,19 +976,20 @@ export class tasksPage {
         browser.sleep(1000);
         this.Publishnavigation();
     }
+    
     createTappingMCQTasktexttelugu() {
         this.mcqtaskcreatepagetelugu();
         this.MCQwithtexttotexttelugu();
         this.MCQTexttoPicturetelugu();
         this.MCQPicturetoPicturetelugu();
-        browser.sleep(2000);
+        browser.sleep(5000);
         this.saveMCQ().click();
         browser.sleep(10000);
         this.okbutton().click();
         browser.sleep(1000);
         this.clickOntappingMCQNextBtn().click();
         browser.sleep(2000);
-        this.Previewpageforsinglequestions();
+        this.Previewpageformultiplequestions();
         browser.sleep(1000);
         this.Publishnavigation();
     }
@@ -993,15 +998,46 @@ export class tasksPage {
         this.MCQwithtexttotextenglish();
         this.MCQTexttoPictureenglish();
         this.MCQPicturetoPictureenglish();
-        browser.sleep(1000);
-        BrowserUtils.scrollIntoView(by.xpath("//span[text()='Save']"));
+        browser.sleep(5000);
         this.saveMCQ().click();
-        browser.sleep(2500);
+        browser.sleep(10000);
         this.okbutton().click();
         browser.sleep(1000);
         this.clickOntappingMCQNextBtn().click();
+        browser.sleep(2000);
+        this.Previewpageformultiplequestions();
         browser.sleep(1000);
-        this.Previewpageforsinglequestions();
+        this.Publishnavigation();
+    }
+    createTappingMCQTasktextevs() {
+        this.mcqtaskcreatepageevs();
+        this.MCQwithtexttotextenglish();
+        this.MCQTexttoPictureenglish();
+        this.MCQPicturetoPictureenglish();
+        browser.sleep(5000);
+        this.saveMCQ().click();
+        browser.sleep(10000);
+        this.okbutton().click();
+        browser.sleep(1000);
+        this.clickOntappingMCQNextBtn().click();
+        browser.sleep(2000);
+        this.Previewpageformultiplequestions();
+        browser.sleep(1000);
+        this.Publishnavigation();
+    }
+    createTappingMCQTasktextmaths() {
+        this.mcqtaskcreatepagetelugu();
+        this.MCQwithtexttotexttelugu();
+        this.MCQTexttoPicturetelugu();
+        this.MCQPicturetoPicturetelugu();
+        browser.sleep(5000);
+        this.saveMCQ().click();
+        browser.sleep(10000);
+        this.okbutton().click();
+        browser.sleep(1000);
+        this.clickOntappingMCQNextBtn().click();
+        browser.sleep(2000);
+        this.Previewpageformultiplequestions();
         browser.sleep(1000);
         this.Publishnavigation();
     }
@@ -1017,8 +1053,7 @@ export class tasksPage {
         })
     }
     Taskpublishpage() {
-        browser.sleep(2000);
-        BrowserUtils.waitUntilReady(this.publishBtn());
+        browser.sleep(5000);
         this.publishBtn().click();
         browser.sleep(6000);
         this.succesfulCreationOfTasks().click();
@@ -1209,7 +1244,7 @@ export class tasksPage {
         var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CommonData/SubjectData.json', null)
         if (dataRecs && dataRecs.length > 0) {
             dataRecs.forEach(record => {
-                browser.sleep(15000);
+                browser.sleep(10000);
                 this.courselistPanelElement().click();
                 browser.sleep(3000);
                 this.tasklistPanelElement().click();
@@ -1217,6 +1252,7 @@ export class tasksPage {
                 //BrowserUtils.countAndClick(this.clickOnClassLinks());
                 var editiconselection = by.xpath("//mat-list-item[@ng-reflect-router-link='/task/task-list']/div[text()='" + record["Class"] + "']");
                 BrowserUtils.clickOnElement(editiconselection);
+                browser.sleep(5000);
                 this.createNewTaskBtn().isDisplayed().then(function (dis) {
                     expect(dis).toBe(true, 'Task class links are clickable')
                 })
@@ -1322,7 +1358,83 @@ export class tasksPage {
                         browser.sleep(1000);
                         var path1 = '../../TestData/AudioFiles/Telugu/MCQ2.wav';
                         var audioPath = path.resolve(__dirname, path1);
+                        browser.sleep(500);
+                        this.typefile1().sendKeys(audioPath);
                         browser.sleep(5000);
+                        this.OKbtn().click();
+                        browser.sleep(5000);
+                        this.overallfeedbackenglish();
+                        this.Createpagecomments();
+                    })
+                }
+            }
+        }
+    }
+    mcqtaskcreatepagemaths() {
+        var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CommonData/SubjectData.json', null)
+        if (dataRecs && dataRecs.length > 0) {
+            for (var i = 1; i <= dataRecs.length; i++) {
+                if (dataRecs && dataRecs.length > 0) {
+                    dataRecs.forEach(record => {
+                        browser.ignoreSynchronization = true
+                        browser.sleep(5000);
+                        this.createNewTaskBtn().click();
+                        browser.sleep(2000);
+                        this.tappingMCQLink().click();
+                        browser.sleep(5000);
+                        BrowserUtils.selectDropdownValue(by.xpath("//select[@name='subjectNames']"), record["MathsTaskSubject"]);
+                        browser.sleep(1000);
+                        BrowserUtils.selectDropdownValue(by.xpath("(//span[@class='input-text-align'])[2]"), record["AcivityType"]);
+                        browser.sleep(1000);
+                        this.Activityid().sendKeys(this.ClickonRandomArray());
+                        browser.sleep(500);
+                        BrowserUtils.enterText(by.xpath("(//input[@ng-reflect-name])[1]"), record["mcqEnglishTitle"]);
+                        browser.sleep(1000);
+                        BrowserUtils.enterText(by.xpath("//textarea[@ng-reflect-name]"), record["mcqEnglishInstructions"]);
+                        browser.sleep(500);
+                        BrowserUtils.enterText(by.xpath("//input[@minutesseconds]"), record["Time"]);
+                        browser.sleep(1000);
+                        var path1 = '../../TestData/AudioFiles/Telugu/MCQ2.wav';
+                        var audioPath = path.resolve(__dirname, path1);
+                        browser.sleep(500);
+                        this.typefile1().sendKeys(audioPath);
+                        browser.sleep(5000);
+                        this.OKbtn().click();
+                        browser.sleep(5000);
+                        this.overallfeedbackenglish();
+                        this.Createpagecomments();
+                    })
+                }
+            }
+        }
+    }
+    mcqtaskcreatepageevs() {
+        var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CommonData/SubjectData.json', null)
+        if (dataRecs && dataRecs.length > 0) {
+            for (var i = 1; i <= dataRecs.length; i++) {
+                if (dataRecs && dataRecs.length > 0) {
+                    dataRecs.forEach(record => {
+                        browser.ignoreSynchronization = true
+                        browser.sleep(5000);
+                        this.createNewTaskBtn().click();
+                        browser.sleep(2000);
+                        this.tappingMCQLink().click();
+                        browser.sleep(5000);
+                        BrowserUtils.selectDropdownValue(by.xpath("//select[@name='subjectNames']"), record["EvsTaskSubject"]);
+                        browser.sleep(1000);
+                        BrowserUtils.selectDropdownValue(by.xpath("(//span[@class='input-text-align'])[2]"), record["AcivityType"]);
+                        browser.sleep(1000);
+                        this.Activityid().sendKeys(this.ClickonRandomArray());
+                        browser.sleep(500);
+                        BrowserUtils.enterText(by.xpath("(//input[@ng-reflect-name])[1]"), record["mcqEnglishTitle"]);
+                        browser.sleep(1000);
+                        BrowserUtils.enterText(by.xpath("//textarea[@ng-reflect-name]"), record["mcqEnglishInstructions"]);
+                        browser.sleep(500);
+                        BrowserUtils.enterText(by.xpath("//input[@minutesseconds]"), record["Time"]);
+                        browser.sleep(1000);
+                        var path1 = '../../TestData/AudioFiles/Telugu/MCQ2.wav';
+                        var audioPath = path.resolve(__dirname, path1);
+                        browser.sleep(500);
                         this.typefile1().sendKeys(audioPath);
                         browser.sleep(5000);
                         this.OKbtn().click();
@@ -1360,7 +1472,7 @@ export class tasksPage {
                         browser.sleep(1000);
                         var path1 = '../../TestData/AudioFiles/Telugu/MCQ2.wav';
                         var audioPath = path.resolve(__dirname, path1);
-                        browser.sleep(5000);
+                        browser.sleep(500);
                         this.typefile1().sendKeys(audioPath);
                         browser.sleep(10000);
                         this.OKbtn().click();
@@ -1373,8 +1485,7 @@ export class tasksPage {
         }
     }
     Publishnavigation() {
-        browser.sleep(2000);
-        BrowserUtils.waitUntilReady(this.clickOntappingMCQNextBtn());
+        browser.sleep(5000);
         this.clickOntappingMCQNextBtn().click();
         this.Taskpublishpage();
         this.createNewTaskBtn().isDisplayed().then(function (dis) {
@@ -1400,13 +1511,9 @@ export class tasksPage {
         this.showsolutionbtn().click();
         browser.sleep(500);
         this.Previewnextbtn().click();
+        browser.sleep(2500);
         this.Previewradioimage1().click();
         browser.sleep(500);
-        this.checkbtn().click();
-        browser.sleep(500);
-        this.showsolutionbtn().click();
-        browser.sleep(500);
-        this.Previewnextbtn().click();
         this.Previewradioimage2().click();
         browser.sleep(500);
         this.checkbtn().click();
@@ -1414,14 +1521,13 @@ export class tasksPage {
         this.showsolutionbtn().click();
         browser.sleep(500);
         this.Previewnextbtn().click();
-        this.Previewradio2().click();
         browser.sleep(500);
-        this.Previewradio3().click();
+        this.Previewradioimage2().click();
         browser.sleep(500);
         this.checkbtn().click();
         browser.sleep(500);
         this.showsolutionbtn().click();
-        browser.sleep(500);
+        browser.sleep(2500);
         this.Previewpagecomments();
     }
     ClickonRandomSubject() {
