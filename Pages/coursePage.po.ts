@@ -1434,6 +1434,9 @@ export class coursePage {
                 BrowserUtils.selectDropdownValue(by.xpath("//select[@name='subject']"), record["Subject"]);
                 browser.sleep(1000);
                 this.Coursedataforenglishwithmultiplemilestones();
+                this.Class1().isDisplayed().then(function (dis) {
+                    expect(dis).toBe(true, ' Course data for english is created successfully ')
+                })
             })
         }
     }
@@ -1448,6 +1451,9 @@ export class coursePage {
                 BrowserUtils.selectDropdownValue(by.xpath("//select[@name='subject']"), record["Subject"]);
                 browser.sleep(1000);
                 this.coursewithallactivities();
+                this.Class1().isDisplayed().then(function (dis) {
+                    expect(dis).toBe(true, ' Course data for english is created successfully with all activities')
+                })
             })
         }
     }
@@ -1462,6 +1468,9 @@ export class coursePage {
                 BrowserUtils.selectDropdownValue(by.xpath("//select[@name='subject']"), record["Subject"]);
                 browser.sleep(1000);
                 this.Coursedataforteluguwithmultiplemilestones();
+                this.Class1().isDisplayed().then(function (dis) {
+                    expect(dis).toBe(true, ' Course data for telugu is created successfully ')
+                })
             })
         }
     }
@@ -1476,6 +1485,9 @@ export class coursePage {
                 BrowserUtils.selectDropdownValue(by.xpath("//select[@name='subject']"), record["Subject"]);
                 browser.sleep(1000);
                 this.Coursedataforteluguwithmultiplemilestones();
+                this.Class1().isDisplayed().then(function (dis) {
+                    expect(dis).toBe(true, ' Course data for evs is created successfully ')
+                })
             })
         }
     }
@@ -1490,6 +1502,9 @@ export class coursePage {
                 BrowserUtils.selectDropdownValue(by.xpath("//select[@name='subject']"), record["Subject"]);
                 browser.sleep(1000);
                 this.Coursedataforteluguwithmultiplemilestones();
+                this.Class1().isDisplayed().then(function (dis) {
+                    expect(dis).toBe(true, ' Course data for maths is created successfully ')
+                })
             })
         }
     }
@@ -1504,7 +1519,7 @@ export class coursePage {
                 var editiconselection = by.xpath("//mat-expansion-panel-header[@ng-reflect-router-link='/classes/all-courses']/../div//mat-list/mat-list-item/div[contains(text(),'" + record["Courseclass"] + "')]");
                 browser.sleep(2000);
                 BrowserUtils.clickOnElement(editiconselection);
-                this.Createnewcoursebutton().isDisplayed().then(function (dis) {
+                this.Class1().isDisplayed().then(function (dis) {
                     expect(dis).toBe(true, 'AllCourses class links are clickable')
                 })
             })
