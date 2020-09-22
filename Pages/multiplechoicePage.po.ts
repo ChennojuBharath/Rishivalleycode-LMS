@@ -975,9 +975,6 @@ export class tasksPage {
         this.Previewpageforsinglequestions();
         browser.sleep(1000);
         this.Publishnavigation();
-        this.createNewTaskBtn().isDisplayed().then(function (dis) {
-            expect(dis).toBe(true, 'createTappingMCQTasktext to image is created successfully with english')
-        })
     }
     
     createTappingMCQTasktexttelugu() {
@@ -995,9 +992,6 @@ export class tasksPage {
         this.Previewpageformultiplequestions();
         browser.sleep(1000);
         this.Publishnavigation();
-        this.createNewTaskBtn().isDisplayed().then(function (dis) {
-            expect(dis).toBe(true, 'createTappingMCQTasktext is created successfully with telugu')
-        })
     }
     createTappingMCQTasktextenglish() {
         this.mcqtaskcreatepageenglish();
@@ -1014,9 +1008,6 @@ export class tasksPage {
         this.Previewpageformultiplequestions();
         browser.sleep(1000);
         this.Publishnavigation();
-        this.createNewTaskBtn().isDisplayed().then(function (dis) {
-            expect(dis).toBe(true, 'createTappingMCQTasktext is created successfully with english')
-        })
     }
     createTappingMCQTasktextevs() {
         this.mcqtaskcreatepageevs();
@@ -1033,9 +1024,6 @@ export class tasksPage {
         this.Previewpageformultiplequestions();
         browser.sleep(1000);
         this.Publishnavigation();
-        this.createNewTaskBtn().isDisplayed().then(function (dis) {
-            expect(dis).toBe(true, 'createTappingMCQTasktext is created successfully with evs')
-        })
     }
     createTappingMCQTasktextmaths() {
         this.mcqtaskcreatepagetelugu();
@@ -1052,9 +1040,6 @@ export class tasksPage {
         this.Previewpageformultiplequestions();
         browser.sleep(1000);
         this.Publishnavigation();
-        this.createNewTaskBtn().isDisplayed().then(function (dis) {
-            expect(dis).toBe(true, 'createTappingMCQTasktext is created successfully with maths')
-        })
     }
     SearchTaskfromlist() {
         browser.ignoreSynchronization = true

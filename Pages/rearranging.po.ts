@@ -528,8 +528,7 @@ export class rearrangingPage {
         this.rearrangingcreatepageforenglish();
         browser.sleep(1500);
         this.UploadImages();
-        browser.sleep(1500);
-        browser.sleep(500);
+        browser.sleep(5000);
         BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Save')]"));
         this.saveMCQ().click();
         browser.sleep(2500);
@@ -538,16 +537,12 @@ export class rearrangingPage {
         this.clickOntappingMCQNextBtn().click();
         browser.sleep(1500);
         this.Publishnavigation();
-        this.Class1().isDisplayed().then(function (dis) {
-            expect(dis).toBe(true, 'RearrangingTask  with Images is created successfully with english data')
-      })
     }
     createRearrangingTaskwithImagesmaths() {
         this.rearrangingcreatepageformaths();
         browser.sleep(1500);
         this.UploadImages();
-        browser.sleep(1500);
-        browser.sleep(500);
+        browser.sleep(5000);
         BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Save')]"));
         this.saveMCQ().click();
         browser.sleep(2500);
@@ -556,16 +551,12 @@ export class rearrangingPage {
         this.clickOntappingMCQNextBtn().click();
         browser.sleep(1500);
         this.Publishnavigation();
-        this.Class1().isDisplayed().then(function (dis) {
-            expect(dis).toBe(true, 'RearrangingTask is created successfully with maths data')
-      })
     }
     createRearrangingTaskwithImagesevs() {
         this.rearrangingcreatepageforevs();
         browser.sleep(1500);
         this.UploadImages();
-        browser.sleep(1500);
-        browser.sleep(500);
+        browser.sleep(5000);
         BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Save')]"));
         this.saveMCQ().click();
         browser.sleep(2500);
@@ -574,15 +565,12 @@ export class rearrangingPage {
         this.clickOntappingMCQNextBtn().click();
         browser.sleep(1500);
         this.Publishnavigation();
-        this.Class1().isDisplayed().then(function (dis) {
-            expect(dis).toBe(true, 'RearrangingTask is created successfully with evs data')
-      })
     }
     Previewbackbutton() {
         this.rearrangingcreatepagefortelugu();
         browser.sleep(1500);
         this.UploadImages();
-        browser.sleep(500);
+        browser.sleep(5000);
         BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Save')]"));
         browser.sleep(1500);
         this.saveMCQ().click();
@@ -605,7 +593,7 @@ export class rearrangingPage {
         this.rearrangingcreatepagefortelugu();
         browser.sleep(1500);
         this.UploadImages();
-        browser.sleep(500);
+        browser.sleep(5000);
         BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Save')]"));
         browser.sleep(1500);
         this.saveMCQ().click();
@@ -627,9 +615,9 @@ export class rearrangingPage {
         this.rearrangingcreatepagefortelugu();
         browser.sleep(1500);
         this.UploadImages();
-        browser.sleep(500);
+        browser.sleep(5000);
         BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Save')]"));
-        browser.sleep(1500);
+        browser.sleep(5000);
         this.saveMCQ().click();
         browser.sleep(12500);
         this.okbutton().click();
@@ -654,9 +642,9 @@ export class rearrangingPage {
         this.rearrangingcreatepagefortelugu();
         browser.sleep(1500);
         this.UploadImages();
-        browser.sleep(500);
+        browser.sleep(5000);
         BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Save')]"));
-        browser.sleep(1500);
+        browser.sleep(5000);
         this.saveMCQ().click();
         browser.sleep(12500);
         this.okbutton().click();
@@ -677,7 +665,7 @@ export class rearrangingPage {
         this.rearrangingcreatepagefortelugu();
         browser.sleep(1500);
         this.UploadImages();
-        browser.sleep(500);
+        browser.sleep(5000);
         BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Save')]"));
         browser.sleep(1500);
         this.saveMCQ().click();
@@ -685,15 +673,12 @@ export class rearrangingPage {
         this.okbutton().click();
         browser.sleep(1500);
         this.Publishnavigation();
-        this.Class1().isDisplayed().then(function (dis) {
-            expect(dis).toBe(true, 'RearrangingTask with Images is created successfully with telugu data')
-      }) 
     }
     createRearrangingTaskwithTexteng() {
         this.rearrangingcreatepageforenglish();
         browser.sleep(1500);
         this.UploadTextEnglish();
-        browser.sleep(500);
+        browser.sleep(5000);
         BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Save')]"));
         browser.sleep(1500);
         this.saveMCQ().click();
@@ -701,15 +686,12 @@ export class rearrangingPage {
         this.okbutton().click();
         browser.sleep(1500);
         this.Publishnavigation();
-        this.Class1().isDisplayed().then(function (dis) {
-            expect(dis).toBe(true, 'RearrangingTask with text is created successfully with english data')
-      }) 
     }
     createRearrangingTaskwithTextevs() {
         this.rearrangingcreatepageforevs();
         browser.sleep(1500);
         this.UploadTextEnglish();
-        browser.sleep(500);
+        browser.sleep(5000);
         BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Save')]"));
         browser.sleep(1500);
         this.saveMCQ().click();
@@ -717,15 +699,12 @@ export class rearrangingPage {
         this.okbutton().click();
         browser.sleep(1500);
         this.Publishnavigation();
-        this.Class1().isDisplayed().then(function (dis) {
-            expect(dis).toBe(true, 'RearrangingTask with text is created successfully with evs data')
-      }) 
     }
     createRearrangingTaskwithTextmaths() {
         this.rearrangingcreatepageformaths();
         browser.sleep(1500);
         this.UploadTextEnglish();
-        browser.sleep(500);
+        browser.sleep(5000);
         BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Save')]"));
         browser.sleep(1500);
         this.saveMCQ().click();
@@ -733,9 +712,6 @@ export class rearrangingPage {
         this.okbutton().click();
         browser.sleep(1500);
         this.Publishnavigation();
-        this.Class1().isDisplayed().then(function (dis) {
-            expect(dis).toBe(true, 'RearrangingTask with text is created successfully with maths data')
-      }) 
     }
     createRearrangingTaskwithTexttelugu() {
         this.rearrangingcreatepagefortelugu();
@@ -749,10 +725,8 @@ export class rearrangingPage {
         browser.sleep(1500);
         this.clickOntappingMCQNextBtn().click();
         browser.sleep(1500);
+        //this.PreviewpagerearrangingText();
         this.Publishnavigation();
-        this.Class1().isDisplayed().then(function (dis) {
-            expect(dis).toBe(true, 'RearrangingTask with text is created successfully with telugu data')
-      }) 
     }
 
     Publishnavigation() {

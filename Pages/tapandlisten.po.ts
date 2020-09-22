@@ -180,15 +180,12 @@ export class tapandlistenPage {
         this.TexttoAudiotelugu();
         this.PicturetoAudio();
         this.PictureandTexttoVideotelugu();
-        browser.sleep(2000);
+        browser.sleep(10000);
         this.saveMCQ().click();
         browser.sleep(10000);
         this.okbutton().click();
         browser.sleep(500);
         this.Publishnavigation();
-        this.Class1().isDisplayed().then(function (dis) {
-            expect(dis).toBe(true, 'createTapandlistenTaskwithText is created successfully with telugu')
-        })
     }
     createTapandlistenTaskwithTextenglish() {
         this.Tapandlistencreatepageenglish();
@@ -196,15 +193,12 @@ export class tapandlistenPage {
         this.TexttoAudiotelugu();
         this.PicturetoAudio();
         this.PictureandTexttoVideotelugu();
-        browser.sleep(2000);
+        browser.sleep(10000);
         this.saveMCQ().click();
         browser.sleep(10000);
         this.okbutton().click();
         browser.sleep(500);
         this.Publishnavigation();
-        this.Class1().isDisplayed().then(function (dis) {
-            expect(dis).toBe(true, 'createTapandlistenTaskwithText is created successfully with english')
-        })
     }
     createTapandlistenTaskwithTextevs() {
         this.Tapandlistencreatepageevs();
@@ -212,15 +206,12 @@ export class tapandlistenPage {
         this.TexttoAudiotelugu();
         this.PicturetoAudio();
         this.PictureandTexttoVideotelugu();
-        browser.sleep(2000);
+        browser.sleep(10000);
         this.saveMCQ().click();
         browser.sleep(10000);
         this.okbutton().click();
         browser.sleep(500);
         this.Publishnavigation();
-        this.Class1().isDisplayed().then(function (dis) {
-            expect(dis).toBe(true, 'createTapandlistenTaskwithText is created successfully with evs')
-        })
     }
     createTapandlistenTaskwithTextmaths() {
         this.Tapandlistencreatepagemaths();
@@ -228,15 +219,12 @@ export class tapandlistenPage {
         this.TexttoAudiotelugu();
         this.PicturetoAudio();
         this.PictureandTexttoVideotelugu();
-        browser.sleep(2000);
+        browser.sleep(10000);
         this.saveMCQ().click();
         browser.sleep(10000);
         this.okbutton().click();
         browser.sleep(500);
         this.Publishnavigation();
-        this.Class1().isDisplayed().then(function (dis) {
-            expect(dis).toBe(true, 'createTapandlistenTaskwithText is created successfully with maths')
-        })
     }
     Updatetapandlistentask() {
         var dataRecs = dataProvider.getJsonDataFromFile('./TestData/CommonData/SubjectData.json', null)
@@ -315,9 +303,6 @@ export class tapandlistenPage {
         this.acceptSaveTaskPopUp().click();
         browser.sleep(500);
         this.Publishnavigation();
-        this.Class1().isDisplayed().then(function (dis) {
-            expect(dis).toBe(true, 'CreateTapandlistenTaskwithpicture is created successfully with english')
-        })
     }
     createTapandlistenTaskwithpicturetelugu() {
         this.Tapandlistencreatepagetelugu();
@@ -331,9 +316,6 @@ export class tapandlistenPage {
         this.okbutton().click();
         browser.sleep(500);
         this.Publishnavigation();
-        this.Class1().isDisplayed().then(function (dis) {
-            expect(dis).toBe(true, 'CreateTapandlistenTaskwithpicture is created successfully with Telugu')
-        })
     }
     PictureandTextwithaudio() {
         var dataRecs = dataProvider.getJsonDataFromFile('./TestData/TapandListenData/EnglishData.json', null)
@@ -397,7 +379,7 @@ export class tapandlistenPage {
         browser.sleep(500);
         this.PictureandTextwithaudiotelugu()
         this.PictureandTexttoVideotelugu()
-        browser.sleep(500);
+        browser.sleep(10000);
         this.saveMCQ().click();
         browser.sleep(500);
         this.okbutton().click();
@@ -409,7 +391,7 @@ export class tapandlistenPage {
         browser.sleep(500);
         this.PictureandTextwithaudioenglish()
         this.PictureandTexttoVideoenglish()
-        browser.sleep(500);
+        browser.sleep(10000);
         this.saveMCQ().click();
         browser.sleep(5000);
         this.okbutton().click();
@@ -423,7 +405,7 @@ export class tapandlistenPage {
         browser.sleep(500);
         this.PictureandTextwithaudioenglish()
         this.PictureandTexttoVideoenglish()
-        browser.sleep(500);
+        browser.sleep(10000);
         this.saveMCQ().click();
         browser.sleep(5000);
         this.okbutton().click();
@@ -431,16 +413,13 @@ export class tapandlistenPage {
         this.clickOntappingMCQNextBtn().click();
         browser.sleep(500);
         this.Publishnavigation();
-        this.Class1().isDisplayed().then(function (dis) {
-            expect(dis).toBe(true, 'CreateTapandlistenTaskwithpicture and text is created successfully with evs')
-        })
     }
     createTapandlistenTaskwithPictureandTextmaths() {
         this.Tapandlistencreatepagemaths();
         browser.sleep(500);
         this.PictureandTextwithaudioenglish()
         this.PictureandTexttoVideoenglish()
-        browser.sleep(500);
+        browser.sleep(10000);
         this.saveMCQ().click();
         browser.sleep(5000);
         this.okbutton().click();
@@ -448,9 +427,6 @@ export class tapandlistenPage {
         this.clickOntappingMCQNextBtn().click();
         browser.sleep(500);
         this.Publishnavigation();
-        this.Class1().isDisplayed().then(function (dis) {
-            expect(dis).toBe(true, 'CreateTapandlistenTaskwithpicture and text is created successfully with maths')
-        })
     }
     ClickonRandomArray() {
         var myArray = ['Tapandlisten1a', 'Tapandlisten1.1a', 'Tapandlisten1.2a', 'Tapandlisten1.3a', 'Tapandlisten1.4a', 'Tapandlisten1.5a', 'Tapandlisten1.6a', 'Tapandlisten2.0a', 'Tapandlisten2.1s', 'Tapandlisten2.s2', 'Tapandlisten2.s3', 'Tapandlisten2.4s', 'Tapandlisten2f.5', 'Tapandlisten2.6g', 'Tapandlisten3.0g', 'Tapandlisten3.1g', 'Tapandlisten3.2g', 'Tapandlisten3.g3', 'Tapandlisten3.4g', 'Tapandlisten3.g5', 'Tapandlisten3.6g', 'Tapandlisten4.1g', 'Tapandlisten4.1g', 'Tapandlisten4.2g', 'Tapandlisten4.3g', 'Tapandlisten4.4g', 'Tapandlisten4.g5', 'Tapandlisten4.g6', 'Tapandlisten5.g0', 'Tapandlisten5.g1', 'Tapandlisten5.g2', 'Tapandlisten5.d3', 'Tapandlisten5.4d', 'Tapandlisten5.d5', 'Tapandlisten5.d6', 'Tapandlisten6.d0', 'Tapandlisten6.d1', 'Tapandlisten6.d2', 'Tapandlisten6.w3', 'Tapandlisten6.4w', 'Tapandlisten6.5w', 'Tapandlisten6.6w', 'Tapandlisten1.0w', 'Tapandlisten1.1e1', 'Tapandlisten1.2e1', 'Tapandlisten1.3e1', 'Tapandlisten1.e41', 'Tapandlisten1.51e', 'Tapandlisten1.61e', 'Tapandlisten2.0e1', 'Tapandlisten2.1e1', 'Tapandlisten2.2e1', 'Tapandlisten2.3e1', 'Tapandlisten2.4e1', 'Tapandlisten2.5e1', 'Tapandlisten2.6e1', 'Tapandlisten3.0e1', 'Tapandlisten3.1e1', 'Tapandlisten3.2e1', 'Tapandlisten3.31r', 'Tapandlisten3.41r', 'Tapandlisten3.5r1', 'Tapandlisten3.r61', 'Tapandlisten4r.11', 'Tapandlisten4.1t2', 'Tapandlisten4.2t1', 'Tapandlisten4.t31', 'Tapandlisten4.t41', 'Tapandlisten4.5t1', 'Tapandlisten4.t61', 'Tapandlisten5.0t1', 'Tapandlisten5.1t1', 'Tapandlisten5.2t1', 'Tapandlisten5.3t1', 'Tapandlisten5.4t1', 'Tapandlisten5.51t', 'Tapandlisten5.6u1', 'Tapandlisten6.u01', 'Tapandlisten6.11u', 'Tapandlisten6.2u1', 'Tapandlisten6.31u', 'Tapandlisten6.u41', 'Tapandlisten6.5u1', 'Tapandlisten6.u61', 'Tapandlisten1.21u2', 'Tapandlisten1.12', 'Tapandlisten1.22', 'Tapandlisten1.32i', 'Tapandlisten1.i42', 'Tapandlisten1.5i2', 'Tapandlisten1.6i2', 'Tapandlisten2.0o2', 'Tapandlisten2.12o', 'Tapandlisten2.22o', 'Tapandlisten2.32o', 'Tapandlisten2.4o2', 'Tapandlisten2.52o', 'Tapandlisten2.6o2', 'Tapandlisten3.l02', 'Tapandlisten3.1l2', 'Tapandlisten3.2l2', 'Tapandlisten3.3l2', 'Tapandlisten3.4l2', 'Tapandlisten3.5l2', 'Tapandlisten3.6x2', 'Tapandlisten4.12x', 'Tapandlisten4.12x3', 'Tapandlisten4.22c', 'Tapandlisten4.32c', 'Tapandlisten4.42c', 'Tapandlisten4.52c', 'Tapandlisten4.6c2', 'Tapandlisten5.0c2', 'Tapandlisten5.c12', 'Tapandlisten5.22b', 'Tapandlisten5.3b2', 'Tapandlisten5.4n2', 'Tapandlisten5.52', 'Tapandlisten5.62', 'Tapandlisten6.02', 'Tapandlisten6.12', 'Tapandlisten6.22', 'Tapandlisten6.32', 'Tapandlisten6.42', 'Tapandlisten6.52', 'Tapandlisten6.62'];
@@ -470,9 +446,6 @@ export class tapandlistenPage {
         this.clickOntappingMCQNextBtn().click();
         browser.sleep(500);
         this.Publishnavigation();
-        this.Class1().isDisplayed().then(function (dis) {
-            expect(dis).toBe(true, 'CreateTapandlistenTaskwithtext and video and text is created successfully with english')
-        })
     }
     createTapandlistenTaskwithTextandvideotelugu() {
         this.Tapandlistencreatepagetelugu();
@@ -486,9 +459,6 @@ export class tapandlistenPage {
         this.clickOntappingMCQNextBtn().click();
         browser.sleep(500);
         this.Publishnavigation();
-        this.Class1().isDisplayed().then(function (dis) {
-            expect(dis).toBe(true, 'CreateTapandlistenTaskwithtext and video and text is created successfully with english')
-        })
     }
     SearchTaskfromlist() {
         var clearsearch = element(by.xpath("//input[@class='rv-input']"));

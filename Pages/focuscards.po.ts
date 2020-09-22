@@ -231,17 +231,16 @@ export class focuscardsPage {
         this.focuscardsTasktelugu();
         browser.sleep(10000);
         this.saveMCQ().click();
-        browser.sleep(500);
-        BrowserUtils.waitUntilReady(this.Spinner());
-        browser.sleep(3500);
+        browser.sleep(8000);
         this.acceptSaveTaskPopUp().click();
         browser.sleep(500);
         this.clickOntappingMCQNextBtn().click();
         browser.sleep(500);
         this.Publishnavigation();
-        this.Class1().isDisplayed().then(function (dis) {
-            expect(dis).toBe(true, 'Focus cards Task is created successfully with telugu')
+        this.createNewTaskBtn().isDisplayed().then(function (dis) {
+            expect(dis).toBe(true, 'Focal cards Task is created successfully')
         })
+
     }
     createfocuscardsTaskenglish() {
         this.CreateFocuscardsenglish();
@@ -253,7 +252,7 @@ export class focuscardsPage {
         browser.sleep(1500);
         this.Publishnavigation();
         this.createNewTaskBtn().isDisplayed().then(function (dis) {
-            expect(dis).toBe(true, 'Focus cards Task is created successfully with english')
+            expect(dis).toBe(true, 'Focal cards Task is created successfully')
         })
 
     }
@@ -267,7 +266,7 @@ export class focuscardsPage {
         browser.sleep(1500);
         this.Publishnavigation();
         this.createNewTaskBtn().isDisplayed().then(function (dis) {
-            expect(dis).toBe(true, 'Focus cards Task is created successfully with evs')
+            expect(dis).toBe(true, 'Focal cards Task is created successfully')
         })
 
     }
@@ -280,8 +279,8 @@ export class focuscardsPage {
         this.acceptSaveTaskPopUp().click();
         browser.sleep(1500);
         this.Publishnavigation();
-        this.Class1().isDisplayed().then(function (dis) {
-            expect(dis).toBe(true, 'Focus cards Task is created successfully with maths')
+        this.createNewTaskBtn().isDisplayed().then(function (dis) {
+            expect(dis).toBe(true, 'Focal cards Task is created successfully')
         })
 
     }
@@ -668,9 +667,6 @@ export class focuscardsPage {
         contentsearch.clear();
         browser.sleep(500);
         this.Class1().click();
-        this.Class1().isDisplayed().then(function (dis) {
-            expect(dis).toBe(true, 'Contenttype search is working successfully')
-        })
     }
     Previewbackbutton() {
         this.CreateFocuscardsenglish();

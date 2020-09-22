@@ -749,7 +749,7 @@ export class trueorfalsePage {
         this.Previewfortrueorfalse();
         this.Publishnavigation();
         this.createNewTaskBtn().isDisplayed().then(function (dis) {
-            expect(dis).toBe(true, 'createTrueorfalsetaskwithtext is created successfully with telugu')
+            expect(dis).toBe(true, 'createTrueorfalsetaskwithtext is created successfully')
         })
     }
     createTrueorfalsetasktelugumultiplequestions() {
@@ -764,7 +764,7 @@ export class trueorfalsePage {
         this.Previewfortrueorfalse();
         this.Publishnavigation();
         this.createNewTaskBtn().isDisplayed().then(function (dis) {
-            expect(dis).toBe(true, 'createTrueorfalsetaskis created successfully with telugu')
+            expect(dis).toBe(true, 'createTrueorfalsetaskis created successfully')
         })
     }
     createTrueorfalsetaskenglishmultiplequestions() {
@@ -779,7 +779,7 @@ export class trueorfalsePage {
         this.Previewfortrueorfalse();
         this.Publishnavigation();
         this.createNewTaskBtn().isDisplayed().then(function (dis) {
-            expect(dis).toBe(true, 'createTrueorfalsetask is created successfully with english')
+            expect(dis).toBe(true, 'createTrueorfalsetask is created successfully')
         })
     }
     createTrueorfalsetaskwithtextenglish() {
@@ -797,7 +797,7 @@ export class trueorfalsePage {
         this.Previewfortrueorfalse();
         this.Publishnavigation();
         this.createNewTaskBtn().isDisplayed().then(function (dis) {
-            expect(dis).toBe(true, 'createTrueorfalsetaskwithtext is created successfully witl english')
+            expect(dis).toBe(true, 'createTrueorfalsetaskwithtext is created successfully')
         })
     }
     createTrueorfalsetaskwithtextevs() {
@@ -815,7 +815,7 @@ export class trueorfalsePage {
         this.Previewfortrueorfalse();
         this.Publishnavigation();
         this.createNewTaskBtn().isDisplayed().then(function (dis) {
-            expect(dis).toBe(true, 'createTrueorfalsetaskwithtext is created successfully with evs')
+            expect(dis).toBe(true, 'createTrueorfalsetaskwithtext is created successfully')
         })
     }
     createTrueorfalsetaskwithtextmaths() {
@@ -833,7 +833,7 @@ export class trueorfalsePage {
         this.Previewfortrueorfalse();
         this.Publishnavigation();
         this.createNewTaskBtn().isDisplayed().then(function (dis) {
-            expect(dis).toBe(true, 'createTrueorfalsetaskwithtext is created successfully with maths')
+            expect(dis).toBe(true, 'createTrueorfalsetaskwithtext is created successfully')
         })
     }
     createTrueorfalsetaskwithtextandpicturetelugu() {
@@ -851,14 +851,14 @@ export class trueorfalsePage {
         this.Previewfortrueorfalse();
         this.Publishnavigation();
         this.createNewTaskBtn().isDisplayed().then(function (dis) {
-            expect(dis).toBe(true, 'createTrueorfalsetaskwithtext is created successfully with telugu')
+            expect(dis).toBe(true, 'createTrueorfalsetaskwithtext is created successfully')
         })
     }
     createTrueorfalsetaskwithtextandpictureenglish() {
         this.createpageTrueorfalsetaskenglish();
         browser.sleep(1000);
         this.taskwithpictureandtextenglish();
-        browser.sleep(1500);
+        browser.sleep(3500);
         this.saveMCQ().click();
         browser.sleep(1500);
         this.okbutton().click();
@@ -866,14 +866,14 @@ export class trueorfalsePage {
         this.Previewfortrueorfalse();
         this.Publishnavigation();
         this.createNewTaskBtn().isDisplayed().then(function (dis) {
-            expect(dis).toBe(true, 'createTrueorfalsetaskwithtext is created successfully with english')
+            expect(dis).toBe(true, 'createTrueorfalsetaskwithtext is created successfully')
         })
     }
     createTrueorfalsetaskwithtextandpictureevs() {
         this.createpageTrueorfalsetaskevs();
         browser.sleep(1000);
         this.taskwithpictureandtextenglish();
-        browser.sleep(1500);
+        browser.sleep(3500);
         this.saveMCQ().click();
         browser.sleep(1500);
         this.okbutton().click();
@@ -881,14 +881,14 @@ export class trueorfalsePage {
         this.Previewfortrueorfalse();
         this.Publishnavigation();
         this.createNewTaskBtn().isDisplayed().then(function (dis) {
-            expect(dis).toBe(true, 'createTrueorfalsetaskwithtext is created successfully with evs')
+            expect(dis).toBe(true, 'createTrueorfalsetaskwithtext is created successfully')
         })
     }
     createTrueorfalsetaskwithtextandpicturemaths() {
         this.createpageTrueorfalsetaskmaths();
         browser.sleep(1000);
         this.taskwithpictureandtextenglish();
-        browser.sleep(1500);
+        browser.sleep(3500);
         this.saveMCQ().click();
         browser.sleep(1500);
         this.okbutton().click();
@@ -896,7 +896,7 @@ export class trueorfalsePage {
         this.Previewfortrueorfalse();
         this.Publishnavigation();
         this.createNewTaskBtn().isDisplayed().then(function (dis) {
-            expect(dis).toBe(true, 'createTrueorfalsetaskwithtext is created successfully with maths')
+            expect(dis).toBe(true, 'createTrueorfalsetaskwithtext is created successfully')
         })
     }
     Previewcancelicon() {
@@ -904,7 +904,7 @@ export class trueorfalsePage {
         this.taskwithpictureandtextenglish();
         browser.sleep(500);
         this.saveMCQ().click();
-        browser.sleep(1500);
+        browser.sleep(3500);
         this.okbutton().click();
         browser.sleep(2500);
         this.clickOntappingMCQNextBtn().click();
@@ -921,7 +921,7 @@ export class trueorfalsePage {
         this.taskwithpictureandtextenglish();
         browser.sleep(500);
         BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Save')]"));
-        browser.sleep(1500);
+        browser.sleep(3500);
         this.saveMCQ().click();
         browser.sleep(12500);
         this.okbutton().click();
@@ -943,7 +943,7 @@ export class trueorfalsePage {
         this.taskwithpictureandtextenglish();
         browser.sleep(500);
         BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Save')]"));
-        browser.sleep(1500);
+        browser.sleep(3500);
         this.saveMCQ().click();
         browser.sleep(12500);
         this.okbutton().click();
@@ -964,7 +964,7 @@ export class trueorfalsePage {
         this.taskwithpictureandtextenglish();
         browser.sleep(500);
         BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Save')]"));
-        browser.sleep(1500);
+        browser.sleep(3500);
         this.saveMCQ().click();
         browser.sleep(12500);
         this.okbutton().click();
@@ -990,7 +990,7 @@ export class trueorfalsePage {
         this.taskwithpictureandtextenglish();
         browser.sleep(500);
         BrowserUtils.scrollIntoView(by.xpath("//span[contains(text(),'Save')]"));
-        browser.sleep(1500);
+        browser.sleep(3500);
         this.saveMCQ().click();
         browser.sleep(12500);
         this.okbutton().click();
