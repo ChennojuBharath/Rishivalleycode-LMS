@@ -38,7 +38,6 @@ export let config: Config = {
          'e2e/**/Courseintelugu.spec.js',
          'e2e/**/Resourceintelugu.spec.js',
          'e2e/**/Resourceinenglish.spec.js',
-         'Specs/**/login.spec.js',
          'Specs/**/fillintheblanks.spec.js',
          'Specs/**/rearranging.spec.js',
          'Specs/**/trueorfalse.spec.js',
@@ -47,12 +46,13 @@ export let config: Config = {
          'Specs/**/TapandListen.spec.js',
          'Specs/**/matchthefollowing.spec.js',
          'Specs/**/focuscards.spec.js',
-        'Specs/**/logout.spec.js',
          'Specs/**/taskreviewer.spec.js',
          'Specs/**/taskapprover.spec.js',
          'Specs/**/createcourse.spec.js',
         'Specs/**/courseapproval.spec.js',
         'Specs/**/resources.spec.js'
+        //'Specs/**/login.spec.js',
+        //'Specs/**/logout.spec.js',
     ],
     seleniumAddress: 'http://localhost:4444/wd/hub'
 }
